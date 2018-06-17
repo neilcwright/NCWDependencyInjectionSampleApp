@@ -1,0 +1,19 @@
+PODS:
+  - PureLayout (3.0.2)
+  - Swinject (2.0.0)
+  - SwinjectPropertyLoader (1.0.0):
+    - Swinject (~> 2.0.0)
+
+DEPENDENCIES:
+  - PureLayout
+  - Swinject
+  - SwinjectPropertyLoader (>= 1.0.0)
+
+SPEC CHECKSUMS:
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Swinject: 2e964a80d70ab09b3949c99032711f89147bfd60
+  SwinjectPropertyLoader: 5b26a1d3a6ba44fbe61425e06aba18ed64b76f4e
+
+PODFILE CHECKSUM: 9be8da2a14076d4cf23bc3fa39a20d0671614845
+
+COCOAPODS: 1.4.0

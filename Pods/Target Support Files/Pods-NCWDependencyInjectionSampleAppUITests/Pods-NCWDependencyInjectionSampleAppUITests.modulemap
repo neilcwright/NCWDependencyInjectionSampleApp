@@ -1,0 +1,6 @@
+framework module Pods_NCWDependencyInjectionSampleAppUITests {
+  umbrella header "Pods-NCWDependencyInjectionSampleAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
