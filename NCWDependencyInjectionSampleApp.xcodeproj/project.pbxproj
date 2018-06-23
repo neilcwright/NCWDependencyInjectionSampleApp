@@ -42,6 +42,9 @@
 		8A61610A20D5C781008E05E3 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610920D5C781008E05E3 /* RootRouter.swift */; };
 		8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610B20D5CB53008E05E3 /* ContainerViewController.swift */; };
 		8A61610E20D5DDBE008E05E3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */; };
+		8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611120DEBB82008E05E3 /* RouteType.swift */; };
+		8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* RouteProvider.swift */; };
+		8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,9 @@
 		8A61610920D5C781008E05E3 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		8A61610B20D5CB53008E05E3 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		8A61611120DEBB82008E05E3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
+		8A61611420DEBC0E008E05E3 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
+		8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
 		937A559CFE5F9ECD817E6140 /* Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppTests/Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A9E61D0F6532965283167B47 /* Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppUITests/Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0530195DE5C0A53477BB6E0 /* Pods_NCWDependencyInjectionSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NCWDependencyInjectionSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,13 +180,16 @@
 		8A61609D20D4A27C008E05E3 /* NCWDependencyInjectionSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A61611020DEBB4A008E05E3 /* Abstracts */,
 				8A6160DA20D5B57C008E05E3 /* Assemblies */,
+				8A61610F20DEBB09008E05E3 /* Extensions */,
 				8A6160D020D5B31C008E05E3 /* Models */,
 				8A6160DB20D5B662008E05E3 /* Modules */,
+				8A6160FB20D5C126008E05E3 /* Services */,
 				8A6160D320D5B368008E05E3 /* UI */,
 				8A6160CE20D555FF008E05E3 /* properties.json */,
 				8A61609E20D4A27C008E05E3 /* AppDelegate.swift */,
-				8A6160FB20D5C126008E05E3 /* Services */,
+				8A61611420DEBC0E008E05E3 /* RouteProvider.swift */,
 				8A6160A020D4A27C008E05E3 /* ViewController.swift */,
 				8A6160A520D4A27F008E05E3 /* Assets.xcassets */,
 				8A6160A720D4A27F008E05E3 /* LaunchScreen.storyboard */,
@@ -229,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8A6160D820D5B573008E05E3 /* ModelAssembly.swift */,
+				8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */,
 				8A6160CC20D4DEA8008E05E3 /* ServiceAssembly.swift */,
 			);
 			path = Assemblies;
@@ -289,6 +299,21 @@
 				8A61610920D5C781008E05E3 /* RootRouter.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		8A61610F20DEBB09008E05E3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A61611020DEBB4A008E05E3 /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+				8A61611120DEBB82008E05E3 /* RouteType.swift */,
+			);
+			path = Abstracts;
 			sourceTree = "<group>";
 		};
 		A90F4ADA8A81D30A26A65601 /* Pods */ = {
@@ -616,8 +641,11 @@
 				8A6160E020D5B6A4008E05E3 /* HomeViewController.swift in Sources */,
 				8A61610820D5C77A008E05E3 /* RootViewController.swift in Sources */,
 				8A6160EA20D5B744008E05E3 /* HomePresenter.swift in Sources */,
+				8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */,
 				8A6160D920D5B573008E05E3 /* ModelAssembly.swift in Sources */,
+				8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */,
 				8A6160DE20D5B698008E05E3 /* HomeAssembly.swift in Sources */,
+				8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */,
 				8A6160ED20D5B94C008E05E3 /* DetailAssembly.swift in Sources */,
 				8A61609F20D4A27C008E05E3 /* AppDelegate.swift in Sources */,
 				8A61610220D5C75D008E05E3 /* RootDataManager.swift in Sources */,
@@ -793,7 +821,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -809,7 +840,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -826,7 +860,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -844,7 +882,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -861,7 +903,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -878,7 +924,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T97729JW3A;
 				INFOPLIST_FILE = NCWDependencyInjectionSampleAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.NCWDependencyInjectionSampleAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

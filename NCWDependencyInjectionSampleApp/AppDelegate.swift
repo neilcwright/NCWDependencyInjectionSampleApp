@@ -10,46 +10,42 @@ import UIKit
 import Swinject
 import SwinjectPropertyLoader
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var rootRouter: RootRouterType?
-    let assembler: Assembler = try! Assembler(assemblies: [
-        ModelAssembly(),
-        HomeAssembly(),
-        DetailAssembly(),
-        RootAssembly(),
-        ServiceAssembly()
-    ])
+
+    fileprivate var routeProvider: RouteProviderType?
+    var currentRoute: RouteType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         do {
             // load properties from json files
-            try self.assembler.applyPropertyLoader(
+            let assembler = try Assembler(assemblies: [
+                ProviderAssembly(),
+                ModelAssembly(),
+                HomeAssembly(),
+                DetailAssembly(),
+                RootAssembly(),
+                ServiceAssembly()
+            ])
+            
+            // load up properties
+            try assembler.applyPropertyLoader(
                 JsonPropertyLoader(
                     bundle: Bundle.main,
                     name: "properties"
                 )
             )
             
-            // set up view in main window
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let rootViewController: UIViewController & ContainerViewControllerType = ContainerViewController()
-            self.window?.rootViewController = rootViewController
-            self.window?.makeKeyAndVisible()
+            self.routeProvider = assembler.resolver.resolve(RouteProviderType.self)
+            self.routeProvider?.setAssembler(assembler)
             
-            // initialize root router from assembly
-            let router = self.assembler.resolver.resolve(
-                RootRouterType.self
-            )
-            router?.setRootViewController(rootViewController)
-            self.rootRouter = router
-            router?.routeToView()
+            if let rootRouter: RootRouterType = self.routeProvider?.routeTo(RootRouterType.self) {
+                rootRouter.loadView()
+                self.currentRoute = rootRouter
+            }
         } catch {
             print("unable to load properties")
         }
@@ -78,7 +74,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

@@ -19,9 +19,12 @@ protocol RootViewControllerDelegate: class {
 
 final class RootViewController: UIViewController, RootViewControllerType {
     
+    let presenter: RootPresenterType
+    
     // MARK: Initializers
     
-    required init() {
+    required init(presenter: RootPresenterType) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     

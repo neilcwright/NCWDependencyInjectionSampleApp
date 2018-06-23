@@ -13,6 +13,11 @@ protocol RootDataManagerType: class {
 }
 
 final class RootDataManager: RootDataManagerType {
+    
+    deinit {
+        print("root data manager deinit")
+    }
+    
     func isUserLoggedIn() -> Bool {
         
         // TODO for mocking store a key/value pair in user defaults to simulate

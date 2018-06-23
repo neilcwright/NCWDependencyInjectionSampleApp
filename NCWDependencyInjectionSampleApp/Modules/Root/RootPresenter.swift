@@ -27,6 +27,10 @@ final class RootPresenter: RootPresenterType {
     var interactor: RootInteractorType!
     weak var router: RootRouterPresenterType?
     
+    deinit {
+        print("root presenter deinit")
+    }
+    
     func determineInitialView() {
         self.interactor.determineInitialFlow()
     }
@@ -34,7 +38,7 @@ final class RootPresenter: RootPresenterType {
 
 extension RootPresenter: RootInteractorPresenterType {
     func presentLoggedOutFlow() {
-        
+        self.router?.routeToLogin()
     }
     
     func presentLoggedInFlow() {

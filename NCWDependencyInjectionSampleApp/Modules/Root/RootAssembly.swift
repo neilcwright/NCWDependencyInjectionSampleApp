@@ -15,22 +15,19 @@ class RootAssembly: Assembly {
         container.register(RootRouterType.self) {
             resolver in
             
-            return RootRouter(
-                presenter: resolver.resolve(RootPresenterType.self)!
-            )
+            return RootRouter()
         }.initCompleted({
             resolver, router in
             
-            print("root router initialized")
+            router.routeProvider = resolver.resolve(RouteProviderType.self)!
+            print("root router initialized \(router)")
         })
         
         // router presenter type
         container.register(RootRouterPresenterType.self) {
             resolver in
             
-            return RootRouter(
-                presenter: resolver.resolve(RootPresenterType.self)!
-            )
+            return resolver.resolve(RootRouterType.self)!
         }.initCompleted({
             resolver, router in
                 
@@ -88,11 +85,11 @@ class RootAssembly: Assembly {
         // view controller
         container.register(RootViewControllerType.self) {
             resolver in
-            return RootViewController()
+            return RootViewController(presenter: resolver.resolve(RootPresenterType.self)!)
         }.initCompleted({
             resolver, viewController in
             
-            print("root view controller initialized")
+            print("root view controller initialized \(viewController)")
         })
     }
     

@@ -22,14 +22,23 @@ class HomeAssembly: Assembly {
             
         }).inObjectScope(.graph)
         
-        // presenter
-        container.register(HomePresenterType.self) { resolver in
-            return HomePresenter()
+        // presenter->router type
+        container.register(HomePresenterRouterType.self) {
+            resolver in
+            return resolver.resolve(HomeRouterType.self)!
         }.initCompleted({
             resolver, homePresenter in
             
-            homePresenter.interactor = resolver.resolve(HomeInteractorType.self)!
-            print("home presenter: \(homePresenter)")
+            print("home presenter-> router \(homePresenter)")
+        })
+        
+        // presenter
+        container.register(HomePresenterType.self) { resolver in
+            return HomePresenter(interactor: resolver.resolve(HomeInteractorType.self)!)
+        }.initCompleted({
+            resolver, homePresenter in
+            
+            homePresenter.router = resolver.resolve(HomePresenterRouterType.self)!
             
         }).inObjectScope(.graph)
         
@@ -56,7 +65,7 @@ class HomeAssembly: Assembly {
         
         // view controller
         container.register(HomeViewControllerType.self) { resolver in
-            return HomeViewController()
+            return HomeViewController(presenter: resolver.resolve(HomePresenterType.self)!)
         }.initCompleted({
             resolver, homeViewController in
             

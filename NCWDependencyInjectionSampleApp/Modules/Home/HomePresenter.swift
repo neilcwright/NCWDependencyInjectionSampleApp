@@ -11,16 +11,24 @@ import Foundation
 // Inbound protocol
 protocol HomePresenterType: class {
     
-    var interactor: HomeInteractorType! { get set }
+    // hold strong
+    var interactor: HomeInteractorType { get set }
+    
+    // hold weak
+    var router: HomePresenterRouterType? { get set }
 }
 
 // Outbound protocol
-protocol HomePresenterDelegateType: class {
+protocol HomePresenterRouterType: class {
     
 }
 
-final class HomePresenter: HomePresenterType {
+final class HomePresenter: HomePresenterType, HomePresenterRouterType {
     
-    var interactor: HomeInteractorType!
+    var interactor: HomeInteractorType
+    weak var router: HomePresenterRouterType?
     
+    init(interactor: HomeInteractorType) {
+        self.interactor = interactor
+    }
 }

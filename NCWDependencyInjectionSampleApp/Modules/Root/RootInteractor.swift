@@ -14,7 +14,7 @@ protocol RootInteractorType: class {
     var dataManager: RootDataManagerType! { get set }
     
     // held weakly (is owned by)
-    var presenter: RootInteractorPresenterType! { get set }
+    var presenter: RootInteractorPresenterType? { get set }
     
     func determineInitialFlow()
 }
@@ -28,13 +28,17 @@ protocol RootInteractorPresenterType: class {
 
 final class RootInteractor: RootInteractorType {
     var dataManager: RootDataManagerType!
-    var presenter: RootInteractorPresenterType!
+    weak var presenter: RootInteractorPresenterType?
+    
+    deinit {
+        print("root interactor deinit")
+    }
     
     func determineInitialFlow() {
         if self.dataManager.isUserLoggedIn() {
-            self.presenter.presentLoggedInFlow()
+            self.presenter?.presentLoggedInFlow()
         } else {
-            self.presenter.presentLoggedOutFlow()
+            self.presenter?.presentLoggedOutFlow()
         }
     }
 }

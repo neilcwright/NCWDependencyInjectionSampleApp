@@ -21,6 +21,7 @@ protocol DetailRouterType: RouteType {
 
 final class DetailRouter: DetailRouterType {
     
+    var routeProvider: RouteProviderType?
     var presenter: DetailPresenterType!
     
     func routeTo<T: RouteType>(from: T?) {

@@ -8,14 +8,18 @@
 
 import Foundation
 
-protocol HomeRouterType: RouteType {
+protocol HomeRouterType: RouteType, HomePresenterRouterType {
     
     // retain strong
     var presenter: HomePresenterType! { get set }
-}
+    
+    // MARK: HomePresenterRouterType
+    
+} 
 
 final class HomeRouter: HomeRouterType {
     
+    var routeProvider: RouteProviderType?
     var presenter: HomePresenterType!
     
     func routeTo<T: RouteType>(from: T?) {

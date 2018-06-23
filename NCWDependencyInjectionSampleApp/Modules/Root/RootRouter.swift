@@ -10,61 +10,45 @@ import UIKit
 
 // MARK: Protocols
 
-protocol RouteType: class {
-
-}
-
-protocol RootRouterType: RouteType {
-    
-    var rootViewController: UIViewController! { get set }
-
-    // retain strong
-    var presenter: RootPresenterType { get set }
-    
-    func setRootViewController(_ rootViewController: UIViewController & ContainerViewControllerType)
-    
-    func routeToView()
+/// The root router type protocol.
+protocol RootRouterType: RouteType, RootRouterPresenterType {
+    func loadView()
 }
 
 protocol RootRouterPresenterType: class {
+    
+    /// Will route to home.
     func routeToHome()
     
+    // Will route to login.
     func routeToLogin()
 }
 
 // MARK: Classes
 
 final class RootRouter: RootRouterType {
-
-    var rootViewController: UIViewController!
     
-    var presenter: RootPresenterType
-    
-    required init(
-        presenter: RootPresenterType) {
-        
-        self.presenter = presenter
-    }
+    weak var routeProvider: RouteProviderType?
+    var window: UIWindow?
     
     deinit {
         print("root router deinit")
     }
     
-    func setRootViewController(_ rootViewController: UIViewController & ContainerViewControllerType) {
-        self.rootViewController = rootViewController
-    }
-
-    func routeToView() {
-        self.presenter.determineInitialView()
+    func loadView() {
+        let rootViewController = UITableViewController()
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = rootViewController
+        self.window?.makeKeyAndVisible()
     }
 }
 
 extension RootRouter: RootRouterPresenterType {
     func routeToLogin() {
-        
+        // TODO route to login
     }
     
     func routeToHome() {
-        
+        // TODO route to home
     }
 }
