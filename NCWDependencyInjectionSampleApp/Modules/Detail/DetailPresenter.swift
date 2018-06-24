@@ -7,23 +7,29 @@
 //
 
 protocol DetailPresenterType: class {
+    
     // hold strongly
     var interactor: DetailInteractorType { get set }
     
     // hold weakly
-    var router: DetailPresenterRouterType? { get set }
-}
-
-protocol DetailPresenterRouterType: class {
-    func routeToHome()
+    var router: DetailRouterType? { get set }
+    
+    /// Will handle view's primary action.
+    func handlePrimaryAction()
 }
 
 final class DetailPresenter: DetailPresenterType {
+    
     var interactor: DetailInteractorType
+    
+    // autowired
+    weak var router: DetailRouterType?
     
     init(interactor: DetailInteractorType) {
         self.interactor = interactor
     }
     
-    var router: DetailPresenterRouterType?
+    func handlePrimaryAction() {
+        
+    }
 }

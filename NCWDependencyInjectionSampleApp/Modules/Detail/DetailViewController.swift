@@ -22,6 +22,19 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     
     fileprivate let presenter: DetailPresenterType
     
+    fileprivate lazy var infoView: InfoView = {
+        let infoView = InfoView(
+            viewModel: InfoViewModel(
+                headerText: "Detail View",
+                descriptionText: "The dude abides.",
+                imageName: "dude",
+                primaryButtonText: "Order a white russian"
+            ),
+            viewDelegate: self
+        )
+        return infoView
+    }()
+    
     // MARK: Initializers
     
     required init(presenter: DetailPresenterType) {
@@ -31,5 +44,27 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: View lifecycle methods
+    
+    override func loadView() {
+        super.loadView()
+        
+        self.view.backgroundColor = .red
+        self.view.addSubview(self.infoView)
+        self.view.setNeedsUpdateConstraints()
+    }
+    
+    override func updateViewConstraints() {
+        
+        super.updateViewConstraints()
+    }
+}
+
+// MARK: InfoViewDelegate
+extension DetailViewController: InfoViewDelegate {
+    func handlePrimaryAction(_ infoView: InfoViewType) {
+        
     }
 }

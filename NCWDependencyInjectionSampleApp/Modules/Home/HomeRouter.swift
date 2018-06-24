@@ -35,19 +35,27 @@ final class HomeRouter: HomeRouterType {
     }
     
     func routeToDetailView() {
-        let alertController = UIAlertController(title: "Detail", message: "How cool is this!", preferredStyle: .alert)
-        alertController.addAction(
-            UIAlertAction(
-                title: "Ok",
-                style: .default,
-                handler: {
-                    [weak self, weak alertController] action in
-                    
-                    alertController?.dismiss(animated: true, completion: nil)
-                    self?.presentedViewController?.dismiss(animated: true, completion: nil)
-                }
-            )
-        )
-        self.presentedViewController?.present(alertController, animated: true, completion: nil)
+        guard let detailRoute = self.routeProvider?.route(DetailRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected home route to be registered w/ container")
+                return
+        }
+        
+        detailRoute.loadView(from: presentedViewController)
+//        let alertController = UIAlertController(title: "Detail", message: "How cool is this!", preferredStyle: .alert)
+//        alertController.addAction(
+//            UIAlertAction(
+//                title: "Ok",
+//                style: .default,
+//                handler: {
+//                    [weak self, weak alertController] action in
+//
+//                    alertController?.dismiss(animated: true, completion: nil)
+//                    self?.presentedViewController?.dismiss(animated: true, completion: nil)
+//                }
+//            )
+//        )
+//        self.presentedViewController?.present(alertController, animated: true, completion: nil)
     }
 }

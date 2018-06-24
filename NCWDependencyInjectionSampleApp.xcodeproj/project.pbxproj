@@ -45,6 +45,7 @@
 		8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* RouteProvider.swift */; };
 		8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */; };
 		8A61611920DF2357008E05E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611820DF2357008E05E3 /* InfoView.swift */; };
+		8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		8A61611420DEBC0E008E05E3 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
 		8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
 		8A61611820DF2357008E05E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+NCW.swift"; sourceTree = "<group>"; };
 		937A559CFE5F9ECD817E6140 /* Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppTests/Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A9E61D0F6532965283167B47 /* Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppUITests/Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0530195DE5C0A53477BB6E0 /* Pods_NCWDependencyInjectionSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NCWDependencyInjectionSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +306,7 @@
 		8A61610F20DEBB09008E05E3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				8A6160D220D5B33B008E05E3 /* Examples.swift in Sources */,
 				8A61610A20D5C781008E05E3 /* RootRouter.swift in Sources */,
 				8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */,
+				8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */,
 				8A6160E420D5B6BA008E05E3 /* HomeDataManager.swift in Sources */,
 				8A61611920DF2357008E05E3 /* InfoView.swift in Sources */,
 				8A61610420D5C769008E05E3 /* RootInteractor.swift in Sources */,

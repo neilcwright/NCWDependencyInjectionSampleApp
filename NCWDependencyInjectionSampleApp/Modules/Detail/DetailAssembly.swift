@@ -15,7 +15,7 @@ class DetailAssembly: Assembly {
         // data manager
         container.register(DetailDataManagerType.self) { resolver in
             return DetailDataManager(exampleService: resolver.resolve(ExampleServiceType.self)!)
-        }.inObjectScope(.graph)
+        }
         
         // interactor
         container.register(DetailInteractorType.self) {
@@ -23,24 +23,26 @@ class DetailAssembly: Assembly {
             return DetailInteractor()
         }.initCompleted({ resolver, interactor in
             interactor.dataManager = resolver.resolve(DetailDataManagerType.self)!
-        }).inObjectScope(.graph)
+        })
         
         // presenter
         container.register(DetailPresenterType.self) { resolver in
             return DetailPresenter(interactor: resolver.resolve(DetailInteractorType.self)!)
         }.initCompleted({ resolver, presenter in
-            presenter.router = resolver.resolve(DetailPresenterRouterType.self)!
-        }).inObjectScope(.graph)
+            presenter.router = resolver.resolve(DetailRouterType.self)!
+        })
         
         // router
-        container.register(DetailPresenterRouterType.self) { resolver in
-            return resolver.resolve(DetailRouterType.self)!
-        }.inObjectScope(.graph)
+        container.register(DetailRouterType.self) { resolver in
+            return DetailRouter()
+            }.initCompleted({ resolver, router in
+                router.routeProvider = resolver.resolve(RouteProviderType.self)!
+            }).inObjectScope(.weak)
         
         // view controller
         container.register(DetailViewControllerType.self) { resolver in
             return DetailViewController(presenter: resolver.resolve(DetailPresenterType.self)!)
-        }.inObjectScope(.graph)
+        }
     }
     
     func loaded(resolver: Resolver) {

@@ -32,7 +32,6 @@ protocol HomePresenterViewType: class {
 final class HomePresenter: HomePresenterType {
     
     var interactor: HomeInteractorType
-    // TODO FIX THIS!!! NEED TO MAKE THIS WEAK TO AVOID MEMORY LEAK, BUT NEED TO DETERMINE WHO OWNS THE ROUTER
     weak var router: HomeRouterType?
     
     init(interactor: HomeInteractorType) {

@@ -19,8 +19,21 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     
     // MARK: View elements
     
+    fileprivate lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView.newAutoLayout()
+        return scrollView
+    }()
+    
     fileprivate lazy var infoView: InfoView = {
-        let infoView = InfoView(viewModel: InfoViewModel(imageName: "hamburgler"), viewDelegate: self)
+        let infoView = InfoView(
+            viewModel: InfoViewModel(
+                headerText: "Home View",
+                descriptionText: "Feeling hungry for feature burgers.",
+                imageName: "hamburgler",
+                primaryButtonText: "Steal a burger"
+            ),
+            viewDelegate: self
+        )
         return infoView
     }()
     
@@ -40,7 +53,8 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     override func loadView() {
         super.loadView()
         
-        self.view.addSubview(self.infoView)
+        self.view.addSubview(self.scrollView)
+        self.scrollView.addSubview(self.infoView)
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -51,6 +65,7 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     }
     
     override func updateViewConstraints() {
+        self.scrollView.autoPinEdgesToSuperviewEdges()
         super.updateViewConstraints()
     }
 }

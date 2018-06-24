@@ -9,7 +9,10 @@
 import UIKit
 
 struct InfoViewModel {
+    var headerText: String
+    var descriptionText: String
     var imageName: String
+    var primaryButtonText: String
 }
 
 protocol InfoViewType {
@@ -29,7 +32,7 @@ final class InfoView: UIView, InfoViewType {
     
     fileprivate lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
-        headerLabel.text = "Home View"
+        headerLabel.text = self.viewModel.headerText
         headerLabel.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: self.traitCollection)
         headerLabel.textColor = .black
         headerLabel.numberOfLines = 0
@@ -40,6 +43,12 @@ final class InfoView: UIView, InfoViewType {
     
     fileprivate lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel.newAutoLayout()
+        descriptionLabel.text = self.viewModel.descriptionText
+        descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body, compatibleWith: self.traitCollection)
+        descriptionLabel.textColor = .black
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.textAlignment = .center
         return descriptionLabel
     }()
     
@@ -50,8 +59,15 @@ final class InfoView: UIView, InfoViewType {
     }()
     
     fileprivate lazy var primaryButton: PrimaryButton = {
-        let primaryButton = PrimaryButton(delegate: self)
-        primaryButton.setTitle("Steal a burger", for: UIControlState())
+        let primaryButton = PrimaryButton(
+            viewModel: PrimaryButtonViewModel(
+                cornerRadius: 5.0,
+                horizontalInset: 20.0,
+                verticalInset: 10.0
+            ),
+            delegate: self
+        )
+        primaryButton.setTitle(self.viewModel.primaryButtonText, for: UIControlState())
         primaryButton.backgroundColor = .blue
         return primaryButton
     }()
@@ -90,7 +106,6 @@ final class InfoView: UIView, InfoViewType {
         self.descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         self.heroView.autoPinEdge(.top, to: .bottom, of: self.descriptionLabel, withOffset: 10)
-        self.heroView.autoConstrainAttribute(.width, to: .width, of: self.descriptionLabel)
         self.heroView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         self.primaryButton.autoPinEdge(.top, to: .bottom, of: self.heroView, withOffset: 10)
