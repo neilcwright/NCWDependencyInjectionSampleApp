@@ -15,6 +15,6 @@ protocol ExampleServiceType: class {
 final class ExampleService: ExampleServiceType {
     
     func getFoo(success: @escaping (_ foo: Foo) -> Void) {
-        
+        success(FooThing(thing: "Foo"))
     }
 }

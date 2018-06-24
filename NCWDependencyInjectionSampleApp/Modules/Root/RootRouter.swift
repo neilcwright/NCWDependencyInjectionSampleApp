@@ -11,11 +11,14 @@ import UIKit
 // MARK: Protocols
 
 /// The root router type protocol.
-protocol RootRouterType: RouteType, RootRouterPresenterType {
-    func loadView()
-}
-
-protocol RootRouterPresenterType: class {
+protocol RootRouterType: RouteType {
+    
+    /// Will load this route's view in the provided window and return it after
+    /// assigning the view to it.
+    ///
+    /// - Parameter window: the window that we'll load view into.
+    /// - Returns: the loaded window.
+    func loadView(in window: UIWindow) -> UIWindow
     
     /// Will route to home.
     func routeToHome()
@@ -30,25 +33,35 @@ final class RootRouter: RootRouterType {
     
     weak var routeProvider: RouteProviderType?
     var window: UIWindow?
+    var presentedViewController: UIViewController?
     
     deinit {
         print("root router deinit")
     }
     
-    func loadView() {
-        let rootViewController = UITableViewController()
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = rootViewController
-        self.window?.makeKeyAndVisible()
+    @discardableResult
+    func loadView(in window: UIWindow) -> UIWindow {
+        guard let rootViewController = self.routeProvider?.resolve(RootViewControllerType.self) else {
+            assertionFailure("expected root view controller type to be registered w/ container")
+            return window
+        }
+        window.rootViewController = rootViewController as? UIViewController
+        self.presentedViewController = window.rootViewController
+        return window
     }
-}
-
-extension RootRouter: RootRouterPresenterType {
+    
     func routeToLogin() {
         // TODO route to login
     }
     
     func routeToHome() {
-        // TODO route to home
+        guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected home route to be registered w/ container")
+                return
+        }
+        
+        homeRoute.loadView(from: presentedViewController)
     }
 }

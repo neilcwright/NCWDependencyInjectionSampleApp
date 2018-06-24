@@ -20,9 +20,12 @@ protocol DetailViewControllerDelegate: class {
 
 final class DetailViewController: UIViewController, DetailViewControllerType {
     
+    fileprivate let presenter: DetailPresenterType
+    
     // MARK: Initializers
     
-    required init() {
+    required init(presenter: DetailPresenterType) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
     

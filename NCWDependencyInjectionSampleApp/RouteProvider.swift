@@ -21,11 +21,18 @@ protocol RouteProviderType: class {
     /// - Parameter assembler: the assembler to which we'll resolve our dependencies within container.
     func setAssembler(_ assembler: Assembler)
     
+    /// Will resolve and return an instance of type from assembler's container
+    /// if type has been registered; `nil` otherwise.
+    ///
+    /// - Parameter type: the type to resolve and return instance of.
+    /// - Returns: an instance of type if one is registered; `nil` otherwise.
+    func resolve<T>(_ type: T.Type) -> T?
+    
     /// When called will route to a route type and return it so that we can call our methods from
     /// any other route in application.
     ///
     /// - Returns: a new route type instance, resolved from the provider's assembler container.
-    func routeTo<T>(_ route: T.Type) -> T?
+    func route<T>(_ route: T.Type) -> T?
 }
 
 class RouteProvider: RouteProviderType {
@@ -34,14 +41,22 @@ class RouteProvider: RouteProviderType {
     
     var assembler: Assembler!
     
+    var currentRoute: AnyObject?
+    
     // MARK: RouteProviderType
 
-    func routeTo<T>(_ route: T.Type) -> T? {
+    func route<T>(_ route: T.Type) -> T? {
         if let routeAtUrl = self.assembler.resolver.resolve(route) {
+            self.currentRoute = routeAtUrl as AnyObject
             return routeAtUrl
         }
         assertionFailure("was unable to find route at specified url")
         return nil
+    }
+    
+    
+    func resolve<T>(_ type: T.Type) -> T? {
+        return self.assembler.resolver.resolve(T.self)
     }
     
     func setAssembler(_ assembler: Assembler) {

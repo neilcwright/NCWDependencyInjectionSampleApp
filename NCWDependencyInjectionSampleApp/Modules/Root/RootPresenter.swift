@@ -12,7 +12,7 @@ import Foundation
 protocol RootPresenterType: class {
     
     var interactor: RootInteractorType! { get set }
-    var router: RootRouterPresenterType? { get set }
+    var router: RootRouterType? { get set }
     
     func determineInitialView()
 }
@@ -22,10 +22,10 @@ protocol RootPresenterDelegateType: class {
     
 }
 
-final class RootPresenter: RootPresenterType {
+class RootPresenter: RootPresenterType {
     
     var interactor: RootInteractorType!
-    weak var router: RootRouterPresenterType?
+    weak var router: RootRouterType?
     
     deinit {
         print("root presenter deinit")
@@ -42,6 +42,7 @@ extension RootPresenter: RootInteractorPresenterType {
     }
     
     func presentLoggedInFlow() {
+        assert(self.router != nil)
         self.router?.routeToHome()
     }
 }

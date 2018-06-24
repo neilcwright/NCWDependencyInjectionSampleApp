@@ -15,20 +15,31 @@ protocol HomePresenterType: class {
     var interactor: HomeInteractorType { get set }
     
     // hold weak
-    var router: HomePresenterRouterType? { get set }
+    var router: HomeRouterType? { get set }
+    
+    /// Will handle the primary action triggered from the home view controller.
+    ///
+    /// - Parameter viewController: the interface for communicating from presenter to view.
+    func handlePrimaryAction(_ viewController: HomePresenterViewType)
 }
 
-// Outbound protocol
-protocol HomePresenterRouterType: class {
+// Presenter->Router protocol
+
+protocol HomePresenterViewType: class {
     
 }
 
-final class HomePresenter: HomePresenterType, HomePresenterRouterType {
+final class HomePresenter: HomePresenterType {
     
     var interactor: HomeInteractorType
-    weak var router: HomePresenterRouterType?
+    // TODO FIX THIS!!! NEED TO MAKE THIS WEAK TO AVOID MEMORY LEAK, BUT NEED TO DETERMINE WHO OWNS THE ROUTER
+    weak var router: HomeRouterType?
     
     init(interactor: HomeInteractorType) {
         self.interactor = interactor
+    }
+    
+    func handlePrimaryAction(_ viewController: HomePresenterViewType) {
+        self.router?.routeToDetailView()
     }
 }

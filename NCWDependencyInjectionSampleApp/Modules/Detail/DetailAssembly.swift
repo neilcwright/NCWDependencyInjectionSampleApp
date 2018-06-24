@@ -13,46 +13,34 @@ class DetailAssembly: Assembly {
     func assemble(container: Container) {
         
         // data manager
-        container.register(DetailDataManagerType.self) {
-            resolver in
+        container.register(DetailDataManagerType.self) { resolver in
             return DetailDataManager(exampleService: resolver.resolve(ExampleServiceType.self)!)
-        }.initCompleted({
-            resolver, dataManager in
-            
-            print("detail data manager initialized")
-        }).inObjectScope(.graph)
+        }.inObjectScope(.graph)
         
         // interactor
         container.register(DetailInteractorType.self) {
             resolver in
             return DetailInteractor()
-        }.initCompleted({
-            resolver, interactor in
-            
+        }.initCompleted({ resolver, interactor in
             interactor.dataManager = resolver.resolve(DetailDataManagerType.self)!
-            print("detail interactor initialized")
         }).inObjectScope(.graph)
         
         // presenter
-        container.register(DetailPresenterType.self) {
-            resolver in
-            return DetailPresenter()
-        }.initCompleted({
-            resolver, presenter in
-            
-            presenter.interactor = resolver.resolve(DetailInteractorType.self)!
-            print("detail presenter initialized")
+        container.register(DetailPresenterType.self) { resolver in
+            return DetailPresenter(interactor: resolver.resolve(DetailInteractorType.self)!)
+        }.initCompleted({ resolver, presenter in
+            presenter.router = resolver.resolve(DetailPresenterRouterType.self)!
         }).inObjectScope(.graph)
         
+        // router
+        container.register(DetailPresenterRouterType.self) { resolver in
+            return resolver.resolve(DetailRouterType.self)!
+        }.inObjectScope(.graph)
+        
         // view controller
-        container.register(DetailViewControllerType.self) {
-            resolver in
-            return DetailViewController()
-        }.initCompleted({
-            resolver, viewController in
-
-            print("detail view controller initialized")
-        }).inObjectScope(.graph)
+        container.register(DetailViewControllerType.self) { resolver in
+            return DetailViewController(presenter: resolver.resolve(DetailPresenterType.self)!)
+        }.inObjectScope(.graph)
     }
     
     func loaded(resolver: Resolver) {

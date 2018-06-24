@@ -20,19 +20,7 @@ class RootAssembly: Assembly {
             resolver, router in
             
             router.routeProvider = resolver.resolve(RouteProviderType.self)!
-            print("root router initialized \(router)")
-        })
-        
-        // router presenter type
-        container.register(RootRouterPresenterType.self) {
-            resolver in
-            
-            return resolver.resolve(RootRouterType.self)!
-        }.initCompleted({
-            resolver, router in
-                
-            print("root router presenter type initialized")
-        })
+        }).inObjectScope(.weak)
         
         // data manager
         container.register(RootDataManagerType.self) {
@@ -58,16 +46,6 @@ class RootAssembly: Assembly {
             print("root interactor initialized")
         })
         
-        // interactor->presenter type
-        container.register(RootInteractorPresenterType.self) {
-            resolver in
-            return RootPresenter()
-        }.initCompleted({
-            resolver, presenter in
-            
-            print("root interactor/presenter type initialized")
-        })
-        
         // presenter
         container.register(RootPresenterType.self) {
             resolver in
@@ -77,9 +55,20 @@ class RootAssembly: Assembly {
             resolver, presenter in
             
             presenter.interactor = resolver.resolve(RootInteractorType.self)!
-            presenter.router = resolver.resolve(RootRouterPresenterType.self)!
+            presenter.router = resolver.resolve(RootRouterType.self)!
             
             print("root router presenter type initialized")
+        })
+        
+        // interactor->presenter type
+        container.register(RootInteractorPresenterType.self) {
+            resolver in
+            let presenter = resolver.resolve(RootPresenterType.self)!
+            return presenter as! RootInteractorPresenterType
+        }.initCompleted({
+            resolver, presenter in
+            
+            print("root interactor/presenter type initialized")
         })
         
         // view controller

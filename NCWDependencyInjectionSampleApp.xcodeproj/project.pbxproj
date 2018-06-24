@@ -11,7 +11,6 @@
 		3C1A338750680C9F165FACA1 /* Pods_NCWDependencyInjectionSampleAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03D206DECA1E7912E6685C5D /* Pods_NCWDependencyInjectionSampleAppTests.framework */; };
 		59120F264A2F82D98220C9C8 /* Pods_NCWDependencyInjectionSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0530195DE5C0A53477BB6E0 /* Pods_NCWDependencyInjectionSampleApp.framework */; };
 		8A61609F20D4A27C008E05E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61609E20D4A27C008E05E3 /* AppDelegate.swift */; };
-		8A6160A120D4A27C008E05E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160A020D4A27C008E05E3 /* ViewController.swift */; };
 		8A6160A620D4A27F008E05E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A6160A520D4A27F008E05E3 /* Assets.xcassets */; };
 		8A6160A920D4A27F008E05E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6160A720D4A27F008E05E3 /* LaunchScreen.storyboard */; };
 		8A6160B420D4A27F008E05E3 /* NCWDependencyInjectionSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160B320D4A27F008E05E3 /* NCWDependencyInjectionSampleAppTests.swift */; };
@@ -45,6 +44,7 @@
 		8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611120DEBB82008E05E3 /* RouteType.swift */; };
 		8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* RouteProvider.swift */; };
 		8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */; };
+		8A61611920DF2357008E05E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611820DF2357008E05E3 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,6 @@
 		795D20F81A64270BD7605977 /* Pods_NCWDependencyInjectionSampleAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NCWDependencyInjectionSampleAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A61609B20D4A27C008E05E3 /* NCWDependencyInjectionSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NCWDependencyInjectionSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A61609E20D4A27C008E05E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A6160A020D4A27C008E05E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A6160A520D4A27F008E05E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A6160A820D4A27F008E05E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A6160AA20D4A27F008E05E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +110,7 @@
 		8A61611120DEBB82008E05E3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		8A61611420DEBC0E008E05E3 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
 		8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
+		8A61611820DF2357008E05E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		937A559CFE5F9ECD817E6140 /* Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppTests/Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A9E61D0F6532965283167B47 /* Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppUITests/Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0530195DE5C0A53477BB6E0 /* Pods_NCWDependencyInjectionSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NCWDependencyInjectionSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,7 +190,6 @@
 				8A6160CE20D555FF008E05E3 /* properties.json */,
 				8A61609E20D4A27C008E05E3 /* AppDelegate.swift */,
 				8A61611420DEBC0E008E05E3 /* RouteProvider.swift */,
-				8A6160A020D4A27C008E05E3 /* ViewController.swift */,
 				8A6160A520D4A27F008E05E3 /* Assets.xcassets */,
 				8A6160A720D4A27F008E05E3 /* LaunchScreen.storyboard */,
 				8A6160AA20D4A27F008E05E3 /* Info.plist */,
@@ -230,6 +229,7 @@
 				8A6160D420D5B39E008E05E3 /* PrimaryButton.swift */,
 				8A61610B20D5CB53008E05E3 /* ContainerViewController.swift */,
 				8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */,
+				8A61611820DF2357008E05E3 /* InfoView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -627,6 +627,7 @@
 				8A61610A20D5C781008E05E3 /* RootRouter.swift in Sources */,
 				8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */,
 				8A6160E420D5B6BA008E05E3 /* HomeDataManager.swift in Sources */,
+				8A61611920DF2357008E05E3 /* InfoView.swift in Sources */,
 				8A61610420D5C769008E05E3 /* RootInteractor.swift in Sources */,
 				8A6160CD20D4DEA8008E05E3 /* ServiceAssembly.swift in Sources */,
 				8A6160FD20D5C136008E05E3 /* ExampleService.swift in Sources */,
@@ -636,7 +637,6 @@
 				8A6160E220D5B6AE008E05E3 /* HomeInteractor.swift in Sources */,
 				8A6160E820D5B733008E05E3 /* HomeRouter.swift in Sources */,
 				8A61610020D5C74E008E05E3 /* RootAssembly.swift in Sources */,
-				8A6160A120D4A27C008E05E3 /* ViewController.swift in Sources */,
 				8A6160F520D5B979008E05E3 /* DetailViewController.swift in Sources */,
 				8A6160E020D5B6A4008E05E3 /* HomeViewController.swift in Sources */,
 				8A61610820D5C77A008E05E3 /* RootViewController.swift in Sources */,

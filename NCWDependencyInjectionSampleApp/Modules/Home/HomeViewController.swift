@@ -13,13 +13,16 @@ protocol HomeViewControllerType: class {
 
 }
 
-protocol HomeViewControllerDelegate: class {
-    
-}
-
 final class HomeViewController: UIViewController, HomeViewControllerType {
     
     let presenter: HomePresenterType
+    
+    // MARK: View elements
+    
+    fileprivate lazy var infoView: InfoView = {
+        let infoView = InfoView(viewModel: InfoViewModel(imageName: "hamburgler"), viewDelegate: self)
+        return infoView
+    }()
     
     // MARK: Initializers
     
@@ -37,11 +40,29 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     override func loadView() {
         super.loadView()
         
+        self.view.addSubview(self.infoView)
+        self.view.setNeedsUpdateConstraints()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.view.backgroundColor = .white
     }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+    }
+}
+
+// MARK: InfoViewDelegate
+extension HomeViewController: InfoViewDelegate {
+    func handlePrimaryAction(_ infoView: InfoViewType) {
+        self.presenter.handlePrimaryAction(self)
+    }
+}
+
+// MARK: HomePresenterViewType
+extension HomeViewController: HomePresenterViewType {
+    
 }

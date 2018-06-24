@@ -18,7 +18,7 @@ final class ProviderAssembly: Assembly {
             resolver in
             
             return RouteProvider()
-        }.inObjectScope(.weak)
+        }.inObjectScope(.container)
     }
     
     func loaded(resolver: Resolver) {

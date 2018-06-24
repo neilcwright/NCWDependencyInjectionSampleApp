@@ -17,29 +17,16 @@ class HomeAssembly: Assembly {
         }.initCompleted({
             resolver, homeRouter in
             
-            homeRouter.presenter = resolver.resolve(HomePresenterType.self)!
-            print("home router: \(homeRouter)")
-            
-        }).inObjectScope(.graph)
-        
-        // presenter->router type
-        container.register(HomePresenterRouterType.self) {
-            resolver in
-            return resolver.resolve(HomeRouterType.self)!
-        }.initCompleted({
-            resolver, homePresenter in
-            
-            print("home presenter-> router \(homePresenter)")
-        })
-        
+            homeRouter.routeProvider = resolver.resolve(RouteProviderType.self)!
+        }).inObjectScope(.weak)
+
         // presenter
         container.register(HomePresenterType.self) { resolver in
             return HomePresenter(interactor: resolver.resolve(HomeInteractorType.self)!)
         }.initCompleted({
             resolver, homePresenter in
             
-            homePresenter.router = resolver.resolve(HomePresenterRouterType.self)!
-            
+            homePresenter.router = resolver.resolve(HomeRouterType.self)!
         }).inObjectScope(.graph)
         
         // interactor
@@ -49,28 +36,17 @@ class HomeAssembly: Assembly {
             resolver, homeInteractor in
             
             homeInteractor.dataManager = resolver.resolve(HomeDataManagerType.self)!
-            print("home interactor: \(homeInteractor)")
-            
         }).inObjectScope(.graph)
         
         // data manager
         container.register(HomeDataManagerType.self) { resolver in
             return HomeDataManager()
-        }.initCompleted({
-            resolver, homeDataManager in
-            
-            // set up services in here
-            
-        }).inObjectScope(.graph)
+        }.inObjectScope(.graph)
         
         // view controller
         container.register(HomeViewControllerType.self) { resolver in
             return HomeViewController(presenter: resolver.resolve(HomePresenterType.self)!)
-        }.initCompleted({
-            resolver, homeViewController in
-            
-            print("home view controller")
-        }).inObjectScope(.graph)
+        }.inObjectScope(.graph)
     }
     
     func loaded(resolver: Resolver) {

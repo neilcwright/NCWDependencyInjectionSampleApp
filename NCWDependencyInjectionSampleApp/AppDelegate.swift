@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     fileprivate var routeProvider: RouteProviderType?
-    var currentRoute: RouteType?
+    var rootRouter: RootRouterType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -42,10 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.routeProvider = assembler.resolver.resolve(RouteProviderType.self)
             self.routeProvider?.setAssembler(assembler)
             
-            if let rootRouter: RootRouterType = self.routeProvider?.routeTo(RootRouterType.self) {
-                rootRouter.loadView()
-                self.currentRoute = rootRouter
-            }
+            self.rootRouter = self.routeProvider?.route(RootRouterType.self)
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = self.rootRouter?.loadView(in: window)
+            self.window?.makeKeyAndVisible()
         } catch {
             print("unable to load properties")
         }

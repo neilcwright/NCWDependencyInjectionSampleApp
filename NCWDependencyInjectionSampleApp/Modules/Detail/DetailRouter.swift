@@ -6,12 +6,11 @@
 //  Copyright © 2018 Neil Wright. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 // MARK: Protocols
 
-
-protocol DetailRouterType: RouteType {
+protocol DetailRouterType: RouteType, DetailPresenterRouterType {
     
     // retain strong
     var presenter: DetailPresenterType! { get set }
@@ -23,8 +22,9 @@ final class DetailRouter: DetailRouterType {
     
     var routeProvider: RouteProviderType?
     var presenter: DetailPresenterType!
+    var presentedViewController: UIViewController?
     
-    func routeTo<T: RouteType>(from: T?) {
-        
+    func routeToHome() {
+        print("detail: routeToHome")
     }
 }

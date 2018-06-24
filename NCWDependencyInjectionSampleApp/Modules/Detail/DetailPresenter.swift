@@ -7,9 +7,23 @@
 //
 
 protocol DetailPresenterType: class {
-    var interactor: DetailInteractorType! { get set }
+    // hold strongly
+    var interactor: DetailInteractorType { get set }
+    
+    // hold weakly
+    var router: DetailPresenterRouterType? { get set }
+}
+
+protocol DetailPresenterRouterType: class {
+    func routeToHome()
 }
 
 final class DetailPresenter: DetailPresenterType {
-    var interactor: DetailInteractorType!
+    var interactor: DetailInteractorType
+    
+    init(interactor: DetailInteractorType) {
+        self.interactor = interactor
+    }
+    
+    var router: DetailPresenterRouterType?
 }
