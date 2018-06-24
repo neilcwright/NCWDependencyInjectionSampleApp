@@ -33,7 +33,7 @@ final class InfoView: UIView, InfoViewType {
     fileprivate lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
         headerLabel.text = self.viewModel.headerText
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: self.traitCollection)
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .title1, compatibleWith: self.traitCollection)
         headerLabel.textColor = .black
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = .byWordWrapping
@@ -95,8 +95,6 @@ final class InfoView: UIView, InfoViewType {
     // MARK: UIView
     
     override func updateConstraints() {
-        
-        self.autoCenterInSuperview()
         self.headerLabel.autoPinEdge(toSuperviewEdge: .top)
         self.headerLabel.autoConstrainAttribute(.width, to: .width, of: self, withMultiplier: 8/10)
         self.headerLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -105,14 +103,14 @@ final class InfoView: UIView, InfoViewType {
         self.descriptionLabel.autoConstrainAttribute(.width, to: .width, of: self.headerLabel)
         self.descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        self.heroView.autoPinEdge(.top, to: .bottom, of: self.descriptionLabel, withOffset: 10)
+        self.heroView.autoPinEdge(.top, to: .bottom, of: self.descriptionLabel, withOffset: 20)
         self.heroView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        self.primaryButton.autoPinEdge(.top, to: .bottom, of: self.heroView, withOffset: 10)
+        self.primaryButton.autoPinEdge(.top, to: .bottom, of: self.heroView, withOffset: 20)
         self.primaryButton.autoConstrainAttribute(.width, to: .width, of: self.heroView)
         self.primaryButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
         self.primaryButton.autoPinEdge(toSuperviewEdge: .bottom)
+        
         super.updateConstraints()
     }
 }

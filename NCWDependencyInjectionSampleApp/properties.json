@@ -1,4 +1,9 @@
 {
     "home_view_image_name": "hamburgler",
-    "detail_view_image_name": "dude"
+    "detail_view_image_name": "dude",
+    "primary_button": {
+        "corner_radius": 5,
+        "horizontalInset": 20,
+        "verticalInset": 20
+    }
 }

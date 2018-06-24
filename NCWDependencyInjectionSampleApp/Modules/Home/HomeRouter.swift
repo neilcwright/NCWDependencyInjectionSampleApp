@@ -13,12 +13,14 @@ protocol HomeRouterType: RouteType {
     func loadView(from viewController: UIViewController)
     
     func routeToDetailView()
+    
+    func dismissView()
 } 
 
 final class HomeRouter: HomeRouterType {
     
     var routeProvider: RouteProviderType?
-    var presentedViewController: UIViewController?
+    weak var presentedViewController: UIViewController?
     
     deinit {
         debugPrint("deinit \(#file) \(#function)")
@@ -43,5 +45,9 @@ final class HomeRouter: HomeRouterType {
         }
         
         detailRoute.loadView(from: presentedViewController)
+    }
+    
+    func dismissView() {
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
 }

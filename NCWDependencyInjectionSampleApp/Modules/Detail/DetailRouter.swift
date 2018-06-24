@@ -30,7 +30,7 @@ final class DetailRouter: DetailRouterType {
     
     var routeProvider: RouteProviderType?
     var presenter: DetailPresenterType!
-    var presentedViewController: UIViewController?
+    weak var presentedViewController: UIViewController?
 
     deinit {
         debugPrint("deinit: \(#file) \(#function)")

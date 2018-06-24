@@ -40,14 +40,11 @@ class RouteProvider: RouteProviderType {
     // MARK: Auto-wired
     
     var assembler: Assembler!
-    
-    var currentRoute: AnyObject?
-    
+        
     // MARK: RouteProviderType
 
     func route<T>(_ route: T.Type) -> T? {
         if let routeAtUrl = self.assembler.resolver.resolve(route) {
-            self.currentRoute = routeAtUrl as AnyObject
             return routeAtUrl
         }
         assertionFailure("was unable to find route at specified url")

@@ -12,20 +12,15 @@ import Foundation
 protocol RootPresenterType: class {
     
     var interactor: RootInteractorType! { get set }
-    var router: RootRouterType? { get set }
+    var router: RootPresenterToRouterType? { get set }
     
     func determineInitialView()
-}
-
-// Outbound protocol
-protocol RootPresenterDelegateType: class {
-    
 }
 
 class RootPresenter: RootPresenterType {
     
     var interactor: RootInteractorType!
-    weak var router: RootRouterType?
+    var router: RootPresenterToRouterType?
     
     deinit {
         print("root presenter deinit")

@@ -26,7 +26,7 @@ final class RootViewController: UIViewController, RootViewControllerType {
     fileprivate lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
         headerLabel.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: self.traitCollection)
-        headerLabel.textColor = .red
+        headerLabel.textColor = .white
         headerLabel.textAlignment = .center
         headerLabel.text = "Root View"
         headerLabel.numberOfLines = 0
@@ -55,7 +55,7 @@ final class RootViewController: UIViewController, RootViewControllerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .gray
     }
     
     override func viewDidAppear(_ animated: Bool) {

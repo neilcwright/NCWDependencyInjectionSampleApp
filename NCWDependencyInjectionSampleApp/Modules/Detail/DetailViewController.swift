@@ -57,7 +57,7 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     }
     
     override func updateViewConstraints() {
-        
+        self.infoView.autoCenterInSuperview()
         super.updateViewConstraints()
     }
 }

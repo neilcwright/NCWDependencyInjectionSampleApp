@@ -25,6 +25,18 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
         return scrollView
     }()
     
+    fileprivate lazy var scrollContentView: UIView = UIView.newAutoLayout()
+    
+    fileprivate lazy var closeButton: UIButton = {
+        let closeButton = UIButton.newAutoLayout()
+        closeButton.setImage(
+            UIImage(named: "close"),
+            for: UIControlState.normal
+        )
+        closeButton.addTarget(self, action: #selector(doCloseAction(_:)), for: .touchUpInside)
+        return closeButton
+    }()
+    
     fileprivate lazy var infoView: InfoView = {
         let infoView = InfoView(
             viewModel: InfoViewModel(
@@ -55,7 +67,10 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
         super.loadView()
         
         self.view.addSubview(self.scrollView)
-        self.scrollView.addSubview(self.infoView)
+        self.view.addSubview(self.closeButton)
+        self.scrollView.addSubview(self.scrollContentView)
+        
+        self.scrollContentView.addSubview(self.infoView)
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -66,8 +81,21 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     }
     
     override func updateViewConstraints() {
+        self.edgesForExtendedLayout = []
         self.scrollView.autoPinEdgesToSuperviewEdges()
+        self.scrollContentView.autoCenterInSuperview()
+        self.infoView.autoPinEdgesToSuperviewEdges()
+
+        self.closeButton.autoPinEdge(.top, to: .top, of: self.view, withOffset: 30.0)
+        self.closeButton.autoPinEdge(.trailing, to: .trailing, of: self.view, withOffset: -30.0)
+        self.closeButton.autoSetDimensions(to: self.closeButton.intrinsicContentSize)
         super.updateViewConstraints()
+    }
+    
+    // MARK: Selector methods
+    
+    @objc func doCloseAction(_ sender: AnyObject) {
+        self.presenter.handleCloseAction(self)
     }
 }
 

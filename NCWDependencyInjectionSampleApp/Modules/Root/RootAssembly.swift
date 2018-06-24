@@ -22,6 +22,16 @@ class RootAssembly: Assembly {
             router.routeProvider = resolver.resolve(RouteProviderType.self)!
         }).inObjectScope(.weak)
         
+        // presenter/router type
+        container.register(RootPresenterToRouterType.self) {
+            resolver in
+            return resolver.resolve(RootRouterType.self)!
+        }.initCompleted({
+            resolver, router in
+            
+            (router as? RootRouterType)?.routeProvider = resolver.resolve(RouteProviderType.self)!
+        })
+        
         // data manager
         container.register(RootDataManagerType.self) {
             resolver in

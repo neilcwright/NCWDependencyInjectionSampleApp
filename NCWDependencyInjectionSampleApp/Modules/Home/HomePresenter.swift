@@ -21,6 +21,11 @@ protocol HomePresenterType: class {
     ///
     /// - Parameter viewController: the interface for communicating from presenter to view.
     func handlePrimaryAction(_ viewController: HomePresenterViewType)
+    
+    /// Will handle the close action triggered from when user has chosen to close this view.
+    ///
+    /// - Parameter viewController: vc instance where event originates from.
+    func handleCloseAction(_ viewController: HomePresenterViewType)
 }
 
 // Presenter->Router protocol
@@ -32,7 +37,7 @@ protocol HomePresenterViewType: class {
 final class HomePresenter: HomePresenterType {
     
     var interactor: HomeInteractorType
-    weak var router: HomeRouterType?
+    var router: HomeRouterType?
     
     init(interactor: HomeInteractorType) {
         self.interactor = interactor
@@ -40,5 +45,9 @@ final class HomePresenter: HomePresenterType {
     
     func handlePrimaryAction(_ viewController: HomePresenterViewType) {
         self.router?.routeToDetailView()
+    }
+    
+    func handleCloseAction(_ viewController: HomePresenterViewType) {
+        self.router?.dismissView()
     }
 }

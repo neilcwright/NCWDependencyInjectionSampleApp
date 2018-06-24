@@ -11,7 +11,7 @@ import UIKit
 // MARK: Protocols
 
 /// The root router type protocol.
-protocol RootRouterType: RouteType {
+protocol RootRouterType: RouteType, RootPresenterToRouterType {
     
     /// Will load this route's view in the provided window and return it after
     /// assigning the view to it.
@@ -19,6 +19,9 @@ protocol RootRouterType: RouteType {
     /// - Parameter window: the window that we'll load view into.
     /// - Returns: the loaded window.
     func loadView(in window: UIWindow) -> UIWindow
+}
+
+protocol RootPresenterToRouterType {
     
     /// Will route to home.
     func routeToHome()
@@ -32,8 +35,7 @@ protocol RootRouterType: RouteType {
 final class RootRouter: RootRouterType {
     
     weak var routeProvider: RouteProviderType?
-    var window: UIWindow?
-    var presentedViewController: UIViewController?
+    weak var presentedViewController: UIViewController?
     
     deinit {
         print("root router deinit")
