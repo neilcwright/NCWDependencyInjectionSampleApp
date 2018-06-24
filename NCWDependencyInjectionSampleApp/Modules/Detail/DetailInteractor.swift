@@ -7,9 +7,13 @@
 //
 
 protocol DetailInteractorType: class {
-    var dataManager: DetailDataManagerType! { get set }
+    var dataManager: DetailDataManagerType { get set }
 }
 
 final class DetailInteractor: DetailInteractorType {
-    var dataManager: DetailDataManagerType!
+    var dataManager: DetailDataManagerType
+    
+    init(dataManager: DetailDataManagerType) {
+        self.dataManager = dataManager
+    }
 }

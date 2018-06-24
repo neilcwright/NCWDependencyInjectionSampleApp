@@ -19,6 +19,9 @@ protocol DetailRouterType: RouteType {
     ///
     /// - Parameter viewController: the vc to present this routes view from.
     func loadView(from viewController: UIViewController)
+    
+    /// Will route to the alert view.
+    func routeToAlert()
 }
 
 // MARK: Classes
@@ -28,9 +31,9 @@ final class DetailRouter: DetailRouterType {
     var routeProvider: RouteProviderType?
     var presenter: DetailPresenterType!
     var presentedViewController: UIViewController?
-    
-    func routeToHome() {
-        print("detail: routeToHome")
+
+    deinit {
+        debugPrint("deinit: \(#file) \(#function)")
     }
     
     func loadView(from viewController: UIViewController) {
@@ -43,5 +46,22 @@ final class DetailRouter: DetailRouterType {
             [weak self, weak detailViewController] in
             self?.presentedViewController = detailViewController
         })
+    }
+    
+    func routeToAlert() {
+        let alertController = UIAlertController(title: "Detail", message: "How cool is this!", preferredStyle: .alert)
+        alertController.addAction(
+            UIAlertAction(
+                title: "Ok",
+                style: .default,
+                handler: {
+                    [weak self, weak alertController] action in
+
+                    alertController?.dismiss(animated: true, completion: nil)
+                    self?.presentedViewController?.dismiss(animated: true, completion: nil)
+                }
+            )
+        )
+        self.presentedViewController?.present(alertController, animated: true, completion: nil)
     }
 }

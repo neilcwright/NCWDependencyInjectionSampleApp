@@ -20,10 +20,8 @@ class DetailAssembly: Assembly {
         // interactor
         container.register(DetailInteractorType.self) {
             resolver in
-            return DetailInteractor()
-        }.initCompleted({ resolver, interactor in
-            interactor.dataManager = resolver.resolve(DetailDataManagerType.self)!
-        })
+            return DetailInteractor(dataManager: resolver.resolve(DetailDataManagerType.self)!)
+        }
         
         // presenter
         container.register(DetailPresenterType.self) { resolver in

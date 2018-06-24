@@ -30,6 +30,6 @@ final class DetailPresenter: DetailPresenterType {
     }
     
     func handlePrimaryAction() {
-        
+        self.router?.routeToAlert()
     }
 }

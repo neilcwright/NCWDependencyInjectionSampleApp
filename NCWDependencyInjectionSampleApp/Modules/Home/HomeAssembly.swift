@@ -7,6 +7,7 @@
 //
 
 import Swinject
+import SwinjectPropertyLoader
 
 class HomeAssembly: Assembly {
     func assemble(container: Container) {
@@ -46,7 +47,11 @@ class HomeAssembly: Assembly {
         // view controller
         container.register(HomeViewControllerType.self) { resolver in
             return HomeViewController(presenter: resolver.resolve(HomePresenterType.self)!)
-        }.inObjectScope(.graph)
+        }.initCompleted({
+            resolver, viewController in
+            
+            viewController.imageName = resolver.property("home_view_image_name")
+        }).inObjectScope(.graph)
     }
     
     func loaded(resolver: Resolver) {

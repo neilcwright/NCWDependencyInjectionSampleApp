@@ -65,6 +65,6 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
 // MARK: InfoViewDelegate
 extension DetailViewController: InfoViewDelegate {
     func handlePrimaryAction(_ infoView: InfoViewType) {
-        
+        self.presenter.handlePrimaryAction()
     }
 }

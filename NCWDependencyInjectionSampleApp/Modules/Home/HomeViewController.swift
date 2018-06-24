@@ -10,12 +10,13 @@ import UIKit
 
 // MARK: Inbound protocol interface
 protocol HomeViewControllerType: class {
-
+    var imageName: String! { get set }
 }
 
 final class HomeViewController: UIViewController, HomeViewControllerType {
     
     let presenter: HomePresenterType
+    var imageName: String!
     
     // MARK: View elements
     
@@ -29,7 +30,7 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
             viewModel: InfoViewModel(
                 headerText: "Home View",
                 descriptionText: "Feeling hungry for feature burgers.",
-                imageName: "hamburgler",
+                imageName: self.imageName,
                 primaryButtonText: "Steal a burger"
             ),
             viewDelegate: self

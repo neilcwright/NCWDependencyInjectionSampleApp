@@ -43,19 +43,5 @@ final class HomeRouter: HomeRouterType {
         }
         
         detailRoute.loadView(from: presentedViewController)
-//        let alertController = UIAlertController(title: "Detail", message: "How cool is this!", preferredStyle: .alert)
-//        alertController.addAction(
-//            UIAlertAction(
-//                title: "Ok",
-//                style: .default,
-//                handler: {
-//                    [weak self, weak alertController] action in
-//
-//                    alertController?.dismiss(animated: true, completion: nil)
-//                    self?.presentedViewController?.dismiss(animated: true, completion: nil)
-//                }
-//            )
-//        )
-//        self.presentedViewController?.present(alertController, animated: true, completion: nil)
     }
 }
