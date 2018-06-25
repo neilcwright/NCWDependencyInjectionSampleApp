@@ -22,6 +22,6 @@ final class ProviderAssembly: Assembly {
     }
     
     func loaded(resolver: Resolver) {
-        
+        print("provider assembly loaded")
     }
 }

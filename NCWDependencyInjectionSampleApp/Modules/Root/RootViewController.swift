@@ -13,10 +13,6 @@ protocol RootViewControllerType: class {
     
 }
 
-protocol RootViewControllerDelegate: class {
-    
-}
-
 final class RootViewController: UIViewController, RootViewControllerType {
     
     let presenter: RootPresenterType
@@ -25,10 +21,13 @@ final class RootViewController: UIViewController, RootViewControllerType {
     
     fileprivate lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
-        headerLabel.font = UIFont.preferredFont(forTextStyle: .headline, compatibleWith: self.traitCollection)
+        headerLabel.font = UIFont.preferredFont(
+            forTextStyle: .headline,
+            compatibleWith: self.traitCollection
+        )
         headerLabel.textColor = .white
         headerLabel.textAlignment = .center
-        headerLabel.text = "Root View"
+        headerLabel.text = RootLocalization.titleText
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = .byWordWrapping
         return headerLabel

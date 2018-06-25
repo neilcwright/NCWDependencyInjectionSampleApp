@@ -25,10 +25,10 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     fileprivate lazy var infoView: InfoView = {
         let infoView = InfoView(
             viewModel: InfoViewModel(
-                headerText: "Detail View",
-                descriptionText: "The dude abides.",
+                headerText: DetailLocalization.titleText,
+                descriptionText: DetailLocalization.descriptionText,
                 imageName: "dude",
-                primaryButtonText: "Order a white russian"
+                primaryButtonText: DetailLocalization.primaryButtonText
             ),
             viewDelegate: self
         )

@@ -10,6 +10,7 @@ import Swinject
 import SwinjectPropertyLoader
 
 class HomeAssembly: Assembly {
+    
     func assemble(container: Container) {
         
         // router

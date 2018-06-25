@@ -1,0 +1,11 @@
+/* 
+  Home.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 6/24/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+
+"home.view.title.text" = "Home";
+"home.view.description.text" = "I'm hungry for feature burgers";
+"home.view.primary.button.text" = "Steal a burger";

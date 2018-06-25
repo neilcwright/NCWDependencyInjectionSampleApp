@@ -40,10 +40,10 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     fileprivate lazy var infoView: InfoView = {
         let infoView = InfoView(
             viewModel: InfoViewModel(
-                headerText: "Home View",
-                descriptionText: "Feeling hungry for feature burgers.",
+                headerText: HomeLocalization.titleText,
+                descriptionText: HomeLocalization.descriptionText,
                 imageName: self.imageName,
-                primaryButtonText: "Steal a burger"
+                primaryButtonText: HomeLocalization.primaryButtonText
             ),
             viewDelegate: self
         )

@@ -14,14 +14,16 @@ import SwinjectPropertyLoader
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    /// Bootstrapped singleton that provides service types (ie. protocols) app wide.
+    /// Held strongly here at app initialization and weakly by routers as the access
+    /// point to the main application wireframe.
     fileprivate var routeProvider: RouteProviderType?
-    var rootRouter: RootRouterType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         do {
-            // load properties from json files
+            // load our container assemblies that will register their service types to container
             let assembler = try Assembler(assemblies: [
                 ProviderAssembly(),
                 ModelAssembly(),
@@ -31,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ServiceAssembly()
             ])
             
-            // load up properties
+            // load properties from json files to make available during container resolution of dependencies
             try assembler.applyPropertyLoader(
                 JsonPropertyLoader(
                     bundle: Bundle.main,
@@ -39,12 +41,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 )
             )
             
+            // one route provider to govern them all
             self.routeProvider = assembler.resolver.resolve(RouteProviderType.self)
             self.routeProvider?.setAssembler(assembler)
             
-            self.rootRouter = self.routeProvider?.route(RootRouterType.self)
+            // route to root which is persistent as the base of an app during the entirety of application run.
+            let router = self.routeProvider?.route(RootRouterType.self)
+            
+            // create our window display and load the root view into it
             let window = UIWindow(frame: UIScreen.main.bounds)
-            self.window = self.rootRouter?.loadView(in: window)
+            self.window = router!.loadView(in: window)
             self.window?.makeKeyAndVisible()
         } catch {
             print("unable to load properties")
