@@ -8,14 +8,22 @@
 
 import UIKit
 
-protocol HomeRouterType: RouteType {
+protocol HomeRouterType: RouteType, HomePresenterToRouterType {
     
+    /// Will load this route's view from the view controller specified.
+    ///
+    /// - Parameter viewController: the vc instance to which we'll load this route's view.
     func loadView(from viewController: UIViewController)
+}
+
+protocol HomePresenterToRouterType {
     
+    /// Will route to the detail view.
     func routeToDetailView()
     
+    /// Will dismiss this view.
     func dismissView()
-} 
+}
 
 final class HomeRouter: HomeRouterType {
     
@@ -32,6 +40,7 @@ final class HomeRouter: HomeRouterType {
             assertionFailure("expected home view controller to be registered in container")
             return
         }
+        
         viewController.present(homeViewController, animated: true, completion: nil)
         self.presentedViewController = homeViewController
     }

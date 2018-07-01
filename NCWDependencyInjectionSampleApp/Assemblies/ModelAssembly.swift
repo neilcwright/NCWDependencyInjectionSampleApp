@@ -11,22 +11,6 @@ import SwinjectPropertyLoader
 
 class ModelAssembly: Assembly {
     func assemble(container: Container) {
-        // Foo
-        container.register(Foo.self) {
-            _, thing in
-            return FooThing(thing: thing)
-            }.initCompleted({
-                resolver, foo in
-                
-                foo.setThing(resolver.property("foo_property")!)
-                print("foo thing changed: \(foo.description)")
-            })
-        
-        // Bar
-        container.register(Bar.self) {
-            r, thing in
-            return BarThing(thing: thing)
-        }
         
         // PrimaryButtonViewModel
         container.register(PrimaryButtonModelType.self) { resolver in

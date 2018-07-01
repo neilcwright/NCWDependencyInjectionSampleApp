@@ -14,8 +14,8 @@ protocol HomePresenterType: class {
     // hold strong
     var interactor: HomeInteractorType { get set }
     
-    // hold weak
-    var router: HomeRouterType? { get set }
+    // hold strong
+    var router: HomePresenterToRouterType! { get set }
     
     /// Will handle the primary action triggered from the home view controller.
     ///
@@ -37,17 +37,17 @@ protocol HomePresenterViewType: class {
 final class HomePresenter: HomePresenterType {
     
     var interactor: HomeInteractorType
-    var router: HomeRouterType?
+    var router: HomePresenterToRouterType!
     
     init(interactor: HomeInteractorType) {
         self.interactor = interactor
     }
     
     func handlePrimaryAction(_ viewController: HomePresenterViewType) {
-        self.router?.routeToDetailView()
+        self.router.routeToDetailView()
     }
     
     func handleCloseAction(_ viewController: HomePresenterViewType) {
-        self.router?.dismissView()
+        self.router.dismissView()
     }
 }

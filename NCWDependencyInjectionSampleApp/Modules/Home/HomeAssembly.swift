@@ -28,8 +28,16 @@ class HomeAssembly: Assembly {
         }.initCompleted({
             resolver, homePresenter in
             
-            homePresenter.router = resolver.resolve(HomeRouterType.self)!
+            let router = resolver.resolve(HomeRouterType.self)!
+            homePresenter.router = router as? HomePresenterToRouterType
+            
         }).inObjectScope(.graph)
+        
+        // presenter->router
+        container.register(HomePresenterToRouterType.self) { resolver in
+            let homeRouter = resolver.resolve(HomeRouterType.self)!
+            return homeRouter as! HomePresenterToRouterType
+        }
         
         // interactor
         container.register(HomeInteractorType.self) { resolver in
@@ -52,6 +60,7 @@ class HomeAssembly: Assembly {
             resolver, viewController in
             
             viewController.imageName = resolver.property("home_view_image_name")
+            
         }).inObjectScope(.graph)
     }
     

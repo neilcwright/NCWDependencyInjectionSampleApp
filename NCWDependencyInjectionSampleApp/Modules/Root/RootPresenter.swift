@@ -11,16 +11,33 @@ import Foundation
 // Inbound protocol
 protocol RootPresenterType: class {
     
-    var interactor: RootInteractorType! { get set }
-    var router: RootPresenterToRouterType? { get set }
+    //  held strongly (owned)
+    var interactor: RootInteractorType { get set }
+    var router: RootPresenterToRouterType! { get set }
     
+    // held weakly
+    var view: RootPresenterToViewType? { get set }
+    
+    /// Will determine the initial view.
+    ///
+    /// - Returns: the initial view based on the interactor check to be made on app start.
     func determineInitialView()
 }
 
-class RootPresenter: RootPresenterType {
+// Presenter -> View interface (held weakly since view owns presenter)
+protocol RootPresenterToViewType: class {
     
-    var interactor: RootInteractorType!
-    var router: RootPresenterToRouterType?
+}
+
+final class RootPresenter: RootPresenterType {
+    
+    var interactor: RootInteractorType
+    var router: RootPresenterToRouterType!
+    weak var view: RootPresenterToViewType?
+    
+    init(interactor: RootInteractorType) {
+        self.interactor = interactor
+    }
     
     deinit {
         print("root presenter deinit")
@@ -31,13 +48,13 @@ class RootPresenter: RootPresenterType {
     }
 }
 
+// MARK: RootInteractorPresenterType
 extension RootPresenter: RootInteractorPresenterType {
     func presentLoggedOutFlow() {
-        self.router?.routeToLogin()
+        self.router.routeToLogin()
     }
     
     func presentLoggedInFlow() {
-        assert(self.router != nil)
-        self.router?.routeToHome()
+        self.router.routeToHome()
     }
 }

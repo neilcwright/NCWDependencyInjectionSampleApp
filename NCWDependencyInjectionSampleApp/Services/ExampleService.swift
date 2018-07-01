@@ -9,12 +9,9 @@
 import Foundation
 
 protocol ExampleServiceType: class {
-    func getFoo(success: @escaping (_ foo: Foo) -> Void)
+   
 }
 
 final class ExampleService: ExampleServiceType {
-    
-    func getFoo(success: @escaping (_ foo: Foo) -> Void) {
-        success(FooThing(thing: "Foo"))
-    }
+
 }

@@ -17,7 +17,6 @@
 		8A6160BF20D4A27F008E05E3 /* NCWDependencyInjectionSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160BE20D4A27F008E05E3 /* NCWDependencyInjectionSampleAppUITests.swift */; };
 		8A6160CD20D4DEA8008E05E3 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160CC20D4DEA8008E05E3 /* ServiceAssembly.swift */; };
 		8A6160CF20D555FF008E05E3 /* properties.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A6160CE20D555FF008E05E3 /* properties.json */; };
-		8A6160D220D5B33B008E05E3 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160D120D5B33B008E05E3 /* Examples.swift */; };
 		8A6160D520D5B39E008E05E3 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160D420D5B39E008E05E3 /* PrimaryButton.swift */; };
 		8A6160D920D5B573008E05E3 /* ModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160D820D5B573008E05E3 /* ModelAssembly.swift */; };
 		8A6160DE20D5B698008E05E3 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6160DD20D5B698008E05E3 /* HomeAssembly.swift */; };
@@ -91,7 +90,6 @@
 		8A6160C020D4A27F008E05E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A6160CC20D4DEA8008E05E3 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		8A6160CE20D555FF008E05E3 /* properties.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = properties.json; sourceTree = "<group>"; };
-		8A6160D120D5B33B008E05E3 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		8A6160D420D5B39E008E05E3 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		8A6160D820D5B573008E05E3 /* ModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAssembly.swift; sourceTree = "<group>"; };
 		8A6160DD20D5B698008E05E3 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 		8A6160D020D5B31C008E05E3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A6160D120D5B33B008E05E3 /* Examples.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -650,7 +647,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6160D220D5B33B008E05E3 /* Examples.swift in Sources */,
 				8A61610A20D5C781008E05E3 /* RootRouter.swift in Sources */,
 				8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */,
 				8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */,

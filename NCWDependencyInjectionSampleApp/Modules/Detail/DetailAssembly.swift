@@ -28,7 +28,14 @@ class DetailAssembly: Assembly {
             return DetailPresenter(interactor: resolver.resolve(DetailInteractorType.self)!)
         }.initCompleted({ resolver, presenter in
             presenter.router = resolver.resolve(DetailRouterType.self)!
+            presenter.view = resolver.resolve(DetailPresenterToViewType.self)!
         })
+        
+        // presenter->view type
+        container.register(DetailPresenterToViewType.self) { resolver in
+            let presenter = resolver.resolve(DetailPresenterType.self)!
+            return presenter as! DetailPresenterToViewType
+        }
         
         // router
         container.register(DetailRouterType.self) { resolver in

@@ -10,25 +10,40 @@ import Foundation
 
 // inbound protocol interface
 protocol RootInteractorType: class {
-    // held strongly
-    var dataManager: RootDataManagerType! { get set }
     
-    // held weakly (is owned by)
+    // held strongly
+    var dataManager: RootDataManagerType { get set }
+    
+    // auto-wired property held weakly
     var presenter: RootInteractorPresenterType? { get set }
     
+    /// Will determine the initial flow upon app start.
     func determineInitialFlow()
 }
 
 // outbound protocol interface
 protocol RootInteractorPresenterType: class {
+    
+    /// Will present the logged in flow.
     func presentLoggedInFlow()
     
+    /// Will present the logged out flow.
     func presentLoggedOutFlow()
 }
 
+
 final class RootInteractor: RootInteractorType {
-    var dataManager: RootDataManagerType!
+    
+    // MARK: RootInteractorType
+    
+    var dataManager: RootDataManagerType
     weak var presenter: RootInteractorPresenterType?
+    
+    // MARK: Initializers
+    
+    init(dataManager: RootDataManagerType) {
+        self.dataManager = dataManager
+    }
     
     deinit {
         print("root interactor deinit")

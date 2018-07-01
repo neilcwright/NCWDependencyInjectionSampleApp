@@ -13,7 +13,7 @@ protocol RootViewControllerType: class {
     
 }
 
-final class RootViewController: UIViewController, RootViewControllerType {
+final class RootViewController: UIViewController, RootViewControllerType, RootPresenterToViewType {
     
     let presenter: RootPresenterType
     
