@@ -7,8 +7,10 @@
 //
 
 import Swinject
+import SwinjectPropertyLoader
 
 class HomeAssembly: Assembly {
+    
     func assemble(container: Container) {
         
         // router
@@ -17,21 +19,25 @@ class HomeAssembly: Assembly {
         }.initCompleted({
             resolver, homeRouter in
             
-            homeRouter.presenter = resolver.resolve(HomePresenterType.self)!
-            print("home router: \(homeRouter)")
-            
-        }).inObjectScope(.graph)
-        
+            homeRouter.routeProvider = resolver.resolve(RouteProviderType.self)!
+        }).inObjectScope(.weak)
+
         // presenter
         container.register(HomePresenterType.self) { resolver in
-            return HomePresenter()
+            return HomePresenter(interactor: resolver.resolve(HomeInteractorType.self)!)
         }.initCompleted({
             resolver, homePresenter in
             
-            homePresenter.interactor = resolver.resolve(HomeInteractorType.self)!
-            print("home presenter: \(homePresenter)")
+            let router = resolver.resolve(HomeRouterType.self)!
+            homePresenter.router = router as? HomePresenterToRouterType
             
         }).inObjectScope(.graph)
+        
+        // presenter->router
+        container.register(HomePresenterToRouterType.self) { resolver in
+            let homeRouter = resolver.resolve(HomeRouterType.self)!
+            return homeRouter as! HomePresenterToRouterType
+        }
         
         // interactor
         container.register(HomeInteractorType.self) { resolver in
@@ -40,27 +46,21 @@ class HomeAssembly: Assembly {
             resolver, homeInteractor in
             
             homeInteractor.dataManager = resolver.resolve(HomeDataManagerType.self)!
-            print("home interactor: \(homeInteractor)")
-            
         }).inObjectScope(.graph)
         
         // data manager
         container.register(HomeDataManagerType.self) { resolver in
             return HomeDataManager()
-        }.initCompleted({
-            resolver, homeDataManager in
-            
-            // set up services in here
-            
-        }).inObjectScope(.graph)
+        }.inObjectScope(.graph)
         
         // view controller
         container.register(HomeViewControllerType.self) { resolver in
-            return HomeViewController()
+            return HomeViewController(presenter: resolver.resolve(HomePresenterType.self)!)
         }.initCompleted({
-            resolver, homeViewController in
+            resolver, viewController in
             
-            print("home view controller")
+            viewController.imageName = resolver.property("home_view_image_name")
+            
         }).inObjectScope(.graph)
     }
     

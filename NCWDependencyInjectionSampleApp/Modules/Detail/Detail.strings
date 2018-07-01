@@ -1,0 +1,11 @@
+/* 
+  Detail.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 6/24/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"detail.view.title.text" = "Detail view";
+"detail.view.description.text" = "The dude abides.";
+"detail.view.primary.button.text" = "Order a white russian";
+

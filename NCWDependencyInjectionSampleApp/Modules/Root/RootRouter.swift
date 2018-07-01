@@ -10,61 +10,60 @@ import UIKit
 
 // MARK: Protocols
 
-protocol RouteType: class {
-
+/// The root router type protocol.
+protocol RootRouterType: RouteType, RootPresenterToRouterType {
+    
+    /// Will load this route's view in the provided window and return it after
+    /// assigning the view to it.
+    ///
+    /// - Parameter window: the window that we'll load view into.
+    /// - Returns: the loaded window.
+    func loadView(in window: UIWindow) -> UIWindow
 }
 
-protocol RootRouterType: RouteType {
+protocol RootPresenterToRouterType {
     
-    var rootViewController: UIViewController! { get set }
-
-    // retain strong
-    var presenter: RootPresenterType { get set }
-    
-    func setRootViewController(_ rootViewController: UIViewController & ContainerViewControllerType)
-    
-    func routeToView()
-}
-
-protocol RootRouterPresenterType: class {
+    /// Will route to home.
     func routeToHome()
     
+    // Will route to login.
     func routeToLogin()
 }
 
 // MARK: Classes
 
 final class RootRouter: RootRouterType {
-
-    var rootViewController: UIViewController!
     
-    var presenter: RootPresenterType
-    
-    required init(
-        presenter: RootPresenterType) {
-        
-        self.presenter = presenter
-    }
+    weak var routeProvider: RouteProviderType?
+    weak var presentedViewController: UIViewController?
     
     deinit {
         print("root router deinit")
     }
     
-    func setRootViewController(_ rootViewController: UIViewController & ContainerViewControllerType) {
-        self.rootViewController = rootViewController
+    @discardableResult
+    func loadView(in window: UIWindow) -> UIWindow {
+        guard let rootViewController = self.routeProvider?.resolve(RootViewControllerType.self) else {
+            assertionFailure("expected root view controller type to be registered w/ container")
+            return window
+        }
+        window.rootViewController = rootViewController as? UIViewController
+        self.presentedViewController = window.rootViewController
+        return window
     }
-
-    func routeToView() {
-        self.presenter.determineInitialView()
-    }
-}
-
-extension RootRouter: RootRouterPresenterType {
+    
     func routeToLogin() {
-        
+        // TODO route to login
     }
     
     func routeToHome() {
+        guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected home route to be registered w/ container")
+                return
+        }
         
+        homeRoute.loadView(from: presentedViewController)
     }
 }

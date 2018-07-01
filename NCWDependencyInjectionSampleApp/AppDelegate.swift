@@ -10,46 +10,48 @@ import UIKit
 import Swinject
 import SwinjectPropertyLoader
 
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var rootRouter: RootRouterType?
-    let assembler: Assembler = try! Assembler(assemblies: [
-        ModelAssembly(),
-        HomeAssembly(),
-        DetailAssembly(),
-        RootAssembly(),
-        ServiceAssembly()
-    ])
+    
+    /// Bootstrapped singleton that provides service types (ie. protocols) app wide.
+    /// Held strongly here at app initialization and weakly by routers as the access
+    /// point to the main application wireframe.
+    fileprivate var routeProvider: RouteProviderType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        
         do {
-            // load properties from json files
-            try self.assembler.applyPropertyLoader(
+            // load our container assemblies that will register their service types to container
+            let assembler = try Assembler(assemblies: [
+                ProviderAssembly(),
+                ModelAssembly(),
+                HomeAssembly(),
+                DetailAssembly(),
+                RootAssembly(),
+                ServiceAssembly()
+            ])
+            
+            // load properties from json files to make available during container resolution of dependencies
+            try assembler.applyPropertyLoader(
                 JsonPropertyLoader(
                     bundle: Bundle.main,
                     name: "properties"
                 )
             )
             
-            // set up view in main window
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let rootViewController: UIViewController & ContainerViewControllerType = ContainerViewController()
-            self.window?.rootViewController = rootViewController
-            self.window?.makeKeyAndVisible()
+            // one route provider to govern them all
+            self.routeProvider = assembler.resolver.resolve(RouteProviderType.self)
+            self.routeProvider?.setAssembler(assembler)
             
-            // initialize root router from assembly
-            let router = self.assembler.resolver.resolve(
-                RootRouterType.self
-            )
-            router?.setRootViewController(rootViewController)
-            self.rootRouter = router
-            router?.routeToView()
+            // route to root which is persistent as the base of an app during the entirety of application run.
+            let router = self.routeProvider?.route(RootRouterType.self)
+            
+            // create our window display and load the root view into it
+            let window = UIWindow(frame: UIScreen.main.bounds)
+            self.window = router!.loadView(in: window)
+            self.window?.makeKeyAndVisible()
         } catch {
             print("unable to load properties")
         }
@@ -78,7 +80,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-
