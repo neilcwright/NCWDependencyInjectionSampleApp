@@ -62,8 +62,9 @@ final class LoginViewController:
             ),
             delegate: self
         )
-        submitButton.titleLabel?.text = LoginLocalization.submitButton
-        submitButton.tintColor = UIColor.white
+        submitButton.setTitle(LoginLocalization.submitButton, for: .normal)
+        submitButton.tintColor = .blue
+        submitButton.titleLabel?.textColor = .white
         return submitButton
     }()
     
@@ -166,11 +167,7 @@ private extension LoginViewController {
                 constant: verticalInteritemSpacing
             ),
             self.submitButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
-            self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//            self.submitButton.bottomAnchor.constraint(
-//                greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.bottomAnchor,
-//                constant: verticalInteritemSpacing
-//            )
+            self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
 }
