@@ -7,13 +7,10 @@
 //
 
 protocol DetailDataManagerType: class {
-    var exampleService: ExampleServiceType { get }
+    
 }
 
 final class DetailDataManager: DetailDataManagerType {
-    var exampleService: ExampleServiceType
     
-    init(exampleService: ExampleServiceType) {
-        self.exampleService = exampleService
-    }
+    init() { }
 }

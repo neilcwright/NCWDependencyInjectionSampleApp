@@ -14,7 +14,7 @@ class DetailAssembly: Assembly {
         
         // data manager
         container.register(DetailDataManagerType.self) { resolver in
-            return DetailDataManager(exampleService: resolver.resolve(ExampleServiceType.self)!)
+            return DetailDataManager()
         }
         
         // interactor

@@ -14,9 +14,7 @@ final class ProviderAssembly: Assembly {
     func assemble(container: Container) {
         
         // route provider type
-        container.register(RouteProviderType.self) {
-            resolver in
-            
+        container.register(RouteProviderType.self) { resolver in
             return RouteProvider()
         }.inObjectScope(.container)
     }

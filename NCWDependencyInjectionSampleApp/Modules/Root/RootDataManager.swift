@@ -22,6 +22,6 @@ final class RootDataManager: RootDataManagerType {
         
         // TODO for mocking store a key/value pair in user defaults to simulate
         // coming back after initial log in
-        return true
+        return false
     }
 }

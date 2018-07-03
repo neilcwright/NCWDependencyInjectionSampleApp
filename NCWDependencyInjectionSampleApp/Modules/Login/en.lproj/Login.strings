@@ -1,0 +1,10 @@
+/* 
+  Login.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 7/1/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"login.view.username.label.text" = "Username";
+"login.view.password.label.text" = "Password";
+"login.view.submit.button.text" = "Submit";

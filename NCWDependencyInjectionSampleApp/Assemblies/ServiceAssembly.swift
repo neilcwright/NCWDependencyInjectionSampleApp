@@ -12,14 +12,9 @@ import SwinjectPropertyLoader
 class ServiceAssembly: Assembly {
     func assemble(container: Container) {
         // example service
-        container.register(ExampleServiceType.self) {
-            resolver in
-            return ExampleService()
-        }.initCompleted({
-            resolver, service in
-                
-            print("example service initialized from container")
-        }).inObjectScope(.graph)
+        container.register(LoginServiceType.self) { resolver in
+            return LoginService(baseUrl: resolver.property("base_url")!)
+        }
     }
     
     func loaded(resolver: Resolver) {

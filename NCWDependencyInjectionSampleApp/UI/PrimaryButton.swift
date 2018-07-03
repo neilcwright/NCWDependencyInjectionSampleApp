@@ -44,8 +44,10 @@ final class PrimaryButton: UIButton, PrimaryButtonType {
         self.delegate = delegate
         super.init(frame: .zero)
         
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(handleTapEvent), for: .touchUpInside)
         self.layer.cornerRadius = viewModel.cornerRadius
+        self.applyStyle()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +74,10 @@ final class PrimaryButton: UIButton, PrimaryButtonType {
     
     @objc func handleTapEvent() {
         self.delegate?.handleTapEvent(fromPrimaryButton: self)
+    }
+    
+    private func applyStyle() {
+        self.backgroundColor = UIColor.blue
     }
 }
 

@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let assembler = try Assembler(assemblies: [
                 ProviderAssembly(),
                 ModelAssembly(),
+                LoginAssembly(),
                 HomeAssembly(),
                 DetailAssembly(),
                 RootAssembly(),

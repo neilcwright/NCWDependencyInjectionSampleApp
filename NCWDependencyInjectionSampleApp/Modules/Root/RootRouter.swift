@@ -53,7 +53,14 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToLogin() {
-        // TODO route to login
+        guard let loginRoute = self.routeProvider?.route(LoginRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+            
+            assertionFailure("expected login route to be registered w/ container")
+            return
+        }
+        
+        loginRoute.loadView(fromViewController: presentedViewController)
     }
     
     func routeToHome() {
