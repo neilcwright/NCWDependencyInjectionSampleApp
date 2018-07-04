@@ -20,7 +20,7 @@ final class LoginViewController:
     let presenter: LoginPresenterType
     
     // MARK: View elements
-    
+
     fileprivate lazy var userNameLabel: UILabel = {
         let userNameLabel = UILabel.newAutoLayout()
         userNameLabel.numberOfLines = 0
@@ -108,7 +108,13 @@ final class LoginViewController:
 // MARK: PrimaryButtonDelegate
 extension LoginViewController: PrimaryButtonDelegate {
     func handleTapEvent<T: PrimaryButtonType>(fromPrimaryButton button: T) {
-        print("tap tappity tap")
+        // TODO validate against empty string
+        self.presenter.handleLoginRequest(
+            LoginRequest(
+                username: self.userNameField.text ?? "",
+                password: self.passwordField.text ?? ""
+            )
+        )
     }
 }
 
@@ -125,7 +131,7 @@ private extension LoginViewController {
     
     func applyConstraints() {
         self.edgesForExtendedLayout = []
-        
+
         let verticalInteritemSpacing: CGFloat = 20
         NSLayoutConstraint.activate([
     
@@ -167,7 +173,17 @@ private extension LoginViewController {
                 constant: verticalInteritemSpacing
             ),
             self.submitButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
-            self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.submitButton.bottomAnchor.constraint(
+                greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.bottomAnchor,
+                constant: -verticalInteritemSpacing
+            )
         ])
+        
+        self.userNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.userNameField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.passwordLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.passwordField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.submitButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
     }
 }

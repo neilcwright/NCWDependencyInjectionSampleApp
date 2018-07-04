@@ -1,5 +1,5 @@
 {
-    "base_url": "http://localhost",
+    "base_url": "http://localhost:8080",
     "home_view_image_name": "hamburgler",
     "detail_view_image_name": "dude",
     "primary_button": {

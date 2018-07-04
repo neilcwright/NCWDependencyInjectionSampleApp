@@ -27,7 +27,8 @@ class LoginAssembly: Assembly {
         
         // data manager
         container.register(LoginDataManagerType.self) { resolver in
-            return LoginDataManager()
+            let accountService = resolver.resolve(AccountServiceType.self)!
+            return LoginDataManager(accountService: accountService)
         }
         
         // interactor

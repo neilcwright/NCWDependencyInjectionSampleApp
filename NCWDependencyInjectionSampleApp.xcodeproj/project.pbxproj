@@ -17,7 +17,7 @@
 		8A07603620E9858900DF2311 /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07602F20E9858900DF2311 /* LoginDataManager.swift */; };
 		8A07603720E9858900DF2311 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603020E9858900DF2311 /* LoginPresenter.swift */; };
 		8A07603820E9858900DF2311 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603120E9858900DF2311 /* LoginInteractor.swift */; };
-		8A07603A20E986BA00DF2311 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603920E986BA00DF2311 /* LoginService.swift */; };
+		8A07603A20E986BA00DF2311 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603920E986BA00DF2311 /* AccountService.swift */; };
 		8A07603C20E98DCE00DF2311 /* UIScrollView+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */; };
 		8A07603E20EAF3F200DF2311 /* CALayer+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */; };
 		8A07603F20EAF77400DF2311 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A07604120EAF77400DF2311 /* Login.strings */; };
@@ -94,7 +94,7 @@
 		8A07602F20E9858900DF2311 /* LoginDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		8A07603020E9858900DF2311 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		8A07603120E9858900DF2311 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
-		8A07603920E986BA00DF2311 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		8A07603920E986BA00DF2311 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+NCW.swift"; sourceTree = "<group>"; };
 		8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+NCW.swift"; sourceTree = "<group>"; };
 		8A07604020EAF77400DF2311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
@@ -232,7 +232,6 @@
 				8A61611020DEBB4A008E05E3 /* Abstracts */,
 				8A6160DA20D5B57C008E05E3 /* Assemblies */,
 				8A61610F20DEBB09008E05E3 /* Extensions */,
-				8A6160D020D5B31C008E05E3 /* Models */,
 				8A6160DB20D5B662008E05E3 /* Modules */,
 				8A6160FB20D5C126008E05E3 /* Services */,
 				8A6160D320D5B368008E05E3 /* UI */,
@@ -262,13 +261,6 @@
 				8A6160C020D4A27F008E05E3 /* Info.plist */,
 			);
 			path = NCWDependencyInjectionSampleAppUITests;
-			sourceTree = "<group>";
-		};
-		8A6160D020D5B31C008E05E3 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		8A6160D320D5B368008E05E3 /* UI */ = {
@@ -336,7 +328,7 @@
 		8A6160FB20D5C126008E05E3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8A07603920E986BA00DF2311 /* LoginService.swift */,
+				8A07603920E986BA00DF2311 /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -360,9 +352,9 @@
 			isa = PBXGroup;
 			children = (
 				8A61612D20E07355008E05E3 /* String+NCW.swift */,
+				8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */,
 				8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */,
 				8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */,
-				8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -700,7 +692,7 @@
 				8A6160D520D5B39E008E05E3 /* PrimaryButton.swift in Sources */,
 				8A6160EF20D5B957008E05E3 /* DetailDataManager.swift in Sources */,
 				8A07603820E9858900DF2311 /* LoginInteractor.swift in Sources */,
-				8A07603A20E986BA00DF2311 /* LoginService.swift in Sources */,
+				8A07603A20E986BA00DF2311 /* AccountService.swift in Sources */,
 				8A6160E220D5B6AE008E05E3 /* HomeInteractor.swift in Sources */,
 				8A6160E820D5B733008E05E3 /* HomeRouter.swift in Sources */,
 				8A61610020D5C74E008E05E3 /* RootAssembly.swift in Sources */,

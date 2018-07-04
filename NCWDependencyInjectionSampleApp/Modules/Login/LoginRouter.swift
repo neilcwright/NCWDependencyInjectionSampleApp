@@ -15,14 +15,17 @@ protocol LoginRouterType: RouteType, LoginPresenterToRouterType {
     func loadView(fromViewController: UIViewController)
 }
 
+/// Presenter->Router interface.
 protocol LoginPresenterToRouterType {
-
+    
+    /// Will inform router to route to home view.
+    func routeToHomeView()
 }
 
 // MARK: Classes
 
 final class LoginRouter: LoginRouterType {
-    
+
     weak var routeProvider: RouteProviderType?
     weak var presentedViewController: UIViewController?
     
@@ -38,5 +41,16 @@ final class LoginRouter: LoginRouterType {
         
         fromViewController.present(presentedViewController, animated: true, completion: nil)
         self.presentedViewController = presentedViewController
+    }
+    
+    func routeToHomeView() {
+        guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected home route to be registered w/ container")
+                return
+        }
+        
+        homeRoute.loadView(from: presentedViewController)
     }
 }
