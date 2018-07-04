@@ -51,7 +51,6 @@ class RouteProvider: RouteProviderType {
         return nil
     }
     
-    
     func resolve<T>(_ type: T.Type) -> T? {
         return self.assembler.resolver.resolve(T.self)
     }

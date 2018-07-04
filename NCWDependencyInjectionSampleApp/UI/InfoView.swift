@@ -20,6 +20,10 @@ protocol InfoViewType {
 }
 
 protocol InfoViewDelegate: class {
+    
+    /// Will handle the info view's primary action event.
+    ///
+    /// - Parameter infoView: view instance where event originates from
     func handlePrimaryAction(_ infoView: InfoViewType)
 }
 

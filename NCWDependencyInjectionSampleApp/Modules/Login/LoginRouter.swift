@@ -18,8 +18,11 @@ protocol LoginRouterType: RouteType, LoginPresenterToRouterType {
 /// Presenter->Router interface.
 protocol LoginPresenterToRouterType {
     
-    /// Will inform router to route to home view.
+    /// Will request router to route to home view.
     func routeToHomeView()
+    
+    /// Will request router to route to error view.
+    func routeToError()
 }
 
 // MARK: Classes
@@ -52,5 +55,16 @@ final class LoginRouter: LoginRouterType {
         }
         
         homeRoute.loadView(from: presentedViewController)
+    }
+    
+    func routeToError() {
+        guard let errorRoute = self.routeProvider?.route(ErrorRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected error route to be registered w/ container")
+                return
+        }
+        
+        errorRoute.loadView(fromViewController: presentedViewController)
     }
 }

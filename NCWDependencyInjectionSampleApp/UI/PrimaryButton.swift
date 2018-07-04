@@ -10,8 +10,6 @@ import UIKit
 
 // MARK: Protocols
 
-
-
 struct PrimaryButtonViewModel: PrimaryButtonModelType {
     var cornerRadius: CGFloat
     var horizontalInset: CGFloat

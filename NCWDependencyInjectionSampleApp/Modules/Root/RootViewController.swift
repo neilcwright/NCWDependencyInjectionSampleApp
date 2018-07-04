@@ -15,7 +15,7 @@ protocol RootViewControllerType: class {
 
 final class RootViewController: UIViewController, RootViewControllerType, RootPresenterToViewType {
     
-    let presenter: RootPresenterType
+    fileprivate let presenter: RootPresenterType
     
     // MARK: View elements
     

@@ -1,0 +1,9 @@
+/* 
+  Error.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 7/3/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"error.view.general.header.text" = "Oops, something happened.";
+"error.view.invalid.login.credentials.header.text" = "Username and password must not be empty";

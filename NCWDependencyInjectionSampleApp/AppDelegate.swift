@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 HomeAssembly(),
                 DetailAssembly(),
                 RootAssembly(),
-                ServiceAssembly()
+                ServiceAssembly(),
+                ErrorAssembly()
             ])
             
             // load properties from json files to make available during container resolution of dependencies

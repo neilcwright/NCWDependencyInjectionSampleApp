@@ -70,6 +70,14 @@ final class AccountService: AccountServiceType {
             return
         }
         
+        guard !credentials.username.isEmpty && !credentials.password.isEmpty else {
+            DispatchQueue.main.async {
+                // TODO throw a more specific error
+                failure()
+            }
+            return
+        }
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = "name=\(credentials.username)&password=\(credentials.password)".data(using: .utf8)
@@ -91,6 +99,7 @@ final class AccountService: AccountServiceType {
             
             let responseString = String(data: data, encoding: .utf8)
             debugPrint("response string: \(String(describing: responseString))")
+            debugPrint("httpStatus: \(httpStatus)")
             
             DispatchQueue.main.async {
                 success()

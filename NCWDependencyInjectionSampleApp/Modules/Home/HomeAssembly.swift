@@ -29,14 +29,14 @@ class HomeAssembly: Assembly {
             resolver, homePresenter in
             
             let router = resolver.resolve(HomeRouterType.self)!
-            homePresenter.router = router as? HomePresenterToRouterType
+            homePresenter.router = router as HomePresenterToRouterType
             
         }).inObjectScope(.graph)
         
         // presenter->router
         container.register(HomePresenterToRouterType.self) { resolver in
             let homeRouter = resolver.resolve(HomeRouterType.self)!
-            return homeRouter as! HomePresenterToRouterType
+            return homeRouter as HomePresenterToRouterType
         }
         
         // interactor
