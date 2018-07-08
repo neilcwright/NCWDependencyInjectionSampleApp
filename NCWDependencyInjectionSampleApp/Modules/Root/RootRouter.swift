@@ -28,6 +28,9 @@ protocol RootPresenterToRouterType {
     
     // Will route to login.
     func routeToLogin()
+    
+    // Will route to error.
+    func routeToError()
 }
 
 // MARK: Classes
@@ -56,7 +59,7 @@ final class RootRouter: RootRouterType {
         guard let loginRoute = self.routeProvider?.route(LoginRouterType.self),
             let presentedViewController = self.presentedViewController else {
             
-            assertionFailure("expected login route to be registered w/ container")
+            assertionFailure("expected login route to be provided")
             return
         }
         
@@ -67,10 +70,21 @@ final class RootRouter: RootRouterType {
         guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
-                assertionFailure("expected home route to be registered w/ container")
-                return
+            assertionFailure("expected home route to be provided")
+            return
         }
         
         homeRoute.loadView(from: presentedViewController)
+    }
+    
+    func routeToError() {
+        guard let errorRoute = self.routeProvider?.route(ErrorRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+            assertionFailure("expected error route to be provided")
+            return
+        }
+        
+        errorRoute.loadView(fromViewController: presentedViewController, withContext: ErrorContext.generic(retryClosure: nil))
     }
 }

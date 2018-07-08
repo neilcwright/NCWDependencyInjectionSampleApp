@@ -5,5 +5,15 @@
   Created by Neil Wright on 7/3/18.
   Copyright © 2018 Neil Wright. All rights reserved.
 */
+
 "error.view.general.header.text" = "Oops, something happened.";
-"error.view.invalid.login.credentials.header.text" = "Username and password must not be empty";
+"error.view.general.description.text" = "Try Again?";
+"error.view.general.primary.button.text" = "Retry";
+
+"error.view.invalid.login.credentials.header.text" = "Invalid form submission";
+"error.view.invalid.login.credentials.description.text" = "Username and password must not be empty";
+"error.view.invalid.login.credentials.primary.button.text" = "Retry";
+
+"error.view.network.unavailable.header.text" = "Looks like you're off the grid";
+"error.view.network.unavailable.description.text" = "We can't connect with you at the moment. Please try again later.";
+"error.view.network.unavailable.primary.button.text" = "Retry";

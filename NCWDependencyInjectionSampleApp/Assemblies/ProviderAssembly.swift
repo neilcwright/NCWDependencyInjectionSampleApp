@@ -13,7 +13,9 @@ final class ProviderAssembly: Assembly {
     
     func assemble(container: Container) {
         
-        // route provider type
+        // route provider type. This gets injected into all routes, as a way to access other
+        // routes from the container that backs the route provider. Use `.container` object scope
+        // since we only want one instance of route provider to be injected into our routers.
         container.register(RouteProviderType.self) { resolver in
             return RouteProvider()
         }.inObjectScope(.container)

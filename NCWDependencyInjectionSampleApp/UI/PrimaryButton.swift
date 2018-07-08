@@ -75,7 +75,7 @@ final class PrimaryButton: UIButton, PrimaryButtonType {
     }
     
     private func applyStyle() {
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.black
     }
 }
 

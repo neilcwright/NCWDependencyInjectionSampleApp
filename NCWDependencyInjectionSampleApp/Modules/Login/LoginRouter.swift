@@ -65,6 +65,9 @@ final class LoginRouter: LoginRouterType {
                 return
         }
         
-        errorRoute.loadView(fromViewController: presentedViewController)
+        errorRoute.loadView(
+            fromViewController: presentedViewController,
+            withContext: ErrorContext.generic(retryClosure: nil)
+        )
     }
 }
