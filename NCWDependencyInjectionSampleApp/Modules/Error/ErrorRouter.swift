@@ -65,12 +65,13 @@ final class ErrorRouter: ErrorRouterType {
     func retryLastView() {
         if let context = self.context {
             switch context {
-            case .generic(let retryClosure):
-                retryClosure?()
-            case .invalidLoginCredentials(let retryClosure):
-                retryClosure?()
-            case .networkUnavailable(let retryClosure):
-                retryClosure?()
+            case .generic(let retryClosure),
+                 .invalidLoginCredentials(let retryClosure),
+                 .networkUnavailable(let retryClosure):
+                
+                self.presentedViewController?.dismiss(animated: true, completion: {
+                    retryClosure?()
+                })
             }
         }
     }

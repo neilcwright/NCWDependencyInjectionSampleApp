@@ -11,15 +11,15 @@ import Foundation
 // MARK: Models
 
 fileprivate enum ServiceEndpoint {
-    case helloWorld
     case login
+    case createAccount
     
     var path: String {
         switch self {
-        case .helloWorld:
-            return "hello"
         case .login:
             return "login"
+        case .createAccount:
+            return "create_account"
         }
     }
 }
@@ -27,6 +27,12 @@ fileprivate enum ServiceEndpoint {
 struct LoginCredentials: LoginRequestType {
     var username: String
     var password: String
+}
+
+struct AccountRequest {
+    let username: String
+    let email: String
+    let password: String
 }
 
 protocol AccountServiceType: class {
@@ -41,6 +47,18 @@ protocol AccountServiceType: class {
         with credentials: LoginCredentials,
         success: @escaping (() -> Void),
         failure: @escaping (() -> Void))
+    
+    /// Will make a request to create a new account in system.
+    ///
+    /// - Parameters:
+    ///   - accountRequest: the request content for new account.
+    ///   - success: handler to be called on success.
+    ///   - failure: handler to be called on failure.
+    func createAccount(
+        with accountRequest: AccountRequest,
+        success: @escaping (() -> Void),
+        failure: @escaping (() -> Void)
+    )
 }
 
 final class AccountService: AccountServiceType {
@@ -90,9 +108,63 @@ final class AccountService: AccountServiceType {
                 return
             }
             
-            guard let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 else {
+            guard let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 else {
                 DispatchQueue.main.async {
                    failure()
+                }
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            debugPrint("response string: \(String(describing: responseString))")
+            debugPrint("httpStatus: \(httpStatus)")
+            
+            DispatchQueue.main.async {
+                success()
+            }
+        }
+        dataTask.resume()
+    }
+    
+    func createAccount(
+        with accountRequest: AccountRequest,
+        success: @escaping (() -> Void),
+        failure: @escaping (() -> Void)) {
+        
+        guard let baseUrl = URL(string: self.baseUrl) else {
+            assertionFailure("expect base url to be set")
+            DispatchQueue.main.async {
+                failure()
+            }
+            return
+        }
+        
+        guard let createAccountUrl = URL(
+            string: ServiceEndpoint.createAccount.path,
+            relativeTo: baseUrl
+        ) else {
+            assertionFailure("expect create account url to be set")
+            DispatchQueue.main.async {
+                failure()
+            }
+            return
+        }
+
+        var request = URLRequest(url: createAccountUrl)
+        request.httpMethod = "POST"
+        request.httpBody = "username=\(accountRequest.username)&email=\(accountRequest.email)&password=\(accountRequest.password)".data(using: .utf8)
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
+                    failure()
+                }
+                return
+            }
+            
+            guard let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 200 else {
+                DispatchQueue.main.async {
+                    failure()
                 }
                 return
             }

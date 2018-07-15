@@ -1,0 +1,13 @@
+/* 
+  CreateAccount.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 7/8/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"create.account.view.header.text" = "Create an account";
+"create.account.view.email.label.text" = "Email";
+"create.account.view.email.field.placeholder.text" = "Enter a valid email";
+"create.account.view.password.label.text" = "Password";
+"create.account.view.password.field.placeholder.text" = "Enter a valid password";
+"create.account.view.submit.button.text" = "Submit";

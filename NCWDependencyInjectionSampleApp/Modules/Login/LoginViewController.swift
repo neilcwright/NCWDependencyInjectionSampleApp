@@ -62,10 +62,25 @@ final class LoginViewController:
             ),
             delegate: self
         )
+        submitButton.accessibilityIdentifier = "Submit-Button"
         submitButton.setTitle(LoginLocalization.submitButton, for: .normal)
         submitButton.tintColor = .blue
         submitButton.titleLabel?.textColor = .white
         return submitButton
+    }()
+    
+    fileprivate lazy var createAccountButton: PrimaryButton = {
+        let createAccountButton = PrimaryButton(
+            viewModel: PrimaryButtonViewModel(
+                cornerRadius: 5,
+                horizontalInset: 20,
+                verticalInset: 10
+            ),
+            delegate: self
+        )
+        createAccountButton.accessibilityIdentifier = "Create-Account-Button"
+        createAccountButton.setTitle(LoginLocalization.createAccountButtonText, for: .normal)
+        return createAccountButton
     }()
     
     fileprivate var didApplyConstraints: Bool = false
@@ -107,14 +122,21 @@ final class LoginViewController:
 
 // MARK: PrimaryButtonDelegate
 extension LoginViewController: PrimaryButtonDelegate {
-    func handleTapEvent<T: PrimaryButtonType>(fromPrimaryButton button: T) {
-        // TODO validate against empty string
-        self.presenter.handleLoginRequest(
-            LoginRequest(
-                username: self.userNameField.text ?? "",
-                password: self.passwordField.text ?? ""
+    func handleTapEvent<T>(fromPrimaryButton button: T) where T : UIButton, T : PrimaryButtonType {
+        switch button.accessibilityIdentifier {
+        case self.submitButton.accessibilityIdentifier:
+            // TODO validate against empty string
+            self.presenter.handleLoginRequest(
+                LoginRequest(
+                    username: self.userNameField.text ?? "",
+                    password: self.passwordField.text ?? ""
+                )
             )
-        )
+        case self.createAccountButton.accessibilityIdentifier:
+            self.presenter.handleCreateAccountRequest()
+        default:
+            break
+        }
     }
 }
 
@@ -127,6 +149,7 @@ private extension LoginViewController {
         self.view.addSubview(self.passwordLabel)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitButton)
+        self.view.addSubview(self.createAccountButton)
     }
     
     func applyConstraints() {
@@ -136,10 +159,6 @@ private extension LoginViewController {
         NSLayoutConstraint.activate([
     
             // username label
-            self.userNameLabel.topAnchor.constraint(
-                equalTo: self.view.safeAreaLayoutGuide.topAnchor,
-                constant: verticalInteritemSpacing
-            ),
             self.userNameLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
             self.userNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
@@ -174,7 +193,12 @@ private extension LoginViewController {
             ),
             self.submitButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
             self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.submitButton.bottomAnchor.constraint(
+            
+            // create new account button
+            self.createAccountButton.topAnchor.constraint(equalTo: self.submitButton.bottomAnchor, constant: verticalInteritemSpacing),
+            self.createAccountButton.leadingAnchor.constraint(equalTo: self.submitButton.leadingAnchor),
+            self.createAccountButton.trailingAnchor.constraint(equalTo: self.submitButton.trailingAnchor),
+            self.createAccountButton.bottomAnchor.constraint(
                 greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                 constant: -verticalInteritemSpacing
             )
@@ -185,5 +209,6 @@ private extension LoginViewController {
         self.passwordLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.passwordField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.submitButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.createAccountButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
     }
 }

@@ -85,6 +85,11 @@ final class RootRouter: RootRouterType {
             return
         }
         
-        errorRoute.loadView(fromViewController: presentedViewController, withContext: ErrorContext.generic(retryClosure: nil))
+        errorRoute.loadView(
+            fromViewController: presentedViewController,
+            withContext: ErrorContext.generic(retryClosure: {
+                print("TODO run logic for retrying")
+            })
+        )
     }
 }

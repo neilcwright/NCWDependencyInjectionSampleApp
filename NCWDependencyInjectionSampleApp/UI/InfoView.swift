@@ -8,7 +8,14 @@
 
 import UIKit
 
-struct InfoViewModel {
+protocol InfoViewModelType {
+    var headerText: String { get set }
+    var descriptionText: String { get set }
+    var imageName: String { get set }
+    var primaryButtonText: String { get set }
+}
+
+struct InfoViewModel: InfoViewModelType {
     var headerText: String
     var descriptionText: String
     var imageName: String
@@ -29,7 +36,7 @@ protocol InfoViewDelegate: class {
 
 final class InfoView: UIView, InfoViewType {
     
-    fileprivate let viewModel: InfoViewModel
+    fileprivate let viewModel: InfoViewModelType
     fileprivate weak var viewDelegate: InfoViewDelegate?
     
     // MARK: View elements
@@ -72,13 +79,12 @@ final class InfoView: UIView, InfoViewType {
             delegate: self
         )
         primaryButton.setTitle(self.viewModel.primaryButtonText, for: UIControlState())
-        primaryButton.backgroundColor = .blue
         return primaryButton
     }()
     
     // MARK: Initializers
     
-    init(viewModel: InfoViewModel, viewDelegate: InfoViewDelegate) {
+    init(viewModel: InfoViewModelType, viewDelegate: InfoViewDelegate) {
         self.viewModel = viewModel
         self.viewDelegate = viewDelegate
         

@@ -7,6 +7,7 @@
 //
 
 import Swinject
+import SwinjectPropertyLoader
 
 class DetailAssembly: Assembly {
     
@@ -46,7 +47,17 @@ class DetailAssembly: Assembly {
         
         // view controller
         container.register(DetailViewControllerType.self) { resolver in
-            return DetailViewController(presenter: resolver.resolve(DetailPresenterType.self)!)
+            let imageName: String = resolver.property("detail_view_image_name")!
+            return DetailViewController(
+                presenter: resolver.resolve(DetailPresenterType.self)!,
+                infoViewModel: resolver.resolve(
+                    InfoViewModelType.self,
+                    arguments: DetailLocalization.titleText,
+                        DetailLocalization.descriptionText,
+                        imageName,
+                        DetailLocalization.primaryButtonText
+                )!
+            )
         }
     }
     

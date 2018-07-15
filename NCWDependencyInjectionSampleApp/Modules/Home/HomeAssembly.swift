@@ -55,13 +55,27 @@ class HomeAssembly: Assembly {
         
         // view controller
         container.register(HomeViewControllerType.self) { resolver in
-            return HomeViewController(presenter: resolver.resolve(HomePresenterType.self)!)
-        }.initCompleted({
-            resolver, viewController in
-            
-            viewController.imageName = resolver.property("home_view_image_name")
-            
-        }).inObjectScope(.graph)
+            return HomeViewController(
+                presenter: resolver.resolve(HomePresenterType.self)!,
+                viewModel: resolver.resolve(HomeViewModelType.self)!
+            )
+        }.inObjectScope(.graph)
+        
+        // Models
+        
+        // view model
+        container.register(HomeViewModelType.self) { resolver in
+            let imageName: String = resolver.property("home_view_image_name")!
+            return HomeViewModel(
+                infoViewModel: resolver.resolve(
+                    InfoViewModelType.self,
+                    arguments: HomeLocalization.titleText,
+                    HomeLocalization.descriptionText,
+                    imageName,
+                    HomeLocalization.primaryButtonText
+                )!
+            )
+        }
     }
     
     func loaded(resolver: Resolver) {

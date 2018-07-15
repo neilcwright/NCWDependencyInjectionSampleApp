@@ -19,6 +19,13 @@ protocol LoginDataManagerType: class {
         success: @escaping (() -> Void),
         failure: @escaping (() -> Void)
     )
+    
+    /// Will attempt to create a new account given the provided credentials.
+    ///
+    /// - Parameters:
+    ///   - success: success handler to call
+    ///   - failure: failure handler to call
+    func createAccount(success: @escaping (() -> Void), failure: @escaping (() -> Void))
 }
 
 final class LoginDataManager: LoginDataManagerType {
@@ -43,5 +50,9 @@ final class LoginDataManager: LoginDataManagerType {
         }, failure: {
             failure()
         })
+    }
+    
+    func createAccount(success: @escaping (() -> Void), failure: @escaping (() -> Void)) {
+        print("TODO create account")
     }
 }

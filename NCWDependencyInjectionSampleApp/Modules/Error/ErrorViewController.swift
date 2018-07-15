@@ -73,6 +73,7 @@ final class ErrorViewController:
                 verticalInset: 10),
             delegate: self
         )
+        primaryButton.accessibilityIdentifier = "Retry-Button"
         primaryButton.setTitle(ErrorLocalization.Generic.primaryButtonText, for: .normal)
         return primaryButton
     }()

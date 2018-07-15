@@ -10,20 +10,20 @@ import UIKit
 
 // MARK: Protocols
 
-struct PrimaryButtonViewModel: PrimaryButtonModelType {
-    var cornerRadius: CGFloat
-    var horizontalInset: CGFloat
-    var verticalInset: CGFloat
-}
-
 protocol PrimaryButtonModelType {
     var cornerRadius: CGFloat { get set }
     var horizontalInset: CGFloat { get set }
     var verticalInset: CGFloat { get set }
 }
 
+struct PrimaryButtonViewModel: PrimaryButtonModelType {
+    var cornerRadius: CGFloat
+    var horizontalInset: CGFloat
+    var verticalInset: CGFloat
+}
+
 protocol PrimaryButtonDelegate: class {
-    func handleTapEvent<T: PrimaryButtonType>(fromPrimaryButton button: T)
+    func handleTapEvent<T: PrimaryButtonType & UIButton>(fromPrimaryButton button: T)
 }
 
 protocol PrimaryButtonType {}

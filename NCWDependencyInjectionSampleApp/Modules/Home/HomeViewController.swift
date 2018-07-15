@@ -8,15 +8,24 @@
 
 import UIKit
 
+// MARK: Models
+protocol HomeViewModelType {
+    var infoViewModel: InfoViewModelType { get set }
+}
+
+struct HomeViewModel: HomeViewModelType {
+    var infoViewModel: InfoViewModelType
+}
+
 // MARK: Inbound protocol interface
 protocol HomeViewControllerType: class {
-    var imageName: String! { get set }
+    
 }
 
 final class HomeViewController: UIViewController, HomeViewControllerType {
     
     let presenter: HomePresenterType
-    var imageName: String!
+    let viewModel: HomeViewModelType
     
     // MARK: View elements
     
@@ -39,12 +48,7 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     
     fileprivate lazy var infoView: InfoView = {
         let infoView = InfoView(
-            viewModel: InfoViewModel(
-                headerText: HomeLocalization.titleText,
-                descriptionText: HomeLocalization.descriptionText,
-                imageName: self.imageName,
-                primaryButtonText: HomeLocalization.primaryButtonText
-            ),
+            viewModel: self.viewModel.infoViewModel,
             viewDelegate: self
         )
         return infoView
@@ -52,8 +56,9 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
     
     // MARK: Initializers
     
-    init(presenter: HomePresenterType) {
+    init(presenter: HomePresenterType, viewModel: HomeViewModelType) {
         self.presenter = presenter
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     

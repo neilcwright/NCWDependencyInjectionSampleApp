@@ -26,6 +26,8 @@ protocol LoginPresenterType: class {
     /// - Parameter request: the username provided by user input.
     /// - Returns: the password provided by user input.
     func handleLoginRequest(_ request: LoginRequest)
+    
+    func handleCreateAccountRequest()
 }
 
 // Presenter->View interface for calling view.
@@ -49,6 +51,10 @@ final class LoginPresenter: LoginPresenterType {
     
     func handleLoginRequest(_ request: LoginRequest) {
         self.interactor.handleLoginRequest(request)
+    }
+    
+    func handleCreateAccountRequest() {
+        self.router?.routeToCreateAccountView()
     }
 }
 

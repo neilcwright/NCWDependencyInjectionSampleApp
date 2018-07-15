@@ -51,8 +51,8 @@ final class RootPresenter: RootPresenterType {
 // MARK: RootInteractorPresenterType
 extension RootPresenter: RootInteractorPresenterType {
     func presentLoggedOutFlow() {
-        self.router.routeToError()
-        //self.router.routeToLogin()
+        //self.router.routeToError()
+        self.router.routeToLogin()
     }
     
     func presentLoggedInFlow() {

@@ -21,15 +21,11 @@ protocol DetailViewControllerDelegate: class {
 final class DetailViewController: UIViewController, DetailViewControllerType {
     
     fileprivate let presenter: DetailPresenterType
+    fileprivate let infoViewModel: InfoViewModelType
     
     fileprivate lazy var infoView: InfoView = {
         let infoView = InfoView(
-            viewModel: InfoViewModel(
-                headerText: DetailLocalization.titleText,
-                descriptionText: DetailLocalization.descriptionText,
-                imageName: "dude",
-                primaryButtonText: DetailLocalization.primaryButtonText
-            ),
+            viewModel: self.infoViewModel,
             viewDelegate: self
         )
         return infoView
@@ -37,8 +33,9 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     
     // MARK: Initializers
     
-    required init(presenter: DetailPresenterType) {
+    required init(presenter: DetailPresenterType, infoViewModel: InfoViewModelType) {
         self.presenter = presenter
+        self.infoViewModel = infoViewModel
         super.init(nibName: nil, bundle: nil)
     }
     

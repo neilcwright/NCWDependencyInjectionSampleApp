@@ -21,6 +21,9 @@ protocol LoginPresenterToRouterType {
     /// Will request router to route to home view.
     func routeToHomeView()
     
+    /// Will request the create account view and route to it.
+    func routeToCreateAccountView()
+    
     /// Will request router to route to error view.
     func routeToError()
 }
@@ -55,6 +58,17 @@ final class LoginRouter: LoginRouterType {
         }
         
         homeRoute.loadView(from: presentedViewController)
+    }
+    
+    func routeToCreateAccountView() {
+        guard let createAccountRoute = self.routeProvider?.route(CreateAccountRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected create account route to be registered w/ container")
+                return
+        }
+        
+        createAccountRoute.loadView(fromViewController: presentedViewController)
     }
     
     func routeToError() {

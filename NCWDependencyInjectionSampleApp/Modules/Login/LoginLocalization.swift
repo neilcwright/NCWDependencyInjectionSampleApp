@@ -20,4 +20,7 @@ struct LoginLocalization {
     static var submitButton: String {
         return "login.view.submit.button.text".localized(tableName: tableName)
     }
+    static var createAccountButtonText: String {
+        return "login.view.create.account.button.text".localized(tableName: tableName)
+    }
 }
