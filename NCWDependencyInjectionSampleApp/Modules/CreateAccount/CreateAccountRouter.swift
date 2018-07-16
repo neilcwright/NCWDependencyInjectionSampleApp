@@ -20,6 +20,9 @@ protocol CreateAccountRouterType: RouteType, CreateAccountPresenterToRouterType 
 
 protocol CreateAccountPresenterToRouterType {
     
+    /// Will route to login.
+    func routeToLogin()
+    
     /// Will route to error view.
     func routeToError()
 }
@@ -43,6 +46,18 @@ final class CreateAccountRouter: CreateAccountRouterType {
         
         fromViewController.present(presentedViewController, animated: true, completion: nil)
         self.presentedViewController = presentedViewController
+    }
+    
+    func routeToLogin() {
+//        guard let loginRoute = self.routeProvider?.route(LoginRouterType.self),
+//            let presentedViewController = self.presentedViewController else {
+//            assertionFailure("expected login route and presented view to be set")
+//            return
+//        }
+//
+//        loginRoute.loadView(fromViewController: presentedViewController)
+        
+        self.presentedViewController?.dismiss(animated: true, completion: nil)
     }
     
     func routeToError() {

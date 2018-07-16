@@ -7,10 +7,12 @@
 
 protocol LoginRequestType {
     var username: String { get set }
+    var email: String { get set }
     var password: String { get set }
 }
 struct LoginRequest: LoginRequestType {
     var username: String
+    var email: String
     var password: String
 }
 

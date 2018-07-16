@@ -25,10 +25,32 @@ final class CreateAccountViewController:
         let headerLabel = UILabel.newAutoLayout()
         headerLabel.text = CreateAccountLocalization.headerText
         headerLabel.textColor = .black
-        headerLabel.textAlignment = .left
+        headerLabel.textAlignment = .center
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = .byWordWrapping
+        headerLabel.font = UIFont.preferredFont(forTextStyle: .headline)
         return headerLabel
+    }()
+    
+    private lazy var usernameLabel: UILabel = {
+        let usernameLabel = UILabel.newAutoLayout()
+        usernameLabel.text = CreateAccountLocalization.usernameLabelText
+        usernameLabel.textColor = .black
+        usernameLabel.textAlignment = .left
+        usernameLabel.numberOfLines = 0
+        usernameLabel.lineBreakMode = .byWordWrapping
+        usernameLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        return usernameLabel
+    }()
+    
+    private lazy var usernameField: UITextField = {
+        let usernameField = UITextField.newAutoLayout()
+        usernameField.placeholder = CreateAccountLocalization.usernameFieldText
+        usernameField.layer.applyFormFieldStyle()
+        usernameField.textColor = .black
+        usernameField.textAlignment = .left
+        usernameField.font = UIFont.preferredFont(forTextStyle: .body)
+        return usernameField
     }()
     
     private lazy var emailLabel: UILabel = {
@@ -38,6 +60,7 @@ final class CreateAccountViewController:
         emailLabel.textAlignment = .left
         emailLabel.numberOfLines = 0
         emailLabel.lineBreakMode = .byWordWrapping
+        emailLabel.font = UIFont.preferredFont(forTextStyle: .body)
         return emailLabel
     }()
 
@@ -47,6 +70,7 @@ final class CreateAccountViewController:
         emailField.layer.applyFormFieldStyle()
         emailField.textColor = .black
         emailField.textAlignment = .left
+        emailField.font = UIFont.preferredFont(forTextStyle: .body)
         return emailField
     }()
     
@@ -57,17 +81,19 @@ final class CreateAccountViewController:
         passwordLabel.textAlignment = .left
         passwordLabel.numberOfLines = 0
         passwordLabel.lineBreakMode = .byWordWrapping
+        passwordLabel.font = UIFont.preferredFont(forTextStyle: .body)
         return passwordLabel
     }()
     
     private lazy var passwordField: UITextField = {
         let passwordField = UITextField.newAutoLayout()
         passwordField.placeholder = CreateAccountLocalization.passwordFieldPlaceholderText
-        passwordField.isSecureTextEntry = true
         passwordField.layer.applyFormFieldStyle()
+        passwordField.isSecureTextEntry = true
         passwordField.textColor = .black
         passwordField.textAlignment = .left
-        return emailField
+        passwordField.font = UIFont.preferredFont(forTextStyle: .body)
+        return passwordField
     }()
     
     private lazy var submitButton: PrimaryButton = {
@@ -102,6 +128,8 @@ final class CreateAccountViewController:
         self.view.addSubview(self.headerLabel)
         self.view.addSubview(self.emailLabel)
         self.view.addSubview(self.emailField)
+        self.view.addSubview(self.usernameLabel)
+        self.view.addSubview(self.usernameField)
         self.view.addSubview(self.passwordLabel)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitButton)
@@ -124,27 +152,37 @@ final class CreateAccountViewController:
                 self.headerLabel.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
                 self.headerLabel.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
                 
-                self.emailLabel.topAnchor.constraint(equalTo: self.headerLabel.bottomAnchor, constant: 20),
-                self.emailLabel.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
-                self.emailLabel.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
+                self.usernameLabel.topAnchor.constraint(equalTo: self.headerLabel.bottomAnchor, constant: 20),
+                self.usernameLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.usernameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                
+                self.usernameField.topAnchor.constraint(equalTo: self.usernameLabel.bottomAnchor, constant: 10),
+                self.usernameField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.usernameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                
+                self.emailLabel.topAnchor.constraint(equalTo: self.usernameField.bottomAnchor, constant: 20),
+                self.emailLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.emailLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
                 self.emailField.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor, constant: 10),
-                self.emailField.widthAnchor.constraint(equalTo: self.emailLabel.widthAnchor),
-                self.emailField.heightAnchor.constraint(equalToConstant: 44),
-                self.emailField.centerXAnchor.constraint(equalTo: self.emailLabel.centerXAnchor),
-                
+                self.emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+
                 self.passwordLabel.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 10),
-                self.passwordLabel.leadingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leadingAnchor),
-                self.passwordLabel.trailingAnchor.constraint(equalTo: self.view.layoutMarginsGuide.trailingAnchor),
+                self.passwordLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.passwordLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
                 self.passwordField.topAnchor.constraint(equalTo: self.passwordLabel.bottomAnchor, constant: 10),
-                self.passwordField.widthAnchor.constraint(equalTo: self.passwordLabel.widthAnchor),
-                self.passwordField.heightAnchor.constraint(equalToConstant: 44),
-                self.passwordField.centerXAnchor.constraint(equalTo: self.passwordLabel.centerXAnchor),
+                self.passwordField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+                self.passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
                 self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 10),
                 self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
+            
+            self.usernameField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+            self.emailField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+            self.passwordField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         }
         super.updateViewConstraints()
     }
@@ -154,7 +192,7 @@ final class CreateAccountViewController:
 extension CreateAccountViewController: PrimaryButtonDelegate {
     func handleTapEvent<T>(fromPrimaryButton button: T) where T : PrimaryButtonType {
         self.presenter.requestNewAccount(
-            username: "Foo",
+            username: self.usernameField.text ?? "",
             email: self.emailLabel.text ?? "",
             password: self.passwordField.text ?? ""
         )

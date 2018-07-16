@@ -26,6 +26,7 @@ fileprivate enum ServiceEndpoint {
 
 struct LoginCredentials: LoginRequestType {
     var username: String
+    var email: String
     var password: String
 }
 
@@ -98,7 +99,7 @@ final class AccountService: AccountServiceType {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody = "name=\(credentials.username)&password=\(credentials.password)".data(using: .utf8)
+        request.httpBody = "username=\(credentials.username)&email=\(credentials.email)&password=\(credentials.password)".data(using: .utf8)
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {

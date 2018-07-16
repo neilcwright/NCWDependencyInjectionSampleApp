@@ -14,6 +14,14 @@ struct CreateAccountLocalization {
         return "create.account.view.header.text".localized(tableName: tableName)
     }
     
+    static var usernameLabelText: String {
+        return "create.account.view.username.label.text".localized(tableName: tableName)
+    }
+    
+    static var usernameFieldText: String {
+        return "create.account.view.username.field.placeholder.text".localized(tableName: tableName)
+    }
+    
     static var emailLabelText: String {
         return "create.account.view.email.label.text".localized(tableName: tableName)
     }

@@ -44,6 +44,7 @@ final class LoginDataManager: LoginDataManagerType {
         self.accountService.login(
             with: LoginCredentials(
                 username: request.username,
+                email: request.email,
                 password: request.password
         ), success: {
             success()

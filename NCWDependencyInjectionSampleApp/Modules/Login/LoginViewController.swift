@@ -37,6 +37,22 @@ final class LoginViewController:
         return userNameField
     }()
     
+    fileprivate lazy var emailLabel: UILabel = {
+        let emailLabel = UILabel.newAutoLayout()
+        emailLabel.text = LoginLocalization.emailLabel
+        emailLabel.numberOfLines = 0
+        emailLabel.lineBreakMode = .byWordWrapping
+        emailLabel.textColor = UIColor.black
+        return emailLabel
+    }()
+    
+    fileprivate lazy var emailField: UITextField = {
+        let emailField = UITextField.newAutoLayout()
+        emailField.autocorrectionType = .no
+        emailField.layer.applyFormFieldStyle()
+        return emailField
+    }()
+    
     fileprivate lazy var passwordLabel: UILabel = {
         let passwordLabel = UILabel.newAutoLayout()
         passwordLabel.numberOfLines = 0
@@ -129,6 +145,7 @@ extension LoginViewController: PrimaryButtonDelegate {
             self.presenter.handleLoginRequest(
                 LoginRequest(
                     username: self.userNameField.text ?? "",
+                    email: self.emailField.text ?? "",
                     password: self.passwordField.text ?? ""
                 )
             )
@@ -146,6 +163,8 @@ private extension LoginViewController {
     func setupViews() {
         self.view.addSubview(self.userNameLabel)
         self.view.addSubview(self.userNameField)
+        self.view.addSubview(self.emailLabel)
+        self.view.addSubview(self.emailField)
         self.view.addSubview(self.passwordLabel)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitButton)
@@ -170,9 +189,25 @@ private extension LoginViewController {
             self.userNameField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
             self.userNameField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
+            // email label
+            self.emailLabel.topAnchor.constraint(
+                equalTo: self.userNameField.bottomAnchor,
+                constant: verticalInteritemSpacing
+            ),
+            self.emailLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+            self.emailLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
+            // email field
+            self.emailField.topAnchor.constraint(
+                equalTo: self.emailLabel.bottomAnchor,
+                constant: verticalInteritemSpacing
+            ),
+            self.emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
+            self.emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
             // password label
             self.passwordLabel.topAnchor.constraint(
-                equalTo: self.userNameField.bottomAnchor,
+                equalTo: self.emailField.bottomAnchor,
                 constant: verticalInteritemSpacing
             ),
             self.passwordLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
@@ -206,6 +241,8 @@ private extension LoginViewController {
         
         self.userNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.userNameField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.emailLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        self.emailField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.passwordLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.passwordField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         self.submitButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)

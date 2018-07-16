@@ -14,6 +14,11 @@ struct LoginLocalization {
     static var usernameLabel: String {
         return "login.view.username.label.text".localized(tableName: tableName)
     }
+    
+    static var emailLabel: String {
+        return "login.view.email.label.text".localized(tableName: tableName)
+    }
+    
     static var passwordLabel: String {
         return "login.view.password.label.text".localized(tableName: tableName)
     }

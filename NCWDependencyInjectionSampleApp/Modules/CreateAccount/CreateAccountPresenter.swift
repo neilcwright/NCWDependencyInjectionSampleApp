@@ -55,7 +55,7 @@ final class CreateAccountPresenter: CreateAccountPresenterType {
 // (Outbound) Interface for receiving the interactor's events.
 extension CreateAccountPresenter: CreateAccountInteractorPresenterType {
     func accountCreatedSuccess() {
-        
+        self.router?.routeToLogin()
     }
     
     func accountCreatedFailure() {
