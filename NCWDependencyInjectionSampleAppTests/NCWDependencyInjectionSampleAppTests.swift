@@ -20,7 +20,8 @@ class NCWDependencyInjectionSampleAppTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
-        //let rootInteractor = (UIApplication.shared.delegate as? AppDelegate)?.routeProvider
+        let interactor = RootInteractor(dataManager: RootDataManager())
+        interactor.determineInitialFlow()
     }
     
     override func tearDown() {

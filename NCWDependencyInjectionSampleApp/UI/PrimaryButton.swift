@@ -23,6 +23,12 @@ struct PrimaryButtonViewModel: PrimaryButtonModelType {
 }
 
 protocol PrimaryButtonDelegate: class {
+    
+    /// Will delegate the tap event for primary button instance.
+    /// If there are more than one instance in a given view, set the accessibility id on button and
+    /// switch handling based on the button's accessibility id.
+    ///
+    /// - Parameter button: button instance that triggered event.
     func handleTapEvent<T: PrimaryButtonType & UIButton>(fromPrimaryButton button: T)
 }
 

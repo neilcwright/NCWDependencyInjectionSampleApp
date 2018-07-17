@@ -34,6 +34,8 @@ final class LoginViewController:
         let userNameField = UITextField.newAutoLayout()
         userNameField.autocorrectionType = .no
         userNameField.layer.applyFormFieldStyle()
+        userNameField.autocorrectionType = .no
+        userNameField.autocapitalizationType = .none
         return userNameField
     }()
     
@@ -50,6 +52,7 @@ final class LoginViewController:
         let emailField = UITextField.newAutoLayout()
         emailField.autocorrectionType = .no
         emailField.layer.applyFormFieldStyle()
+        emailField.autocapitalizationType = .none
         return emailField
     }()
     

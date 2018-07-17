@@ -50,6 +50,8 @@ final class CreateAccountViewController:
         usernameField.textColor = .black
         usernameField.textAlignment = .left
         usernameField.font = UIFont.preferredFont(forTextStyle: .body)
+        usernameField.autocorrectionType = .no
+        usernameField.autocapitalizationType = .none
         return usernameField
     }()
     
@@ -71,6 +73,8 @@ final class CreateAccountViewController:
         emailField.textColor = .black
         emailField.textAlignment = .left
         emailField.font = UIFont.preferredFont(forTextStyle: .body)
+        emailField.autocorrectionType = .no
+        emailField.autocapitalizationType = .none
         return emailField
     }()
     
