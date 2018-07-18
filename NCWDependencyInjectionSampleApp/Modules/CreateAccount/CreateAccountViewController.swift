@@ -43,8 +43,8 @@ final class CreateAccountViewController:
         return usernameLabel
     }()
     
-    private lazy var usernameField: UITextField = {
-        let usernameField = UITextField.newAutoLayout()
+    private lazy var usernameField: SimpleFormTextField = {
+        let usernameField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         usernameField.placeholder = CreateAccountLocalization.usernameFieldText
         usernameField.layer.applyFormFieldStyle()
         usernameField.textColor = .black
@@ -66,8 +66,8 @@ final class CreateAccountViewController:
         return emailLabel
     }()
 
-    private lazy var emailField: UITextField = {
-        let emailField = UITextField.newAutoLayout()
+    private lazy var emailField: SimpleFormTextField = {
+        let emailField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         emailField.placeholder = CreateAccountLocalization.emailFieldPlaceholderText
         emailField.layer.applyFormFieldStyle()
         emailField.textColor = .black
@@ -89,8 +89,8 @@ final class CreateAccountViewController:
         return passwordLabel
     }()
     
-    private lazy var passwordField: UITextField = {
-        let passwordField = UITextField.newAutoLayout()
+    private lazy var passwordField: SimpleFormTextField = {
+        let passwordField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         passwordField.placeholder = CreateAccountLocalization.passwordFieldPlaceholderText
         passwordField.layer.applyFormFieldStyle()
         passwordField.isSecureTextEntry = true
@@ -183,7 +183,7 @@ final class CreateAccountViewController:
                 self.emailField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
                 self.emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
 
-                self.passwordLabel.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 10),
+                self.passwordLabel.topAnchor.constraint(equalTo: self.emailField.bottomAnchor, constant: 20),
                 self.passwordLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
                 self.passwordLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
@@ -191,11 +191,11 @@ final class CreateAccountViewController:
                 self.passwordField.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
                 self.passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
-                self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 10),
+                self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 20),
                 self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
-                self.closeButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 30.0),
-                self.closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30.0),
+                self.closeButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10.0),
+                self.closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10.0),
                 self.closeButton.widthAnchor.constraint(equalToConstant: self.closeButton.intrinsicContentSize.width),
                 self.closeButton.heightAnchor.constraint(equalToConstant: self.closeButton.intrinsicContentSize.height)
             ])

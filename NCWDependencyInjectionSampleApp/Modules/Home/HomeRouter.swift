@@ -25,7 +25,7 @@ protocol HomePresenterToRouterType {
     func dismissView()
 }
 
-final class HomeRouter: HomeRouterType {
+final class HomeRouter: NSObject, HomeRouterType {
     
     var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
@@ -41,6 +41,8 @@ final class HomeRouter: HomeRouterType {
             return
         }
         
+        homeViewController.transitioningDelegate = self
+        homeViewController.modalPresentationStyle = .custom
         viewController.present(homeViewController, animated: true, completion: nil)
         self.presentedViewController = homeViewController
     }
@@ -58,5 +60,21 @@ final class HomeRouter: HomeRouterType {
     
     func dismissView() {
         self.presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension HomeRouter: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return ScaleFromCenterPresentingAnimator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return ScaleFromCenterDismissingAnimator()
     }
 }

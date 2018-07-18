@@ -7,12 +7,16 @@
 
 // inbound protocol interface
 protocol CreateAccountInteractorType: class {
+    
     // held strongly
     var dataManager: CreateAccountDataManagerType { get set }
     
     // held weakly (is owned by)
     var presenter: CreateAccountInteractorPresenterType? { get set }
     
+    /// Informs interactor to make the request to create new account.
+    ///
+    /// - Parameter request: the account request object.
     func createNewAccount(with request: AccountRequest)
 }
 

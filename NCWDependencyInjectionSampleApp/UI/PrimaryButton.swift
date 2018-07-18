@@ -11,8 +11,14 @@ import UIKit
 // MARK: Protocols
 
 protocol PrimaryButtonModelType {
+    
+    /// The corner radius to be applied to a button instance that this model backs
     var cornerRadius: CGFloat { get set }
+    
+    /// The inset value to use to the leading and trailing (left/right) edges of text w/n button instance
     var horizontalInset: CGFloat { get set }
+    
+    /// The inset value to use for the top and bottom edges of text w/n button instance
     var verticalInset: CGFloat { get set }
 }
 
@@ -38,12 +44,12 @@ protocol PrimaryButtonType {}
 
 final class PrimaryButton: UIButton, PrimaryButtonType {
     
-    fileprivate let viewModel: PrimaryButtonViewModel
+    fileprivate let viewModel: PrimaryButtonModelType
     fileprivate weak var delegate: PrimaryButtonDelegate?
     
     // MARK: Initializers
     
-    required init(viewModel: PrimaryButtonViewModel, delegate: PrimaryButtonDelegate) {
+    required init(viewModel: PrimaryButtonModelType, delegate: PrimaryButtonDelegate) {
         self.viewModel = viewModel
         self.delegate = delegate
         super.init(frame: .zero)

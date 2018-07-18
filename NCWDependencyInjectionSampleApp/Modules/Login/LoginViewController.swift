@@ -36,8 +36,8 @@ final class LoginViewController:
         return userNameLabel
     }()
     
-    fileprivate lazy var userNameField: UITextField = {
-        let userNameField = UITextField.newAutoLayout()
+    fileprivate lazy var userNameField: SimpleFormTextField = {
+        let userNameField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         userNameField.autocorrectionType = .no
         userNameField.layer.applyFormFieldStyle()
         userNameField.autocorrectionType = .no
@@ -54,8 +54,8 @@ final class LoginViewController:
         return emailLabel
     }()
     
-    fileprivate lazy var emailField: UITextField = {
-        let emailField = UITextField.newAutoLayout()
+    fileprivate lazy var emailField: SimpleFormTextField = {
+        let emailField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         emailField.autocorrectionType = .no
         emailField.layer.applyFormFieldStyle()
         emailField.autocapitalizationType = .none
@@ -71,8 +71,8 @@ final class LoginViewController:
         return passwordLabel
     }()
     
-    fileprivate lazy var passwordField: UITextField = {
-        let passwordField = UITextField.newAutoLayout()
+    fileprivate lazy var passwordField: SimpleFormTextField = {
+        let passwordField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         passwordField.isSecureTextEntry = true
         passwordField.layer.applyFormFieldStyle()
         return passwordField
@@ -150,7 +150,6 @@ extension LoginViewController: PrimaryButtonDelegate {
     func handleTapEvent<T>(fromPrimaryButton button: T) where T : UIButton, T : PrimaryButtonType {
         switch button.accessibilityIdentifier {
         case self.submitButton.accessibilityIdentifier:
-            // TODO validate against empty string
             self.presenter.handleLoginRequest(
                 LoginRequest(
                     username: self.userNameField.text ?? "",

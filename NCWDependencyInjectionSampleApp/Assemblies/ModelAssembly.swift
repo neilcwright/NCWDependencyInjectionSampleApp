@@ -11,7 +11,7 @@ import SwinjectPropertyLoader
 
 class ModelAssembly: Assembly {
     func assemble(container: Container) {
-        
+        // register any model types to container here
     }
     
     func loaded(resolver: Resolver) {
