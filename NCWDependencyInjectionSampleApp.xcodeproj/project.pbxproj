@@ -18,7 +18,6 @@
 		8A07603720E9858900DF2311 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603020E9858900DF2311 /* LoginPresenter.swift */; };
 		8A07603820E9858900DF2311 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603120E9858900DF2311 /* LoginInteractor.swift */; };
 		8A07603A20E986BA00DF2311 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603920E986BA00DF2311 /* AccountService.swift */; };
-		8A07603C20E98DCE00DF2311 /* UIScrollView+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */; };
 		8A07603E20EAF3F200DF2311 /* CALayer+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */; };
 		8A07603F20EAF77400DF2311 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A07604120EAF77400DF2311 /* Login.strings */; };
 		8A32651820F2860800747237 /* CreateAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651120F2860800747237 /* CreateAccountPresenter.swift */; };
@@ -112,7 +111,6 @@
 		8A07603020E9858900DF2311 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		8A07603120E9858900DF2311 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		8A07603920E986BA00DF2311 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
-		8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+NCW.swift"; sourceTree = "<group>"; };
 		8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+NCW.swift"; sourceTree = "<group>"; };
 		8A07604020EAF77400DF2311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
 		8A32651120F2860800747237 /* CreateAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPresenter.swift; sourceTree = "<group>"; };
@@ -405,7 +403,6 @@
 			children = (
 				8A61612D20E07355008E05E3 /* String+NCW.swift */,
 				8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */,
-				8A07603B20E98DCE00DF2311 /* UIScrollView+NCW.swift */,
 				8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */,
 			);
 			path = Extensions;
@@ -747,7 +744,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A07603C20E98DCE00DF2311 /* UIScrollView+NCW.swift in Sources */,
 				8A61610A20D5C781008E05E3 /* RootRouter.swift in Sources */,
 				8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */,
 				8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */,

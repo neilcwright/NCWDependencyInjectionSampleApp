@@ -113,6 +113,16 @@ final class CreateAccountViewController:
         return submitButton
     }()
     
+    fileprivate lazy var closeButton: UIButton = {
+        let closeButton = UIButton.newAutoLayout()
+        closeButton.setImage(
+            UIImage(named: "close"),
+            for: UIControlState.normal
+        )
+        closeButton.addTarget(self, action: #selector(doCloseAction(_:)), for: .touchUpInside)
+        return closeButton
+    }()
+    
     private var didSetConstraints: Bool = false
     
     // MARK: Initializers
@@ -137,6 +147,7 @@ final class CreateAccountViewController:
         self.view.addSubview(self.passwordLabel)
         self.view.addSubview(self.passwordField)
         self.view.addSubview(self.submitButton)
+        self.view.addSubview(self.closeButton)
         self.view.setNeedsUpdateConstraints()
     }
     
@@ -181,7 +192,12 @@ final class CreateAccountViewController:
                 self.passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                 
                 self.submitButton.topAnchor.constraint(equalTo: self.passwordField.bottomAnchor, constant: 10),
-                self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+                self.submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                
+                self.closeButton.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 30.0),
+                self.closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30.0),
+                self.closeButton.widthAnchor.constraint(equalToConstant: self.closeButton.intrinsicContentSize.width),
+                self.closeButton.heightAnchor.constraint(equalToConstant: self.closeButton.intrinsicContentSize.height)
             ])
             
             self.usernameField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
@@ -189,6 +205,12 @@ final class CreateAccountViewController:
             self.passwordField.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         }
         super.updateViewConstraints()
+    }
+    
+    // MARK: Selectors
+    
+    @objc func doCloseAction(_ sender: AnyObject) {
+        self.presenter.dismissView()
     }
 }
 

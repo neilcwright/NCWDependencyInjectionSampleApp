@@ -20,6 +20,11 @@ protocol CreateAccountPresenterType: class {
     ///   - password: the password to use in new account.
     /// - Returns: Void
     func requestNewAccount(username: String, email: String, password: String)
+    
+    /// Will inform presenter that user has triggered the dismiss view action.
+    ///
+    /// - Returns: Void
+    func dismissView()
 }
 
 // Presenter->View interface for calling view.
@@ -49,6 +54,10 @@ final class CreateAccountPresenter: CreateAccountPresenterType {
                 password: password
             )
         )
+    }
+    
+    func dismissView() {
+        self.router?.routeToLogin()
     }
 }
 

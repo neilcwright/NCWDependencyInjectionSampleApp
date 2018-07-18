@@ -9,6 +9,8 @@
 import UIKit
 
 extension CALayer {
+    
+    /// Will apply common form field style.
     func applyFormFieldStyle() {
         self.borderColor = UIColor.gray.cgColor
         self.borderWidth = 1

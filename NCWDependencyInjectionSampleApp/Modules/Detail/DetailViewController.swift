@@ -17,7 +17,6 @@ protocol DetailViewControllerDelegate: class {
     
 }
 
-
 final class DetailViewController: UIViewController, DetailViewControllerType {
     
     fileprivate let presenter: DetailPresenterType
@@ -48,7 +47,7 @@ final class DetailViewController: UIViewController, DetailViewControllerType {
     override func loadView() {
         super.loadView()
         
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = .white
         self.view.addSubview(self.infoView)
         self.view.setNeedsUpdateConstraints()
     }
