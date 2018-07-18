@@ -31,7 +31,7 @@ protocol CreateAccountPresenterToRouterType {
 
 final class CreateAccountRouter: CreateAccountRouterType {
     
-    weak var routeProvider: RouteProviderType?
+    weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -39,7 +39,7 @@ final class CreateAccountRouter: CreateAccountRouterType {
     }
 
     func loadView(fromViewController: UIViewController) {
-        guard let presentedViewController = self.routeProvider?.resolve(CreateAccountViewControllerType.self) as? UIViewController else {
+        guard let presentedViewController = self.appRouter?.resolve(CreateAccountViewControllerType.self) as? UIViewController else {
             assertionFailure("expected CreateAccount view controller type to be registered w/ container")
             return
         }
@@ -49,7 +49,7 @@ final class CreateAccountRouter: CreateAccountRouterType {
     }
     
     func routeToLogin() {
-//        guard let loginRoute = self.routeProvider?.route(LoginRouterType.self),
+//        guard let loginRoute = self.appRouter?.route(LoginRouterType.self),
 //            let presentedViewController = self.presentedViewController else {
 //            assertionFailure("expected login route and presented view to be set")
 //            return
@@ -61,7 +61,7 @@ final class CreateAccountRouter: CreateAccountRouterType {
     }
     
     func routeToError() {
-        guard let errorRoute = self.routeProvider?.route(ErrorRouterType.self),
+        guard let errorRoute = self.appRouter?.route(ErrorRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected error route to be registered w/ container")

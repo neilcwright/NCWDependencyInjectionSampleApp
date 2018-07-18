@@ -15,14 +15,14 @@ class ErrorAssembly: Assembly {
         container.register(ErrorRouterType.self) { resolver in
             return ErrorRouter()
         }.initCompleted({ resolver, router in
-            router.routeProvider = resolver.resolve(RouteProviderType.self)!
+            router.appRouter = resolver.resolve(AppRouterType.self)!
         }).inObjectScope(.weak)
         
         // presenter/router type
         container.register(ErrorPresenterToRouterType.self) { resolver in
             return resolver.resolve(ErrorRouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? ErrorRouterType)?.routeProvider = resolver.resolve(RouteProviderType.self)!
+            (router as? ErrorRouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
         })
         
         // data manager

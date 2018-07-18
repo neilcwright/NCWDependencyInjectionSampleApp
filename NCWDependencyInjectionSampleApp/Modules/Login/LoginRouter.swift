@@ -32,7 +32,7 @@ protocol LoginPresenterToRouterType {
 
 final class LoginRouter: LoginRouterType {
 
-    weak var routeProvider: RouteProviderType?
+    weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -40,7 +40,7 @@ final class LoginRouter: LoginRouterType {
     }
 
     func loadView(fromViewController: UIViewController) {
-        guard let presentedViewController = self.routeProvider?.resolve(LoginViewControllerType.self) as? UIViewController else {
+        guard let presentedViewController = self.appRouter?.resolve(LoginViewControllerType.self) as? UIViewController else {
             assertionFailure("expected Login view controller type to be registered w/ container")
             return
         }
@@ -50,7 +50,7 @@ final class LoginRouter: LoginRouterType {
     }
     
     func routeToHomeView() {
-        guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
+        guard let homeRoute = self.appRouter?.route(HomeRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected home route to be registered w/ container")
@@ -61,7 +61,7 @@ final class LoginRouter: LoginRouterType {
     }
     
     func routeToCreateAccountView() {
-        guard let createAccountRoute = self.routeProvider?.route(CreateAccountRouterType.self),
+        guard let createAccountRoute = self.appRouter?.route(CreateAccountRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected create account route to be registered w/ container")
@@ -72,7 +72,7 @@ final class LoginRouter: LoginRouterType {
     }
     
     func routeToError() {
-        guard let errorRoute = self.routeProvider?.route(ErrorRouterType.self),
+        guard let errorRoute = self.appRouter?.route(ErrorRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected error route to be registered w/ container")

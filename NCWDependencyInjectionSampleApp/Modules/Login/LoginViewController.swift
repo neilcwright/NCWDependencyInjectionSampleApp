@@ -20,6 +20,12 @@ final class LoginViewController:
     let presenter: LoginPresenterType
     
     // MARK: View elements
+    
+    fileprivate lazy var logoImageView: UIImageView = {
+        let logoImageView = UIImageView.newAutoLayout()
+        logoImageView.image = UIImage(named: "logo")
+        return logoImageView
+    }()
 
     fileprivate lazy var userNameLabel: UILabel = {
         let userNameLabel = UILabel.newAutoLayout()
@@ -164,6 +170,7 @@ extension LoginViewController: PrimaryButtonDelegate {
 private extension LoginViewController {
     
     func setupViews() {
+        self.view.addSubview(self.logoImageView)
         self.view.addSubview(self.userNameLabel)
         self.view.addSubview(self.userNameField)
         self.view.addSubview(self.emailLabel)
@@ -179,8 +186,15 @@ private extension LoginViewController {
 
         let verticalInteritemSpacing: CGFloat = 20
         NSLayoutConstraint.activate([
+            
+            // logo image view
+            self.logoImageView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
+            self.logoImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 4/10),
+            self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
+            self.logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
     
             // username label
+            self.userNameLabel.bottomAnchor.constraint(greaterThanOrEqualTo: self.logoImageView.bottomAnchor),
             self.userNameLabel.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 8/10),
             self.userNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             

@@ -58,7 +58,7 @@
 		8A61610C20D5CB53008E05E3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610B20D5CB53008E05E3 /* ContainerViewController.swift */; };
 		8A61610E20D5DDBE008E05E3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */; };
 		8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611120DEBB82008E05E3 /* RouteType.swift */; };
-		8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* RouteProvider.swift */; };
+		8A61611520DEBC0E008E05E3 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* AppRouter.swift */; };
 		8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */; };
 		8A61611920DF2357008E05E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611820DF2357008E05E3 /* InfoView.swift */; };
 		8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */; };
@@ -157,7 +157,7 @@
 		8A61610B20D5CB53008E05E3 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8A61611120DEBB82008E05E3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
-		8A61611420DEBC0E008E05E3 /* RouteProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteProvider.swift; sourceTree = "<group>"; };
+		8A61611420DEBC0E008E05E3 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
 		8A61611820DF2357008E05E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+NCW.swift"; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				8A6160D320D5B368008E05E3 /* UI */,
 				8A6160CE20D555FF008E05E3 /* properties.json */,
 				8A61609E20D4A27C008E05E3 /* AppDelegate.swift */,
-				8A61611420DEBC0E008E05E3 /* RouteProvider.swift */,
+				8A61611420DEBC0E008E05E3 /* AppRouter.swift */,
 				8A6160A520D4A27F008E05E3 /* Assets.xcassets */,
 				8A6160A720D4A27F008E05E3 /* LaunchScreen.storyboard */,
 				8A6160AA20D4A27F008E05E3 /* Info.plist */,
@@ -784,7 +784,7 @@
 				8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */,
 				8A07603720E9858900DF2311 /* LoginPresenter.swift in Sources */,
 				8A6160DE20D5B698008E05E3 /* HomeAssembly.swift in Sources */,
-				8A61611520DEBC0E008E05E3 /* RouteProvider.swift in Sources */,
+				8A61611520DEBC0E008E05E3 /* AppRouter.swift in Sources */,
 				8A6160ED20D5B94C008E05E3 /* DetailAssembly.swift in Sources */,
 				8A61609F20D4A27C008E05E3 /* AppDelegate.swift in Sources */,
 				8A67579320EC96800073F6BC /* ErrorViewController.swift in Sources */,

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Bootstrapped singleton that provides service types (ie. protocols) app wide.
     /// Held strongly here at app initialization and weakly by routers as the access
     /// point to the main application wireframe.
-    fileprivate var routeProvider: RouteProviderType?
+    fileprivate var appRouter: AppRouterType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -46,16 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
             
             // one route provider to govern them all
-            self.routeProvider = assembler.resolver.resolve(RouteProviderType.self)
-            self.routeProvider?.setAssembler(assembler)
+            self.appRouter = assembler.resolver.resolve(AppRouterType.self)
+            self.appRouter?.setAssembler(assembler)
             
             // route to root which is persistent as the base of an app during the entirety of application run.
-            let router = self.routeProvider?.route(RootRouterType.self)
+            let router = self.appRouter?.route(RootRouterType.self)
             
             // create our window display and load the root view into it
             let window = UIWindow(frame: UIScreen.main.bounds)
             self.window = router!.loadView(in: window)
-            self.window?.makeKeyAndVisible()
         } catch {
             print("unable to load properties")
         }

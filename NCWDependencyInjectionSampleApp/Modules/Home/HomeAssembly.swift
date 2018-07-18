@@ -19,7 +19,7 @@ class HomeAssembly: Assembly {
         }.initCompleted({
             resolver, homeRouter in
             
-            homeRouter.routeProvider = resolver.resolve(RouteProviderType.self)!
+            homeRouter.appRouter = resolver.resolve(AppRouterType.self)!
         }).inObjectScope(.weak)
 
         // presenter

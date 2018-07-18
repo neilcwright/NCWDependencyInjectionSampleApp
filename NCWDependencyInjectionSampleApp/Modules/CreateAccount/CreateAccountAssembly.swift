@@ -15,14 +15,14 @@ class CreateAccountAssembly: Assembly {
         container.register(CreateAccountRouterType.self) { resolver in
             return CreateAccountRouter()
         }.initCompleted({ resolver, router in
-            router.routeProvider = resolver.resolve(RouteProviderType.self)!
+            router.appRouter = resolver.resolve(AppRouterType.self)!
         }).inObjectScope(.weak)
         
         // presenter/router type
         container.register(CreateAccountPresenterToRouterType.self) { resolver in
             return resolver.resolve(CreateAccountRouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? CreateAccountRouterType)?.routeProvider = resolver.resolve(RouteProviderType.self)!
+            (router as? CreateAccountRouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
         })
         
         // data manager

@@ -15,7 +15,7 @@ protocol RouteType: class {
     static var url: String { get }
     
     // hold weakly
-    var routeProvider: RouteProviderType? { get set }
+    var appRouter: AppRouterType? { get set }
     
     /// Will hold the presented view controller of a given route.
     var presentedViewController: UIViewController? { get set }

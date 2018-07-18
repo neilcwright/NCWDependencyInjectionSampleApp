@@ -42,7 +42,7 @@ protocol ErrorPresenterToRouterType {
 
 final class ErrorRouter: ErrorRouterType {
     
-    weak var routeProvider: RouteProviderType?
+    weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
     
     fileprivate var context: ErrorContext?
@@ -53,7 +53,7 @@ final class ErrorRouter: ErrorRouterType {
 
     func loadView(fromViewController: UIViewController, withContext: ErrorContext = .generic(retryClosure: nil)) {
         self.context = withContext
-        guard let presentedViewController = self.routeProvider?.resolve(ErrorViewControllerType.self) as? UIViewController else {
+        guard let presentedViewController = self.appRouter?.resolve(ErrorViewControllerType.self) as? UIViewController else {
             assertionFailure("expected Error view controller type to be registered w/ container")
             return
         }

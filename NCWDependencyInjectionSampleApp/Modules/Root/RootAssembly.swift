@@ -16,14 +16,14 @@ class RootAssembly: Assembly {
         container.register(RootRouterType.self) { resolver in
             return RootRouter()
         }.initCompleted({ resolver, router in
-            router.routeProvider = resolver.resolve(RouteProviderType.self)!
+            router.appRouter = resolver.resolve(AppRouterType.self)!
         }).inObjectScope(.weak)
         
         // presenter->router type
         container.register(RootPresenterToRouterType.self) { resolver in
             return resolver.resolve(RootRouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? RootRouterType)?.routeProvider = resolver.resolve(RouteProviderType.self)!
+            (router as? RootRouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
         }).inObjectScope(.weak)
         
         // data manager

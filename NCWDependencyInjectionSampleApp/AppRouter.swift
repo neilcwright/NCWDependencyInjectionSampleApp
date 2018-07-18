@@ -10,7 +10,7 @@ import Swinject
 
 // MARK: Protocols
 
-protocol RouteProviderType: class {
+protocol AppRouterType: class {
     
     /// Handle to our assembler for resolving dependencies within container.
     var assembler: Assembler! { get set }
@@ -35,7 +35,7 @@ protocol RouteProviderType: class {
     func route<T>(_ route: T.Type) -> T?
 }
 
-class RouteProvider: RouteProviderType {
+class AppRouter: AppRouterType {
     
     // MARK: Auto-wired
     

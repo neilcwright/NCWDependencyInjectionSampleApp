@@ -37,26 +37,26 @@ protocol RootPresenterToRouterType {
 
 final class RootRouter: RootRouterType {
     
-    weak var routeProvider: RouteProviderType?
+    weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
     
     deinit {
         print("root router deinit")
     }
     
-    @discardableResult
     func loadView(in window: UIWindow) -> UIWindow {
-        guard let rootViewController = self.routeProvider?.resolve(RootViewControllerType.self) else {
+        guard let rootViewController = self.appRouter?.resolve(RootViewControllerType.self) else {
             assertionFailure("expected root view controller type to be registered w/ container")
             return window
         }
         window.rootViewController = rootViewController as? UIViewController
         self.presentedViewController = window.rootViewController
+        window.makeKeyAndVisible()
         return window
     }
     
     func routeToLogin() {
-        guard let loginRoute = self.routeProvider?.route(LoginRouterType.self),
+        guard let loginRoute = self.appRouter?.route(LoginRouterType.self),
             let presentedViewController = self.presentedViewController else {
             
             assertionFailure("expected login route to be provided")
@@ -67,7 +67,7 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToHome() {
-        guard let homeRoute = self.routeProvider?.route(HomeRouterType.self),
+        guard let homeRoute = self.appRouter?.route(HomeRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
             assertionFailure("expected home route to be provided")
@@ -78,7 +78,7 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToError() {
-        guard let errorRoute = self.routeProvider?.route(ErrorRouterType.self),
+        guard let errorRoute = self.appRouter?.route(ErrorRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
             assertionFailure("expected error route to be provided")

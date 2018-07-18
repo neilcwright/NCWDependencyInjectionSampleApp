@@ -27,7 +27,7 @@ protocol HomePresenterToRouterType {
 
 final class HomeRouter: HomeRouterType {
     
-    var routeProvider: RouteProviderType?
+    var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -35,7 +35,7 @@ final class HomeRouter: HomeRouterType {
     }
     
     func loadView(from viewController: UIViewController) {
-        guard let homeViewController = self.routeProvider?.resolve(HomeViewControllerType.self) as? UIViewController else {
+        guard let homeViewController = self.appRouter?.resolve(HomeViewControllerType.self) as? UIViewController else {
             
             assertionFailure("expected home view controller to be registered in container")
             return
@@ -46,7 +46,7 @@ final class HomeRouter: HomeRouterType {
     }
     
     func routeToDetailView() {
-        guard let detailRoute = self.routeProvider?.route(DetailRouterType.self),
+        guard let detailRoute = self.appRouter?.route(DetailRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected home route to be registered w/ container")
