@@ -30,7 +30,7 @@ protocol LoginPresenterToRouterType {
 
 // MARK: Classes
 
-final class LoginRouter: LoginRouterType {
+final class LoginRouter: NSObject, LoginRouterType {
 
     weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
@@ -45,6 +45,8 @@ final class LoginRouter: LoginRouterType {
             return
         }
         
+        presentedViewController.transitioningDelegate = self
+        presentedViewController.modalPresentationStyle = .custom
         fromViewController.present(presentedViewController, animated: true, completion: nil)
         self.presentedViewController = presentedViewController
     }
@@ -83,5 +85,21 @@ final class LoginRouter: LoginRouterType {
             fromViewController: presentedViewController,
             withContext: ErrorContext.generic(retryClosure: nil)
         )
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension LoginRouter: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return CrossDissolvePresentingAnimator()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CrossDissolveDismissingAnimator()
     }
 }

@@ -188,8 +188,8 @@ private extension LoginViewController {
         NSLayoutConstraint.activate([
             
             // logo image view
-            self.logoImageView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor),
-            self.logoImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 4/10),
+            self.logoImageView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 40),
+            self.logoImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 3.25/10),
             self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor),
             self.logoImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
     

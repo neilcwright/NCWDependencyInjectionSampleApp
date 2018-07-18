@@ -59,7 +59,7 @@
 		8A61610E20D5DDBE008E05E3 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */; };
 		8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611120DEBB82008E05E3 /* RouteType.swift */; };
 		8A61611520DEBC0E008E05E3 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611420DEBC0E008E05E3 /* AppRouter.swift */; };
-		8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */; };
+		8A61611720DEBEF3008E05E3 /* AppRouterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611620DEBEF3008E05E3 /* AppRouterAssembly.swift */; };
 		8A61611920DF2357008E05E3 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611820DF2357008E05E3 /* InfoView.swift */; };
 		8A61611B20DFF9F9008E05E3 /* UITraitCollection+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */; };
 		8A61612020E06BB3008E05E3 /* Root.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A61612220E06BB3008E05E3 /* Root.strings */; };
@@ -77,6 +77,8 @@
 		8A67579220EC96800073F6BC /* ErrorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67578B20EC96800073F6BC /* ErrorAssembly.swift */; };
 		8A67579320EC96800073F6BC /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67578C20EC96800073F6BC /* ErrorViewController.swift */; };
 		8A67579520EC96910073F6BC /* Error.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A67579420EC96910073F6BC /* Error.strings */; };
+		8AA93C0F20FEF64A00522A92 /* CrossDissolvePresentingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA93C0E20FEF64A00522A92 /* CrossDissolvePresentingAnimator.swift */; };
+		8AA93C1120FEF67C00522A92 /* CrossDissolveDismissingAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA93C1020FEF67C00522A92 /* CrossDissolveDismissingAnimator.swift */; };
 		8AD9F80820FA459200E30683 /* ViewModelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD9F80720FA459200E30683 /* ViewModelAssembly.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,7 +160,7 @@
 		8A61610D20D5DDBE008E05E3 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		8A61611120DEBB82008E05E3 /* RouteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteType.swift; sourceTree = "<group>"; };
 		8A61611420DEBC0E008E05E3 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderAssembly.swift; sourceTree = "<group>"; };
+		8A61611620DEBEF3008E05E3 /* AppRouterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouterAssembly.swift; sourceTree = "<group>"; };
 		8A61611820DF2357008E05E3 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+NCW.swift"; sourceTree = "<group>"; };
 		8A61612120E06BB3008E05E3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Root.strings; sourceTree = "<group>"; };
@@ -176,6 +178,8 @@
 		8A67578B20EC96800073F6BC /* ErrorAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAssembly.swift; sourceTree = "<group>"; };
 		8A67578C20EC96800073F6BC /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		8A67579420EC96910073F6BC /* Error.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Error.strings; sourceTree = "<group>"; };
+		8AA93C0E20FEF64A00522A92 /* CrossDissolvePresentingAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossDissolvePresentingAnimator.swift; sourceTree = "<group>"; };
+		8AA93C1020FEF67C00522A92 /* CrossDissolveDismissingAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossDissolveDismissingAnimator.swift; sourceTree = "<group>"; };
 		8AD9F80720FA459200E30683 /* ViewModelAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelAssembly.swift; sourceTree = "<group>"; };
 		937A559CFE5F9ECD817E6140 /* Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppTests/Pods-NCWDependencyInjectionSampleAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A9E61D0F6532965283167B47 /* Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NCWDependencyInjectionSampleAppUITests/Pods-NCWDependencyInjectionSampleAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				8A6160DA20D5B57C008E05E3 /* Assemblies */,
 				8A61610F20DEBB09008E05E3 /* Extensions */,
 				8A6160DB20D5B662008E05E3 /* Modules */,
+				8AA93C0C20FEF61400522A92 /* Presentations */,
 				8A6160FB20D5C126008E05E3 /* Services */,
 				8A6160D320D5B368008E05E3 /* UI */,
 				8A6160CE20D555FF008E05E3 /* properties.json */,
@@ -326,7 +331,7 @@
 			children = (
 				8A6160D820D5B573008E05E3 /* ModelAssembly.swift */,
 				8AD9F80720FA459200E30683 /* ViewModelAssembly.swift */,
-				8A61611620DEBEF3008E05E3 /* ProviderAssembly.swift */,
+				8A61611620DEBEF3008E05E3 /* AppRouterAssembly.swift */,
 				8A6160CC20D4DEA8008E05E3 /* ServiceAssembly.swift */,
 			);
 			path = Assemblies;
@@ -429,6 +434,23 @@
 				8A67579420EC96910073F6BC /* Error.strings */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		8AA93C0C20FEF61400522A92 /* Presentations */ = {
+			isa = PBXGroup;
+			children = (
+				8AA93C0D20FEF62D00522A92 /* CrossDissolve */,
+			);
+			path = Presentations;
+			sourceTree = "<group>";
+		};
+		8AA93C0D20FEF62D00522A92 /* CrossDissolve */ = {
+			isa = PBXGroup;
+			children = (
+				8AA93C0E20FEF64A00522A92 /* CrossDissolvePresentingAnimator.swift */,
+				8AA93C1020FEF67C00522A92 /* CrossDissolveDismissingAnimator.swift */,
+			);
+			path = CrossDissolve;
 			sourceTree = "<group>";
 		};
 		A90F4ADA8A81D30A26A65601 /* Pods */ = {
@@ -775,14 +797,16 @@
 				8A32651C20F2860800747237 /* CreateAccountDataManager.swift in Sources */,
 				8A32651E20F2860800747237 /* CreateAccountViewController.swift in Sources */,
 				8A67579220EC96800073F6BC /* ErrorAssembly.swift in Sources */,
+				8AA93C1120FEF67C00522A92 /* CrossDissolveDismissingAnimator.swift in Sources */,
 				8A6160EA20D5B744008E05E3 /* HomePresenter.swift in Sources */,
-				8A61611720DEBEF3008E05E3 /* ProviderAssembly.swift in Sources */,
+				8A61611720DEBEF3008E05E3 /* AppRouterAssembly.swift in Sources */,
 				8A67578D20EC96800073F6BC /* ErrorInteractor.swift in Sources */,
 				8A32651B20F2860800747237 /* CreateAccountInteractor.swift in Sources */,
 				8A32651A20F2860800747237 /* CreateAccountLocalization.swift in Sources */,
 				8A6160D920D5B573008E05E3 /* ModelAssembly.swift in Sources */,
 				8A61611220DEBB82008E05E3 /* RouteType.swift in Sources */,
 				8A07603720E9858900DF2311 /* LoginPresenter.swift in Sources */,
+				8AA93C0F20FEF64A00522A92 /* CrossDissolvePresentingAnimator.swift in Sources */,
 				8A6160DE20D5B698008E05E3 /* HomeAssembly.swift in Sources */,
 				8A61611520DEBC0E008E05E3 /* AppRouter.swift in Sources */,
 				8A6160ED20D5B94C008E05E3 /* DetailAssembly.swift in Sources */,

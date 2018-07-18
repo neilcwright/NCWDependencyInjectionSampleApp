@@ -29,7 +29,7 @@ protocol CreateAccountPresenterToRouterType {
 
 // MARK: Classes
 
-final class CreateAccountRouter: CreateAccountRouterType {
+final class CreateAccountRouter: NSObject, CreateAccountRouterType {
     
     weak var appRouter: AppRouterType?
     weak var presentedViewController: UIViewController?
@@ -44,6 +44,8 @@ final class CreateAccountRouter: CreateAccountRouterType {
             return
         }
         
+        presentedViewController.transitioningDelegate = self
+        presentedViewController.modalPresentationStyle = .custom
         fromViewController.present(presentedViewController, animated: true, completion: nil)
         self.presentedViewController = presentedViewController
     }
@@ -72,5 +74,19 @@ final class CreateAccountRouter: CreateAccountRouterType {
             fromViewController: presentedViewController,
             withContext: ErrorContext.generic(retryClosure: nil)
         )
+    }
+}
+
+// MARK: UIViewControllerTransitioningDelegate
+extension CreateAccountRouter: UIViewControllerTransitioningDelegate {
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return CrossDissolvePresentingAnimator()
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CrossDissolveDismissingAnimator()
     }
 }

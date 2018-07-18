@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             // load our container assemblies that will register their service types to container
             let assembler = try Assembler(assemblies: [
-                ProviderAssembly(),
+                AppRouterAssembly(),
                 ModelAssembly(),
                 ViewModelAssembly(),
                 CreateAccountAssembly(),
