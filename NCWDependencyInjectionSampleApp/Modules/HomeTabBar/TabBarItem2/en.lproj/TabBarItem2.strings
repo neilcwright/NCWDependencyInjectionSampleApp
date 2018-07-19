@@ -1,0 +1,11 @@
+/* 
+  TabBarItem2.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 7/18/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"tab.bar.item.2.title.text" = "Item 2";
+"tab.bar.item.2.info.view.header.text" = "Item 2";
+"tab.bar.item.2.info.view.description.text" = "Sample description text for item 2";
+"tab.bar.item.2.info.view.primary.button.text" = "Test me";

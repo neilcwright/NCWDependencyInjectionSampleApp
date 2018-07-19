@@ -8,6 +8,14 @@
 
 import UIKit
 
+/// Localization protocol for module views featuring info view instances localization objects to conform to
+protocol InfoViewLocalizable {
+    static var headerText: String { get }
+    static var descriptionText: String { get }
+    static var primaryButtonText: String { get }
+}
+
+/// Model protocol for an info view.
 protocol InfoViewModelType {
     var headerText: String { get set }
     var descriptionText: String { get set }

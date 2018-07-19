@@ -21,6 +21,9 @@ protocol LoginPresenterToRouterType {
     /// Will request router to route to home view.
     func routeToHomeView()
     
+    /// Will request router to route to home tab bar view.
+    func routeToHomeTabBarView()
+    
     /// Will request the create account view and route to it.
     func routeToCreateAccountView()
     
@@ -60,6 +63,17 @@ final class LoginRouter: NSObject, LoginRouterType {
         }
         
         homeRoute.loadView(from: presentedViewController)
+    }
+    
+    func routeToHomeTabBarView() {
+        guard let homeTabBarRoute = self.appRouter?.route(HomeTabBarRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+            assertionFailure("expected home tab bar route to be registered w/ container")
+            return
+        }
+
+        homeTabBarRoute.loadView(fromViewController: presentedViewController)
     }
     
     func routeToCreateAccountView() {

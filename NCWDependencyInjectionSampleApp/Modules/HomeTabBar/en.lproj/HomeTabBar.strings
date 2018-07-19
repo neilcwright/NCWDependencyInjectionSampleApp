@@ -1,0 +1,9 @@
+/* 
+  HomeTabBar.strings
+  NCWDependencyInjectionSampleApp
+
+  Created by Neil Wright on 7/18/18.
+  Copyright © 2018 Neil Wright. All rights reserved.
+*/
+"home.tab.bar.view.tab.item.1.title" = "Home";
+"home.tab.bar.view.tab.item.2.title" = "Detail";
