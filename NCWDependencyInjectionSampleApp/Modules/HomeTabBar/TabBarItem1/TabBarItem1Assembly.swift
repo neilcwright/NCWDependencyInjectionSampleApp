@@ -15,14 +15,14 @@ class TabBarItem1Assembly: Assembly {
         container.register(TabBarItem1RouterType.self) { resolver in
             return TabBarItem1Router()
         }.initCompleted({ resolver, router in
-            router.appRouter = resolver.resolve(AppRouterType.self)!
+            router.wireframe = resolver.resolve(WireframeType.self)!
         }).inObjectScope(.weak)
         
         // presenter/router type
         container.register(TabBarItem1PresenterToRouterType.self) { resolver in
             return resolver.resolve(TabBarItem1RouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? TabBarItem1RouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
+            (router as? TabBarItem1RouterType)?.wireframe = resolver.resolve(WireframeType.self)!
         })
         
         // data manager

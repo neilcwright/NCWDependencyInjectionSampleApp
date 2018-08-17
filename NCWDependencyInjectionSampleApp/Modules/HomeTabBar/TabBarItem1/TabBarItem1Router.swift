@@ -23,7 +23,7 @@ protocol TabBarItem1PresenterToRouterType {
 
 final class TabBarItem1Router: TabBarItem1RouterType {
     
-    weak var appRouter: AppRouterType?
+    weak var wireframe: WireframeType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -31,7 +31,7 @@ final class TabBarItem1Router: TabBarItem1RouterType {
     }
 
     func loadView(fromViewController: UIViewController) {
-        guard let presentedViewController = self.appRouter?.resolve(TabBarItem1ViewControllerType.self) as? UIViewController else {
+        guard let presentedViewController = self.wireframe?.resolve(TabBarItem1ViewControllerType.self) as? UIViewController else {
             assertionFailure("expected TabBarItem1 view controller type to be registered w/ container")
             return
         }

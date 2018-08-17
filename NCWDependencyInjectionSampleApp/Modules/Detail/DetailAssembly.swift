@@ -42,7 +42,7 @@ class DetailAssembly: Assembly {
         container.register(DetailRouterType.self) { resolver in
             return DetailRouter()
             }.initCompleted({ resolver, router in
-                router.appRouter = resolver.resolve(AppRouterType.self)!
+                router.wireframe = resolver.resolve(WireframeType.self)!
             }).inObjectScope(.weak)
         
         // view controller

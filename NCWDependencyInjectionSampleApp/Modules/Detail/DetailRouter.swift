@@ -28,7 +28,7 @@ protocol DetailRouterType: RouteType {
 
 final class DetailRouter: DetailRouterType {
     
-    var appRouter: AppRouterType?
+    var wireframe: WireframeType?
     var presenter: DetailPresenterType!
     weak var presentedViewController: UIViewController?
 
@@ -37,7 +37,7 @@ final class DetailRouter: DetailRouterType {
     }
     
     func loadView(from viewController: UIViewController) {
-        guard let detailViewController = self.appRouter?.resolve(DetailViewControllerType.self) as? UIViewController else {
+        guard let detailViewController = self.wireframe?.resolve(DetailViewControllerType.self) as? UIViewController else {
             assertionFailure("expected detail view controller to be provided")
             return
         }

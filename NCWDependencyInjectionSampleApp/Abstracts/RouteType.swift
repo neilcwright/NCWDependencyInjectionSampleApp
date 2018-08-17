@@ -12,7 +12,7 @@ import UIKit
 protocol RouteType: class {
 
     // hold weakly
-    var appRouter: AppRouterType? { get set }
+    var wireframe: WireframeType? { get set }
     
     /// Will hold the presented view controller of a given route.
     var presentedViewController: UIViewController? { get set }

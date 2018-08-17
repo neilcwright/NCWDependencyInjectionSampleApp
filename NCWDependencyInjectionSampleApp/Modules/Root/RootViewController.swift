@@ -10,10 +10,13 @@ import UIKit
 
 // MARK: Inbound protocol interface
 protocol RootViewControllerType: class {
-    
+    func redetermineInitialFlow()
 }
 
-final class RootViewController: UIViewController, RootViewControllerType, RootPresenterToViewType {
+final class RootViewController:
+    UIViewController,
+    RootViewControllerType,
+    RootPresenterToViewType {
     
     fileprivate let presenter: RootPresenterType
     
@@ -57,6 +60,12 @@ final class RootViewController: UIViewController, RootViewControllerType, RootPr
         self.view.backgroundColor = .gray
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("viewWillAppear")
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -67,4 +76,11 @@ final class RootViewController: UIViewController, RootViewControllerType, RootPr
         self.headerLabel.autoCenterInSuperview()
         super.updateViewConstraints()
     }
+    
+    // MARK: RootPresenterToViewType
+    
+    func redetermineInitialFlow() {
+        self.presenter.determineInitialView()
+    }
 }
+

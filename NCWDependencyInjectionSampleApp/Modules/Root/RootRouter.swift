@@ -19,6 +19,8 @@ protocol RootRouterType: RouteType, RootPresenterToRouterType {
     /// - Parameter window: the window that we'll load view into.
     /// - Returns: the loaded window.
     func loadView(in window: UIWindow) -> UIWindow
+    
+    func redetermineInitialView()
 }
 
 protocol RootPresenterToRouterType {
@@ -37,7 +39,7 @@ protocol RootPresenterToRouterType {
 
 final class RootRouter: RootRouterType {
     
-    weak var appRouter: AppRouterType?
+    weak var wireframe: WireframeType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -45,7 +47,7 @@ final class RootRouter: RootRouterType {
     }
     
     func loadView(in window: UIWindow) -> UIWindow {
-        guard let rootViewController = self.appRouter?.resolve(RootViewControllerType.self) else {
+        guard let rootViewController = self.wireframe?.resolve(RootViewControllerType.self) else {
             assertionFailure("expected root view controller type to be registered w/ container")
             return window
         }
@@ -56,7 +58,7 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToLogin() {
-        guard let loginRoute = self.appRouter?.route(LoginRouterType.self),
+        guard let loginRoute = self.wireframe?.route(LoginRouterType.self),
             let presentedViewController = self.presentedViewController else {
             
             assertionFailure("expected login route to be provided")
@@ -67,7 +69,7 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToHome() {
-        guard let homeRoute = self.appRouter?.route(HomeRouterType.self),
+        guard let homeRoute = self.wireframe?.route(HomeRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
             assertionFailure("expected home route to be provided")
@@ -78,7 +80,7 @@ final class RootRouter: RootRouterType {
     }
     
     func routeToError() {
-        guard let errorRoute = self.appRouter?.route(ErrorRouterType.self),
+        guard let errorRoute = self.wireframe?.route(ErrorRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
             assertionFailure("expected error route to be provided")
@@ -91,5 +93,9 @@ final class RootRouter: RootRouterType {
                 print("TODO run logic for retrying")
             })
         )
+    }
+    
+    func redetermineInitialView() {
+        (self.presentedViewController as? RootViewController)?.redetermineInitialFlow()
     }
 }

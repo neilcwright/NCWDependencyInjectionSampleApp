@@ -35,7 +35,7 @@ protocol LoginPresenterToRouterType {
 
 final class LoginRouter: NSObject, LoginRouterType {
 
-    weak var appRouter: AppRouterType?
+    weak var wireframe: WireframeType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -43,7 +43,7 @@ final class LoginRouter: NSObject, LoginRouterType {
     }
 
     func loadView(fromViewController: UIViewController) {
-        guard let presentedViewController = self.appRouter?.resolve(LoginViewControllerType.self) as? UIViewController else {
+        guard let presentedViewController = self.wireframe?.resolve(LoginViewControllerType.self) as? UIViewController else {
             assertionFailure("expected Login view controller type to be registered w/ container")
             return
         }
@@ -55,18 +55,27 @@ final class LoginRouter: NSObject, LoginRouterType {
     }
     
     func routeToHomeView() {
-        guard let homeRoute = self.appRouter?.route(HomeRouterType.self),
-            let presentedViewController = self.presentedViewController else {
-                
-                assertionFailure("expected home route to be registered w/ container")
-                return
+        // test code
+        guard let rootViewController = self.wireframe?.route(RootRouterType.self)?.presentedViewController as? RootViewController else {
+            return
         }
+        rootViewController.dismiss(animated: true, completion: {
+            rootViewController.redetermineInitialFlow()
+        })
+        return
         
-        homeRoute.loadView(from: presentedViewController)
+//        guard let homeRoute = self.wireframe?.route(HomeRouterType.self),
+//            let presentedViewController = self.presentedViewController else {
+//                
+//                assertionFailure("expected home route to be registered w/ container")
+//                return
+//        }
+//        
+//        homeRoute.loadView(from: presentedViewController)
     }
     
     func routeToHomeTabBarView() {
-        guard let homeTabBarRoute = self.appRouter?.route(HomeTabBarRouterType.self),
+        guard let homeTabBarRoute = self.wireframe?.route(HomeTabBarRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
             assertionFailure("expected home tab bar route to be registered w/ container")
@@ -77,7 +86,7 @@ final class LoginRouter: NSObject, LoginRouterType {
     }
     
     func routeToCreateAccountView() {
-        guard let createAccountRoute = self.appRouter?.route(CreateAccountRouterType.self),
+        guard let createAccountRoute = self.wireframe?.route(CreateAccountRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected create account route to be registered w/ container")
@@ -88,7 +97,7 @@ final class LoginRouter: NSObject, LoginRouterType {
     }
     
     func routeToError() {
-        guard let errorRoute = self.appRouter?.route(ErrorRouterType.self),
+        guard let errorRoute = self.wireframe?.route(ErrorRouterType.self),
             let presentedViewController = self.presentedViewController else {
                 
                 assertionFailure("expected error route to be registered w/ container")

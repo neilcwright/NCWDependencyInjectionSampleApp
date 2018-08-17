@@ -23,7 +23,7 @@ protocol HomeTabBarPresenterToRouterType {
 
 final class HomeTabBarRouter: HomeTabBarRouterType {
     
-    weak var appRouter: AppRouterType?
+    weak var wireframe: WireframeType?
     weak var presentedViewController: UIViewController?
     
     deinit {
@@ -31,22 +31,27 @@ final class HomeTabBarRouter: HomeTabBarRouterType {
     }
 
     func loadView(fromViewController: UIViewController) {
-        guard let presentedViewController = self.appRouter?.resolve(HomeTabBarViewControllerType.self) as? UITabBarController else {
+        guard let presentedViewController = self.wireframe?.resolve(HomeTabBarViewControllerType.self) as? UITabBarController else {
             assertionFailure("expected HomeTabBar view controller type to be registered w/ container")
             return
         }
         
-        guard let tabBarItem1VC = self.appRouter?.route(TabBarItem1ViewControllerType.self) as? UIViewController else {
+        guard let tabBarItem1VC = self.wireframe?.route(TabBarItem1ViewControllerType.self) as? UIViewController else {
             assertionFailure("expected tab bar item 1 vc to be registered w/ container")
             return
         }
         
-        guard let tabBarItem2VC = self.appRouter?.route(TabBarItem2ViewControllerType.self) as? UIViewController else {
+        guard let tabBarItem2VC = self.wireframe?.route(TabBarItem2ViewControllerType.self) as? UIViewController else {
             assertionFailure("expected tab bar item 2 vc to be registered w/ container")
             return
         }
         
-        presentedViewController.viewControllers = [tabBarItem1VC, tabBarItem2VC]
+        guard let tabBarItem3VC = self.wireframe?.route(TabBarItem3ViewControllerType.self) as? UIViewController else {
+            assertionFailure("expected tab bar item 3 vc to be registered w/ container")
+            return
+        }
+        
+        presentedViewController.viewControllers = [tabBarItem1VC, tabBarItem2VC, tabBarItem3VC]
         
         fromViewController.present(presentedViewController, animated: true, completion: nil)
         self.presentedViewController = presentedViewController

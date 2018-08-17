@@ -10,7 +10,7 @@ import Swinject
 
 // MARK: Protocols
 
-protocol AppRouterType: class {
+protocol WireframeType: class {
     
     /// Handle to our assembler for resolving dependencies within container.
     var assembler: Assembler! { get set }
@@ -35,13 +35,13 @@ protocol AppRouterType: class {
     func route<T>(_ route: T.Type) -> T?
 }
 
-class AppRouter: AppRouterType {
+class Wireframe: WireframeType {
     
     // MARK: Auto-wired
     
     var assembler: Assembler!
         
-    // MARK: RouteProviderType
+    // MARK: WireframeType
 
     func route<T>(_ route: T.Type) -> T? {
         if let routeAtUrl = self.assembler.resolver.resolve(route) {

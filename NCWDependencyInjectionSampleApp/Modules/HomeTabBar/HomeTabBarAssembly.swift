@@ -15,14 +15,14 @@ class HomeTabBarAssembly: Assembly {
         container.register(HomeTabBarRouterType.self) { resolver in
             return HomeTabBarRouter()
         }.initCompleted({ resolver, router in
-            router.appRouter = resolver.resolve(AppRouterType.self)!
+            router.wireframe = resolver.resolve(WireframeType.self)!
         }).inObjectScope(.weak)
         
         // presenter/router type
         container.register(HomeTabBarPresenterToRouterType.self) { resolver in
             return resolver.resolve(HomeTabBarRouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? HomeTabBarRouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
+            (router as? HomeTabBarRouterType)?.wireframe = resolver.resolve(WireframeType.self)!
         })
         
         // data manager

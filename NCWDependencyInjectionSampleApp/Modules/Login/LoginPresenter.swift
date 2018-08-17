@@ -63,8 +63,8 @@ final class LoginPresenter: LoginPresenterType {
 // (Outbound) Interface for receiving the interactor's events.
 extension LoginPresenter: LoginInteractorPresenterType {
     func loginSucceeded() {
-        self.router?.routeToHomeTabBarView()
-        //self.router?.routeToHomeView()
+        //self.router?.routeToHomeTabBarView()
+        self.router?.routeToHomeView()
     }
     
     func loginFailed() {

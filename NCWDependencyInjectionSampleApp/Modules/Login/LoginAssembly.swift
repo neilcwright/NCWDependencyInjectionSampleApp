@@ -15,14 +15,14 @@ class LoginAssembly: Assembly {
         container.register(LoginRouterType.self) { resolver in
             return LoginRouter()
         }.initCompleted({ resolver, router in
-            router.appRouter = resolver.resolve(AppRouterType.self)!
+            router.wireframe = resolver.resolve(WireframeType.self)!
         }).inObjectScope(.weak)
         
         // presenter/router type
         container.register(LoginPresenterToRouterType.self) { resolver in
             return resolver.resolve(LoginRouterType.self)!
         }.initCompleted({ resolver, router in
-            (router as? LoginRouterType)?.appRouter = resolver.resolve(AppRouterType.self)!
+            (router as? LoginRouterType)?.wireframe = resolver.resolve(WireframeType.self)!
         })
         
         // data manager

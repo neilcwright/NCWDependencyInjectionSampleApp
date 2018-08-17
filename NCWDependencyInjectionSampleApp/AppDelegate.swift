@@ -18,14 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// Bootstrapped singleton that provides service types (ie. protocols) app wide.
     /// Held strongly here at app initialization and weakly by routers as the access
     /// point to the main application wireframe.
-    fileprivate var appRouter: AppRouterType?
+    fileprivate var wireframe: WireframeType?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         do {
             // load our container assemblies that will register their service types to container
             let assembler = try Assembler(assemblies: [
-                AppRouterAssembly(),
+                WireframeAssembly(),
                 ModelAssembly(),
                 ViewModelAssembly(),
                 CreateAccountAssembly(),
@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 HomeTabBarAssembly(),
                 TabBarItem1Assembly(),
                 TabBarItem2Assembly(),
+                TabBarItem3Assembly(),
                 DetailAssembly(),
                 RootAssembly(),
                 ServiceAssembly(),
@@ -48,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 )
             )
             
-            // one route provider to govern them all
-            self.appRouter = assembler.resolver.resolve(AppRouterType.self)
-            self.appRouter?.setAssembler(assembler)
+            // one wireframe provided to all routes
+            self.wireframe = assembler.resolver.resolve(WireframeType.self)
+            self.wireframe?.setAssembler(assembler)
             
             // route to root which is persistent as the base of an app during the entirety of application run.
-            let router = self.appRouter?.route(RootRouterType.self)
+            let router = self.wireframe?.route(RootRouterType.self)
             
             // create our window display and load the root view into it
             let window = UIWindow(frame: UIScreen.main.bounds)
