@@ -8,34 +8,6 @@
 
 import Foundation
 
-// MARK: Models
-
-fileprivate enum ServiceEndpoint {
-    case login
-    case createAccount
-    
-    var path: String {
-        switch self {
-        case .login:
-            return "login"
-        case .createAccount:
-            return "create_account"
-        }
-    }
-}
-
-struct LoginCredentials: LoginRequestType {
-    var username: String
-    var email: String
-    var password: String
-}
-
-struct AccountRequest {
-    let username: String
-    let email: String
-    let password: String
-}
-
 protocol AccountServiceType: class {
     
     /// Will login user if credentials are valid; otherwise will return a failure.
@@ -82,7 +54,7 @@ final class AccountService: AccountServiceType {
             }
             return
         }
-        guard let url = URL(string: ServiceEndpoint.login.path, relativeTo: baseUrl) else {
+        guard let url = URL(string: ServiceEndpoint.login.relativePath, relativeTo: baseUrl) else {
             DispatchQueue.main.async {
                 failure()
             }
@@ -141,7 +113,7 @@ final class AccountService: AccountServiceType {
         }
         
         guard let createAccountUrl = URL(
-            string: ServiceEndpoint.createAccount.path,
+            string: ServiceEndpoint.createAccount.relativePath,
             relativeTo: baseUrl
         ) else {
             assertionFailure("expect create account url to be set")
