@@ -12,7 +12,7 @@ import SwinjectPropertyLoader
 class ViewModelAssembly: Assembly {
     func assemble(container: Container) {
         
-        // PrimaryButtonViewModel
+        // MARK: PrimaryButtonModelType
         container.register(PrimaryButtonModelType.self) { resolver in
             return PrimaryButtonViewModel(
                 cornerRadius: resolver.property("primary_button.corner_radius")!,
@@ -21,7 +21,7 @@ class ViewModelAssembly: Assembly {
             )
         }
         
-        // models
+        // MARK: InfoViewModelType
         container.register(InfoViewModelType.self) { resolver, headerText, descriptionText, imageName, primaryButtonText in
             return InfoViewModel(
                 headerText: headerText,

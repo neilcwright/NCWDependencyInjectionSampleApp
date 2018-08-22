@@ -14,10 +14,8 @@ class RootAssembly: Assembly {
         
         // router type
         container.register(RootRouterType.self) { resolver in
-            return RootRouter()
-        }.initCompleted({ resolver, router in
-            router.wireframe = resolver.resolve(WireframeType.self)!
-        }).inObjectScope(.weak)
+            return RootRouter(wireframe: resolver.resolve(WireframeType.self)!)
+        }.inObjectScope(.weak)
         
         // presenter->router type
         container.register(RootPresenterToRouterType.self) { resolver in

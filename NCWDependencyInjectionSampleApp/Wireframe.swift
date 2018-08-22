@@ -12,11 +12,12 @@ import Swinject
 
 protocol WireframeType: class {
     
-    /// Handle to our assembler for resolving dependencies within container.
+    /// Handle to our assembler for resolving our system's type dependencies within container.
+    /// (should hold it strongly)
     var assembler: Assembler! { get set }
     
     /// Property injection method so our route provider shared instance has access to our assembler
-    /// for container resolution of dependencies. This will set `assembler` property and hold it strongly.
+    /// for container resolution of type dependencies. This will set `assembler` property.
     ///
     /// - Parameter assembler: the assembler to which we'll resolve our dependencies within container.
     func setAssembler(_ assembler: Assembler)
@@ -37,8 +38,8 @@ protocol WireframeType: class {
 
 class Wireframe: WireframeType {
     
-    // MARK: Auto-wired
-    
+    /// Should be set via method injection `setAssembler` before we attempt
+    /// to resolve initial router type -`RootRouterType`.
     var assembler: Assembler!
         
     // MARK: WireframeType

@@ -46,6 +46,10 @@ final class RootRouter: RootRouterType {
         print("root router deinit")
     }
     
+    init(wireframe: WireframeType? = nil) {
+        self.wireframe = wireframe
+    }
+    
     func loadView(in window: UIWindow) -> UIWindow {
         guard let rootViewController = self.wireframe?.resolve(RootViewControllerType.self) else {
             assertionFailure("expected root view controller type to be registered w/ container")

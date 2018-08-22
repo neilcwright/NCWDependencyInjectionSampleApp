@@ -19,10 +19,10 @@ protocol DetailViewControllerDelegate: class {
 
 final class DetailViewController: UIViewController, DetailViewControllerType {
     
-    fileprivate let presenter: DetailPresenterType
-    fileprivate let infoViewModel: InfoViewModelType
+    private let presenter: DetailPresenterType
+    private let infoViewModel: InfoViewModelType
     
-    fileprivate lazy var infoView: InfoView = {
+    private lazy var infoView: InfoView = {
         let infoView = InfoView(
             viewModel: self.infoViewModel,
             viewDelegate: self

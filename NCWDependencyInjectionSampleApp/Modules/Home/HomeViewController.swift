@@ -24,19 +24,19 @@ protocol HomeViewControllerType: class {
 
 final class HomeViewController: UIViewController, HomeViewControllerType {
     
-    let presenter: HomePresenterType
-    let viewModel: HomeViewModelType
+    private let presenter: HomePresenterType
+    private let viewModel: HomeViewModelType
     
     // MARK: View elements
     
-    fileprivate lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView.newAutoLayout()
         return scrollView
     }()
     
-    fileprivate lazy var scrollContentView: UIView = UIView.newAutoLayout()
+    private lazy var scrollContentView: UIView = UIView.newAutoLayout()
     
-    fileprivate lazy var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let closeButton = UIButton.newAutoLayout()
         closeButton.setImage(
             UIImage(named: "close"),
@@ -46,7 +46,7 @@ final class HomeViewController: UIViewController, HomeViewControllerType {
         return closeButton
     }()
     
-    fileprivate lazy var infoView: InfoView = {
+    private lazy var infoView: InfoView = {
         let infoView = InfoView(
             viewModel: self.viewModel.infoViewModel,
             viewDelegate: self

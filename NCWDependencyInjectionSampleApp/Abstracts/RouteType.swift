@@ -8,10 +8,10 @@
 import UIKit
 
 /// Generic route type protocol that all routers conform to.
-/// Allows us to query route url on class directly w/o instance.
 protocol RouteType: class {
 
-    // hold weakly
+    // The wireframe object allows routers to access other routers at runtime.
+    // (should be held weakly by conforming class)
     var wireframe: WireframeType? { get set }
     
     /// Will hold the presented view controller of a given route.

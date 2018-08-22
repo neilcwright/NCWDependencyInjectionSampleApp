@@ -17,17 +17,17 @@ final class LoginViewController:
     LoginViewControllerType,
     LoginPresenterToViewType {
     
-    let presenter: LoginPresenterType
+    private let presenter: LoginPresenterType
     
     // MARK: View elements
     
-    fileprivate lazy var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         let logoImageView = UIImageView.newAutoLayout()
         logoImageView.image = UIImage(named: "logo")
         return logoImageView
     }()
 
-    fileprivate lazy var userNameLabel: UILabel = {
+    private lazy var userNameLabel: UILabel = {
         let userNameLabel = UILabel.newAutoLayout()
         userNameLabel.numberOfLines = 0
         userNameLabel.lineBreakMode = .byWordWrapping
@@ -36,7 +36,7 @@ final class LoginViewController:
         return userNameLabel
     }()
     
-    fileprivate lazy var userNameField: SimpleFormTextField = {
+    private lazy var userNameField: SimpleFormTextField = {
         let userNameField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         userNameField.autocorrectionType = .no
         userNameField.layer.applyFormFieldStyle()
@@ -45,7 +45,7 @@ final class LoginViewController:
         return userNameField
     }()
     
-    fileprivate lazy var emailLabel: UILabel = {
+    private lazy var emailLabel: UILabel = {
         let emailLabel = UILabel.newAutoLayout()
         emailLabel.text = LoginLocalization.emailLabel
         emailLabel.numberOfLines = 0
@@ -54,7 +54,7 @@ final class LoginViewController:
         return emailLabel
     }()
     
-    fileprivate lazy var emailField: SimpleFormTextField = {
+    private lazy var emailField: SimpleFormTextField = {
         let emailField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         emailField.autocorrectionType = .no
         emailField.layer.applyFormFieldStyle()
@@ -62,7 +62,7 @@ final class LoginViewController:
         return emailField
     }()
     
-    fileprivate lazy var passwordLabel: UILabel = {
+    private lazy var passwordLabel: UILabel = {
         let passwordLabel = UILabel.newAutoLayout()
         passwordLabel.numberOfLines = 0
         passwordLabel.lineBreakMode = .byWordWrapping
@@ -71,14 +71,14 @@ final class LoginViewController:
         return passwordLabel
     }()
     
-    fileprivate lazy var passwordField: SimpleFormTextField = {
+    private lazy var passwordField: SimpleFormTextField = {
         let passwordField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         passwordField.isSecureTextEntry = true
         passwordField.layer.applyFormFieldStyle()
         return passwordField
     }()
     
-    fileprivate lazy var submitButton: PrimaryButton = {
+    private lazy var submitButton: PrimaryButton = {
         let submitButton = PrimaryButton(
             viewModel: PrimaryButtonViewModel(
                 cornerRadius: 5,
@@ -94,7 +94,7 @@ final class LoginViewController:
         return submitButton
     }()
     
-    fileprivate lazy var createAccountButton: PrimaryButton = {
+    private lazy var createAccountButton: PrimaryButton = {
         let createAccountButton = PrimaryButton(
             viewModel: PrimaryButtonViewModel(
                 cornerRadius: 5,
@@ -108,7 +108,7 @@ final class LoginViewController:
         return createAccountButton
     }()
     
-    fileprivate var didApplyConstraints: Bool = false
+    private var didApplyConstraints: Bool = false
 
     // MARK: Initializers
     

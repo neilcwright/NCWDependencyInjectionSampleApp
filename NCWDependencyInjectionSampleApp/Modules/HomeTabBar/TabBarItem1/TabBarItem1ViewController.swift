@@ -17,7 +17,7 @@ final class TabBarItem1ViewController:
     TabBarItem1ViewControllerType,
     TabBarItem1PresenterToViewType {
     
-    let presenter: TabBarItem1PresenterType
+    private let presenter: TabBarItem1PresenterType
     
     // MARK: View elements
     

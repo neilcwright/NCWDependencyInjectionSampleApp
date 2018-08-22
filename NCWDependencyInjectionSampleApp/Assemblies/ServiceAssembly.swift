@@ -11,7 +11,8 @@ import SwinjectPropertyLoader
 
 class ServiceAssembly: Assembly {
     func assemble(container: Container) {
-        // example service
+        
+        // MARK: - AccountServiceType
         container.register(AccountServiceType.self) { resolver in
             return AccountService(baseUrl: resolver.property("base_url")!)
         }

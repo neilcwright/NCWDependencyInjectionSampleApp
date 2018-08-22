@@ -13,10 +13,8 @@ class LoginAssembly: Assembly {
         
         // router type
         container.register(LoginRouterType.self) { resolver in
-            return LoginRouter()
-        }.initCompleted({ resolver, router in
-            router.wireframe = resolver.resolve(WireframeType.self)!
-        }).inObjectScope(.weak)
+            return LoginRouter(wireframe: resolver.resolve(WireframeType.self)!)
+        }.inObjectScope(.weak)
         
         // presenter/router type
         container.register(LoginPresenterToRouterType.self) { resolver in

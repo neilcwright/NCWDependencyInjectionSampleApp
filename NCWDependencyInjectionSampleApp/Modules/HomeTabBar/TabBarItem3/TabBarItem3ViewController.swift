@@ -17,9 +17,7 @@ final class TabBarItem3ViewController:
     TabBarItem3ViewControllerType,
     TabBarItem3PresenterToViewType {
     
-    let presenter: TabBarItem3PresenterType
-    
-    private var didSetConstraints: Bool = false
+    private let presenter: TabBarItem3PresenterType
     
     // MARK: View elements
     
@@ -36,6 +34,8 @@ final class TabBarItem3ViewController:
         infoView.translatesAutoresizingMaskIntoConstraints = false
         return infoView
     }()
+    
+    private var didSetConstraints: Bool = false
 
     // MARK: Initializers
     

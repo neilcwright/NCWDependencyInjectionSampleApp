@@ -28,7 +28,7 @@ protocol DetailRouterType: RouteType {
 
 final class DetailRouter: DetailRouterType {
     
-    var wireframe: WireframeType?
+    weak var wireframe: WireframeType?
     var presenter: DetailPresenterType!
     weak var presentedViewController: UIViewController?
 

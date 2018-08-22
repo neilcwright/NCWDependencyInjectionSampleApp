@@ -41,6 +41,10 @@ final class LoginRouter: NSObject, LoginRouterType {
     deinit {
         print("Login router deinit")
     }
+    
+    init(wireframe: WireframeType? = nil) {
+        self.wireframe = wireframe
+    }
 
     func loadView(fromViewController: UIViewController) {
         guard let presentedViewController = self.wireframe?.resolve(LoginViewControllerType.self) as? UIViewController else {
@@ -55,23 +59,14 @@ final class LoginRouter: NSObject, LoginRouterType {
     }
     
     func routeToHomeView() {
-        // test code
-        guard let rootViewController = self.wireframe?.route(RootRouterType.self)?.presentedViewController as? RootViewController else {
-            return
+        guard let homeRoute = self.wireframe?.route(HomeRouterType.self),
+            let presentedViewController = self.presentedViewController else {
+                
+                assertionFailure("expected home route to be registered w/ container")
+                return
         }
-        rootViewController.dismiss(animated: true, completion: {
-            rootViewController.redetermineInitialFlow()
-        })
-        return
         
-//        guard let homeRoute = self.wireframe?.route(HomeRouterType.self),
-//            let presentedViewController = self.presentedViewController else {
-//                
-//                assertionFailure("expected home route to be registered w/ container")
-//                return
-//        }
-//        
-//        homeRoute.loadView(from: presentedViewController)
+        homeRoute.loadView(from: presentedViewController)
     }
     
     func routeToHomeTabBarView() {

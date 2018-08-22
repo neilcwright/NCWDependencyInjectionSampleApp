@@ -64,7 +64,7 @@ protocol AccountServiceType: class {
 
 final class AccountService: AccountServiceType {
     
-    fileprivate let baseUrl: String
+    private let baseUrl: String
     
     init(baseUrl: String) {
         self.baseUrl = baseUrl

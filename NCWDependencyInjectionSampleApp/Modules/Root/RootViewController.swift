@@ -18,11 +18,11 @@ final class RootViewController:
     RootViewControllerType,
     RootPresenterToViewType {
     
-    fileprivate let presenter: RootPresenterType
+    private let presenter: RootPresenterType
     
     // MARK: View elements
     
-    fileprivate lazy var headerLabel: UILabel = {
+    private lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
         headerLabel.font = UIFont.preferredFont(
             forTextStyle: .headline,

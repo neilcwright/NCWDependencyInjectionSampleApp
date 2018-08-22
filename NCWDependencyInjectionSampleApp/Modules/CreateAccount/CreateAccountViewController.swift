@@ -17,7 +17,7 @@ final class CreateAccountViewController:
     CreateAccountViewControllerType,
     CreateAccountPresenterToViewType {
     
-    let presenter: CreateAccountPresenterType
+    private let presenter: CreateAccountPresenterType
     
     // MARK: View elements
     
@@ -113,7 +113,7 @@ final class CreateAccountViewController:
         return submitButton
     }()
     
-    fileprivate lazy var closeButton: UIButton = {
+    private lazy var closeButton: UIButton = {
         let closeButton = UIButton.newAutoLayout()
         closeButton.setImage(
             UIImage(named: "close"),

@@ -17,8 +17,7 @@ final class TabBarItem2ViewController:
     TabBarItem2ViewControllerType,
     TabBarItem2PresenterToViewType {
     
-    let presenter: TabBarItem2PresenterType
-    private var didSetConstraints: Bool = false
+    private let presenter: TabBarItem2PresenterType
     
     // MARK: View elements
     
@@ -35,6 +34,8 @@ final class TabBarItem2ViewController:
         infoView.translatesAutoresizingMaskIntoConstraints = false
         return infoView
     }()
+    
+    private var didSetConstraints: Bool = false
 
     // MARK: Initializers
     

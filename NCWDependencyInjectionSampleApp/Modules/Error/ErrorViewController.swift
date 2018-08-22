@@ -26,8 +26,9 @@ final class ErrorViewController:
     UIViewController,
     ErrorViewControllerType,
     ErrorPresenterToViewType {
-    
-    var viewModel: ErrorViewModel {
+        
+    private let presenter: ErrorPresenterType
+    private var viewModel: ErrorViewModel {
         didSet {
             self.headerLabel.text = self.viewModel.headerText
             self.descriptionLabel.text = self.viewModel.descriptionText
@@ -35,11 +36,9 @@ final class ErrorViewController:
         }
     }
     
-    let presenter: ErrorPresenterType
-    
     // MARK: View elements
     
-    fileprivate lazy var headerLabel: UILabel = {
+    private lazy var headerLabel: UILabel = {
         let headerLabel = UILabel.newAutoLayout()
         headerLabel.numberOfLines = 0
         headerLabel.lineBreakMode = .byWordWrapping
@@ -50,7 +49,7 @@ final class ErrorViewController:
         return headerLabel
     }()
     
-    fileprivate lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let descriptionLabel = UILabel.newAutoLayout()
         descriptionLabel.textAlignment = .center
         descriptionLabel.text = ErrorLocalization.Generic.descriptionText
@@ -59,13 +58,13 @@ final class ErrorViewController:
         return descriptionLabel
     }()
     
-    fileprivate lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "icon_error"))
         imageView.configureForAutoLayout()
         return imageView
     }()
     
-    fileprivate lazy var primaryButton: PrimaryButton = {
+    private lazy var primaryButton: PrimaryButton = {
         let primaryButton = PrimaryButton(
             viewModel: PrimaryButtonViewModel(
                 cornerRadius: 5,
@@ -78,7 +77,7 @@ final class ErrorViewController:
         return primaryButton
     }()
     
-    fileprivate var didSetConstraints: Bool = false
+    private var didSetConstraints: Bool = false
 
     // MARK: Initializers
     

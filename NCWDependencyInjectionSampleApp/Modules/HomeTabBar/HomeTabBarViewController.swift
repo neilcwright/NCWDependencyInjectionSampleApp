@@ -17,7 +17,7 @@ final class HomeTabBarViewController:
     HomeTabBarViewControllerType,
     HomeTabBarPresenterToViewType {
     
-    let presenter: HomeTabBarPresenterType
+    private let presenter: HomeTabBarPresenterType
     
     // MARK: View elements
 
