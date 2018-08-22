@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NCWDependencyInjectionSampleApp/Modules/Root/RootViewController.swift"
-            timestampString = "556601296.282793"
+            timestampString = "556606076.372717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"

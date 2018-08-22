@@ -23,6 +23,7 @@
 		8A26C085212D0ED300DF9E0F /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C084212D0ED300DF9E0F /* LoginCredentials.swift */; };
 		8A26C087212D0F2600DF9E0F /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C086212D0F2600DF9E0F /* AccountRequest.swift */; };
 		8A26C089212D0F7900DF9E0F /* ServiceEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C088212D0F7900DF9E0F /* ServiceEndpoint.swift */; };
+		8A26C08B212D122A00DF9E0F /* UIView+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */; };
 		8A32651820F2860800747237 /* CreateAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651120F2860800747237 /* CreateAccountPresenter.swift */; };
 		8A32651920F2860800747237 /* CreateAccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651220F2860800747237 /* CreateAccountAssembly.swift */; };
 		8A32651A20F2860800747237 /* CreateAccountLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651320F2860800747237 /* CreateAccountLocalization.swift */; };
@@ -155,6 +156,7 @@
 		8A26C084212D0ED300DF9E0F /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginCredentials.swift; path = ../../../../algorithms/LoginCredentials.swift; sourceTree = "<group>"; };
 		8A26C086212D0F2600DF9E0F /* AccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountRequest.swift; path = ../../../../algorithms/AccountRequest.swift; sourceTree = "<group>"; };
 		8A26C088212D0F7900DF9E0F /* ServiceEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEndpoint.swift; sourceTree = "<group>"; };
+		8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NCW.swift"; sourceTree = "<group>"; };
 		8A32651120F2860800747237 /* CreateAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPresenter.swift; sourceTree = "<group>"; };
 		8A32651220F2860800747237 /* CreateAccountAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountAssembly.swift; sourceTree = "<group>"; };
 		8A32651320F2860800747237 /* CreateAccountLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountLocalization.swift; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			children = (
 				8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */,
 				8A61612D20E07355008E05E3 /* String+NCW.swift */,
+				8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */,
 				8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */,
 			);
 			path = Extensions;
@@ -981,6 +984,7 @@
 				8A61611720DEBEF3008E05E3 /* WireframeAssembly.swift in Sources */,
 				8AA93C3A2100216200522A92 /* TabBarItem1Router.swift in Sources */,
 				8AA93C2A21001E3300522A92 /* HomeTabBarDataManager.swift in Sources */,
+				8A26C08B212D122A00DF9E0F /* UIView+NCW.swift in Sources */,
 				8A67578D20EC96800073F6BC /* ErrorInteractor.swift in Sources */,
 				8A32651B20F2860800747237 /* CreateAccountInteractor.swift in Sources */,
 				8A32651A20F2860800747237 /* CreateAccountLocalization.swift in Sources */,
