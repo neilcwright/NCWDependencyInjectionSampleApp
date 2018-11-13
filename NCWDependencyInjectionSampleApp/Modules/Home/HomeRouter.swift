@@ -13,7 +13,7 @@ protocol HomeRouterType: RouteType, HomePresenterToRouterType {
     /// Will load this route's view from the view controller specified.
     ///
     /// - Parameter viewController: the vc instance to which we'll load this route's view.
-    func loadView(from viewController: UIViewController)
+    func loadView(fromViewController: UIViewController)
 }
 
 protocol HomePresenterToRouterType {
@@ -34,7 +34,7 @@ final class HomeRouter: NSObject, HomeRouterType {
         debugPrint("deinit \(#file) \(#function)")
     }
     
-    func loadView(from viewController: UIViewController) {
+    func loadView(fromViewController: UIViewController) {
         guard let homeViewController = self.wireframe?.resolve(HomeViewControllerType.self) as? UIViewController else {
             
             assertionFailure("expected home view controller to be registered in container")
@@ -43,7 +43,7 @@ final class HomeRouter: NSObject, HomeRouterType {
         
         homeViewController.transitioningDelegate = self
         homeViewController.modalPresentationStyle = .custom
-        viewController.present(homeViewController, animated: true, completion: nil)
+        fromViewController.present(homeViewController, animated: true, completion: nil)
         self.presentedViewController = homeViewController
     }
     

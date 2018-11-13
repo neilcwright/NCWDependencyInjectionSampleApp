@@ -58,7 +58,7 @@ final class LoginViewController:
     }()
     
     private lazy var emailField: SimpleFormTextField = {
-        let emailField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        let emailField = SimpleFormTextField(insets: UIEdgeInsets(all: 10))
         emailField.autocorrectionType = .no
         emailField.layer.applyFormFieldStyle()
         emailField.autocapitalizationType = .none
@@ -75,7 +75,7 @@ final class LoginViewController:
     }()
     
     private lazy var passwordField: SimpleFormTextField = {
-        let passwordField = SimpleFormTextField(insets: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        let passwordField = SimpleFormTextField(insets: UIEdgeInsets(all: 10))
         passwordField.isSecureTextEntry = true
         passwordField.layer.applyFormFieldStyle()
         return passwordField

@@ -66,7 +66,7 @@ final class LoginRouter: NSObject, LoginRouterType {
                 return
         }
         
-        homeRoute.loadView(from: presentedViewController)
+        homeRoute.loadView(fromViewController: presentedViewController)
     }
     
     func routeToHomeTabBarView() {

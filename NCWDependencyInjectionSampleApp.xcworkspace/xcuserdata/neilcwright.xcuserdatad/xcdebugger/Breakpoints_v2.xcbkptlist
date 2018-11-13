@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NCWDependencyInjectionSampleApp/ViewController.swift"
-            timestampString = "550946603.4889489"
+            filePath = "NCWDependencyInjectionSampleApp/Modules/Root/RootRouter.swift"
+            timestampString = "563770250.990878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "routeToHome()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -23,47 +23,15 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NCWDependencyInjectionSampleApp/Modules/HomeTabBar/TabBarItem3/TabBarItem3Router.swift"
-            timestampString = "556509741.460824"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "dismissBackToRootRoute()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NCWDependencyInjectionSampleApp/Modules/Root/RootViewController.swift"
-            timestampString = "556606076.372717"
+            timestampString = "563769904.9548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NCWDependencyInjectionSampleApp/Modules/Root/RootRouter.swift"
-            timestampString = "556511931.129348"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "routeToHome()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "redetermineInitialFlow()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

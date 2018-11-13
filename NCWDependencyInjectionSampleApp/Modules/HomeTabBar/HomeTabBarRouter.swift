@@ -24,7 +24,7 @@ protocol HomeTabBarPresenterToRouterType {
 final class HomeTabBarRouter: HomeTabBarRouterType {
     
     weak var wireframe: WireframeType?
-    weak var presentedViewController: UIViewController?
+    var presentedViewController: UIViewController?
     
     deinit {
         print("HomeTabBar router deinit")

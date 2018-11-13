@@ -20,10 +20,11 @@
 		8A07603A20E986BA00DF2311 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603920E986BA00DF2311 /* AccountService.swift */; };
 		8A07603E20EAF3F200DF2311 /* CALayer+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */; };
 		8A07603F20EAF77400DF2311 /* Login.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A07604120EAF77400DF2311 /* Login.strings */; };
-		8A26C085212D0ED300DF9E0F /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C084212D0ED300DF9E0F /* LoginCredentials.swift */; };
-		8A26C087212D0F2600DF9E0F /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C086212D0F2600DF9E0F /* AccountRequest.swift */; };
 		8A26C089212D0F7900DF9E0F /* ServiceEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C088212D0F7900DF9E0F /* ServiceEndpoint.swift */; };
 		8A26C08B212D122A00DF9E0F /* UIView+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */; };
+		8A2C26AE219A6EA60028D0CF /* UIEdgeInsets+NCW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C26AD219A6EA60028D0CF /* UIEdgeInsets+NCW.swift */; };
+		8A2C26B2219A6F520028D0CF /* AccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C26B0219A6F520028D0CF /* AccountRequest.swift */; };
+		8A2C26B3219A6F520028D0CF /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2C26B1219A6F520028D0CF /* LoginCredentials.swift */; };
 		8A32651820F2860800747237 /* CreateAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651120F2860800747237 /* CreateAccountPresenter.swift */; };
 		8A32651920F2860800747237 /* CreateAccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651220F2860800747237 /* CreateAccountAssembly.swift */; };
 		8A32651A20F2860800747237 /* CreateAccountLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32651320F2860800747237 /* CreateAccountLocalization.swift */; };
@@ -153,10 +154,11 @@
 		8A07603920E986BA00DF2311 /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+NCW.swift"; sourceTree = "<group>"; };
 		8A07604020EAF77400DF2311 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Login.strings; sourceTree = "<group>"; };
-		8A26C084212D0ED300DF9E0F /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginCredentials.swift; path = ../../../../algorithms/LoginCredentials.swift; sourceTree = "<group>"; };
-		8A26C086212D0F2600DF9E0F /* AccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AccountRequest.swift; path = ../../../../algorithms/AccountRequest.swift; sourceTree = "<group>"; };
 		8A26C088212D0F7900DF9E0F /* ServiceEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEndpoint.swift; sourceTree = "<group>"; };
 		8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+NCW.swift"; sourceTree = "<group>"; };
+		8A2C26AD219A6EA60028D0CF /* UIEdgeInsets+NCW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+NCW.swift"; sourceTree = "<group>"; };
+		8A2C26B0219A6F520028D0CF /* AccountRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountRequest.swift; sourceTree = "<group>"; };
+		8A2C26B1219A6F520028D0CF /* LoginCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
 		8A32651120F2860800747237 /* CreateAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountPresenter.swift; sourceTree = "<group>"; };
 		8A32651220F2860800747237 /* CreateAccountAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountAssembly.swift; sourceTree = "<group>"; };
 		8A32651320F2860800747237 /* CreateAccountLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountLocalization.swift; sourceTree = "<group>"; };
@@ -316,14 +318,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		8A26C083212D0E9800DF9E0F /* Models */ = {
+		8A2C26AF219A6F200028D0CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A26C086212D0F2600DF9E0F /* AccountRequest.swift */,
-				8A26C084212D0ED300DF9E0F /* LoginCredentials.swift */,
+				8A2C26B0219A6F520028D0CF /* AccountRequest.swift */,
+				8A2C26B1219A6F520028D0CF /* LoginCredentials.swift */,
 			);
-			name = Models;
-			path = "New Group";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8A32651020F285AB00747237 /* CreateAccount */ = {
@@ -366,10 +367,10 @@
 		8A61609D20D4A27C008E05E3 /* NCWDependencyInjectionSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A2C26AF219A6F200028D0CF /* Models */,
 				8A61611020DEBB4A008E05E3 /* Abstracts */,
 				8A6160DA20D5B57C008E05E3 /* Assemblies */,
 				8A61610F20DEBB09008E05E3 /* Extensions */,
-				8A26C083212D0E9800DF9E0F /* Models */,
 				8A6160DB20D5B662008E05E3 /* Modules */,
 				8A6160FB20D5C126008E05E3 /* Services */,
 				8AA93C0C20FEF61400522A92 /* Transitions */,
@@ -497,8 +498,9 @@
 			children = (
 				8A07603D20EAF3F200DF2311 /* CALayer+NCW.swift */,
 				8A61612D20E07355008E05E3 /* String+NCW.swift */,
-				8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */,
+				8A2C26AD219A6EA60028D0CF /* UIEdgeInsets+NCW.swift */,
 				8A61611A20DFF9F9008E05E3 /* UITraitCollection+NCW.swift */,
+				8A26C08A212D122A00DF9E0F /* UIView+NCW.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -949,6 +951,7 @@
 				8AA93C4D2100216C00522A92 /* TabBarItem2ViewController.swift in Sources */,
 				8A26C089212D0F7900DF9E0F /* ServiceEndpoint.swift in Sources */,
 				8A6160CD20D4DEA8008E05E3 /* ServiceAssembly.swift in Sources */,
+				8A2C26B3219A6F520028D0CF /* LoginCredentials.swift in Sources */,
 				8A6160F720D5B987008E05E3 /* DetailRouter.swift in Sources */,
 				8A6160D520D5B39E008E05E3 /* PrimaryButton.swift in Sources */,
 				8AA93C4C2100216C00522A92 /* TabBarItem2Router.swift in Sources */,
@@ -968,9 +971,9 @@
 				8A67579120EC96800073F6BC /* ErrorLocalization.swift in Sources */,
 				8AA93C612100366A00522A92 /* TabBarItem3ViewController.swift in Sources */,
 				8A6160F520D5B979008E05E3 /* DetailViewController.swift in Sources */,
+				8A2C26B2219A6F520028D0CF /* AccountRequest.swift in Sources */,
 				8A6160E020D5B6A4008E05E3 /* HomeViewController.swift in Sources */,
 				8A61610820D5C77A008E05E3 /* RootViewController.swift in Sources */,
-				8A26C085212D0ED300DF9E0F /* LoginCredentials.swift in Sources */,
 				8A07603620E9858900DF2311 /* LoginDataManager.swift in Sources */,
 				8AA93C642100366A00522A92 /* TabBarItem3Localization.swift in Sources */,
 				8A32651C20F2860800747237 /* CreateAccountDataManager.swift in Sources */,
@@ -1011,11 +1014,11 @@
 				8A07603220E9858900DF2311 /* LoginAssembly.swift in Sources */,
 				8AD9F80820FA459200E30683 /* ViewModelAssembly.swift in Sources */,
 				8A61610E20D5DDBE008E05E3 /* LoadingViewController.swift in Sources */,
+				8A2C26AE219A6EA60028D0CF /* UIEdgeInsets+NCW.swift in Sources */,
 				8A6160F120D5B962008E05E3 /* DetailInteractor.swift in Sources */,
 				8AA93C482100216C00522A92 /* TabBarItem2Interactor.swift in Sources */,
 				8A6160F320D5B96C008E05E3 /* DetailPresenter.swift in Sources */,
 				8AA93C1420FEFD8900522A92 /* ScaleFromCenterPresentingAnimator.swift in Sources */,
-				8A26C087212D0F2600DF9E0F /* AccountRequest.swift in Sources */,
 				8A61612420E06C55008E05E3 /* RootLocalization.swift in Sources */,
 				8AA93C3F2100216200522A92 /* TabBarItem1Assembly.swift in Sources */,
 				8A61612C20E07273008E05E3 /* DetailLocalization.swift in Sources */,

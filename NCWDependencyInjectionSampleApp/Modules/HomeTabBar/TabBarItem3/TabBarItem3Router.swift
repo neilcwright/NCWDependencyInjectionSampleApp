@@ -36,8 +36,11 @@ final class TabBarItem3Router: TabBarItem3RouterType {
             return
         }
         
-        fromViewController.present(presentedViewController, animated: true, completion: nil)
-        self.presentedViewController = presentedViewController
+        fromViewController.present(presentedViewController, animated: true, completion: {
+            [weak self] in
+            guard let `self` = self else { return }
+            self.presentedViewController = presentedViewController
+        })
     }
     
     func dismissBackToRootRoute() {

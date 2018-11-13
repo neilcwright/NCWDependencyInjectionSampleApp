@@ -80,7 +80,7 @@ final class RootRouter: RootRouterType {
             return
         }
         
-        homeRoute.loadView(from: presentedViewController)
+        homeRoute.loadView(fromViewController: presentedViewController)
     }
     
     func routeToError() {
