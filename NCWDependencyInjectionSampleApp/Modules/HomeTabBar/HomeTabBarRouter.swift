@@ -24,7 +24,7 @@ protocol HomeTabBarPresenterToRouterType {
 final class HomeTabBarRouter: HomeTabBarRouterType {
     
     weak var wireframe: WireframeType?
-    var presentedViewController: UIViewController?
+    weak var presentedViewController: UIViewController?
     
     deinit {
         print("HomeTabBar router deinit")
@@ -53,7 +53,9 @@ final class HomeTabBarRouter: HomeTabBarRouterType {
         
         presentedViewController.viewControllers = [tabBarItem1VC, tabBarItem2VC, tabBarItem3VC]
         
-        fromViewController.present(presentedViewController, animated: true, completion: nil)
-        self.presentedViewController = presentedViewController
+        fromViewController.present(presentedViewController, animated: true, completion: { [weak self] in
+            guard let `self` = self else { return }
+            self.presentedViewController = presentedViewController
+        })
     }
 }

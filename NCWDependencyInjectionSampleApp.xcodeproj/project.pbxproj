@@ -367,10 +367,10 @@
 		8A61609D20D4A27C008E05E3 /* NCWDependencyInjectionSampleApp */ = {
 			isa = PBXGroup;
 			children = (
-				8A2C26AF219A6F200028D0CF /* Models */,
 				8A61611020DEBB4A008E05E3 /* Abstracts */,
 				8A6160DA20D5B57C008E05E3 /* Assemblies */,
 				8A61610F20DEBB09008E05E3 /* Extensions */,
+				8A2C26AF219A6F200028D0CF /* Models */,
 				8A6160DB20D5B662008E05E3 /* Modules */,
 				8A6160FB20D5C126008E05E3 /* Services */,
 				8AA93C0C20FEF61400522A92 /* Transitions */,
